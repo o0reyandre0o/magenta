@@ -120,6 +120,71 @@ function magenta_share_title(): string {
 	return (string) get_bloginfo( 'name' );
 }
 
+/**
+ * Document title.
+ *
+ * add_theme_support( 'title-tag' ) alone left the front page titled with the
+ * site name and nothing else - seven characters, which tells a searcher
+ * nothing and wastes the single strongest on-page relevance signal there is.
+ * Google renders roughly 50-60; these aim for 45-62 including the brand tail.
+ */
+function magenta_document_title( array $parts ): array {
+	if ( is_front_page() ) {
+		return array(
+			'title'   => __( 'Printing &amp; Graphic Design in Grand Cayman', 'magenta' ),
+			'tagline' => get_bloginfo( 'name' ),
+		);
+	}
+
+	if ( is_post_type_archive( 'project' ) ) {
+		$parts['title'] = __( 'Print Work for Cayman Hotels, Restaurants &amp; Retail', 'magenta' );
+	}
+
+	if ( is_tax( 'service' ) ) {
+		$parts['title'] = sprintf(
+			/* translators: %s: service name, e.g. Screen Printing. */
+			__( '%s in the Cayman Islands', 'magenta' ),
+			single_term_title( '', false )
+		);
+	}
+
+	if ( is_tax( 'sector' ) ) {
+		$parts['title'] = sprintf(
+			/* translators: %s: sector name, e.g. Hotels. */
+			__( 'Printing for %s in Cayman', 'magenta' ),
+			single_term_title( '', false )
+		);
+	}
+
+	if ( is_singular( 'project' ) ) {
+		$client = magenta_project_client();
+		if ( $client ) {
+			$parts['title'] = sprintf(
+				/* translators: 1: project title, 2: client name. */
+				__( '%1$s - Print Project for %2$s', 'magenta' ),
+				get_the_title(),
+				$client
+			);
+		}
+	}
+
+	// Site name always closes the title; drop the separate tagline part so it
+	// does not run past what Google will render.
+	$parts['site'] = get_bloginfo( 'name' );
+	unset( $parts['tagline'] );
+
+	return $parts;
+}
+add_filter( 'document_title_parts', 'magenta_document_title' );
+
+/**
+ * Separator between title and brand.
+ */
+function magenta_title_separator(): string {
+	return '·';
+}
+add_filter( 'document_title_separator', 'magenta_title_separator' );
+
 function magenta_print_meta(): void {
 	static $printed = false;
 	if ( $printed ) {
