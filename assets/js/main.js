@@ -134,6 +134,44 @@
     update();
   }
 
+  /* ---------------------------------------------------------------- Rail
+     Fills the process rail as the block travels the viewport, so the line
+     advances with the reader the way a sheet advances through the press.
+     Without JS the rail simply stays empty and the stations still read. */
+  function initRail() {
+    var rails = Array.prototype.slice.call(document.querySelectorAll('[data-rail]'));
+    if (!rails.length || reduced) return;
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+
+      rails.forEach(function (rail) {
+        var rect = rail.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+
+        // Measured against the middle of the viewport: the rail is full when
+        // the end of the list has reached the reader's eye line.
+        var travelled = vh * 0.5 - rect.top;
+        var pass = Math.min(1, Math.max(0, travelled / rect.height));
+
+        rail.style.setProperty('--pass', pass.toFixed(3));
+      });
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+
   /* ------------------------------------------------------------- Marquee
      Duration is derived from track width so the speed stays constant no
      matter how many items are in the ticker. */
@@ -264,6 +302,7 @@
     initReveals();
     initRegistration();
     initParallax();
+    initRail();
     initMarquees();
     initHeader();
     initNav();

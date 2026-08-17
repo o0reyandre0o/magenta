@@ -177,60 +177,222 @@
 .work .work-grid { margin-top: var(--sp-6); }
 .tape--card { top: -12px; left: 18%; rotate: -5deg; z-index: 2; }
 
-/* ================================================================ Process */
-.process-list {
-  display: grid;
-  gap: 0;
-  counter-reset: step;
-  border-top: 2px solid var(--rule);
+/* ================================================================ Process
+   A sheet running through the machine. The press shot goes full bleed with
+   the title on it, then the stations hang off a rail that fills with the
+   scroll — paper advancing, not a bulleted list. */
+.process {
+  position: relative;
+  z-index: var(--z-base);
+  background: var(--ink);
+  color: var(--paper);
 }
 
-.process-step {
+/* ------------------------------------------------------------ Press band */
+.process__band {
   position: relative;
   display: grid;
-  gap: var(--sp-3) var(--sp-6);
-  padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  border-bottom: 2px solid var(--rule);
-  transition: background-color var(--dur) var(--ease-out), padding-left var(--dur) var(--ease-out);
+  align-items: end;
+  min-height: clamp(24rem, 18rem + 26vw, 40rem);
+  overflow: clip;
+  isolation: isolate;
 }
 
-@media (min-width: 760px) {
-  .process-step { grid-template-columns: 6rem 1fr; align-items: start; }
-  .process-step:hover { background: var(--paper); padding-left: var(--sp-4); }
+.process__band-media {
+  position: absolute;
+  inset: -8% 0;
+  z-index: 0;
 }
 
-.process-step__n {
+.process__band-media img,
+.process__band-media .slot-ph {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ink wash so the type holds over any exposure that comes back from the
+   shoot — the photograph is not yet taken, so the section cannot depend on
+   it being dark in the right places. */
+.process__band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.94) 0%,
+    rgba(13, 13, 13, 0.72) 38%,
+    rgba(13, 13, 13, 0.28) 100%
+  );
+}
+
+.process__band-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--sp-8) var(--sp-7);
+}
+
+.process__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-3) var(--sp-4);
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.2rem + 2.5vw, 3.2rem);
-  line-height: 1;
+  font-size: clamp(2.4rem, 1.2rem + 6vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: var(--sp-5);
+}
+
+.process__title em {
+  font-family: var(--font-hand);
+  font-style: normal;
+  text-transform: none;
+  font-size: 0.92em;
+  color: var(--y);
+}
+
+/* The rule between "from file" and "to finish" is the sheet's travel. */
+.process__title-rule {
+  flex: 1 1 4rem;
+  min-width: 3rem;
+  height: 3px;
+  background: var(--m);
+  position: relative;
+  align-self: center;
+}
+
+.process__title-rule::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--m);
+  transform: translateY(-50%);
+}
+
+.process__standfirst {
+  max-width: 46ch;
+  font-size: var(--fs-lede);
+  line-height: 1.4;
+  color: rgba(253, 254, 255, 0.82);
+  margin: 0;
+}
+
+.process__band-bar { position: absolute; inset: auto 0 0 0; z-index: 3; }
+
+/* -------------------------------------------------------------- Stations */
+.process__stations {
+  position: relative;
+  padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
+}
+
+/* The rail sits behind the dots and fills as the block passes the viewport. */
+.process__rail {
+  position: absolute;
+  top: clamp(3.5rem, 2rem + 5vw, 6rem);
+  bottom: clamp(6rem, 4rem + 6vw, 9rem);
+  left: 0;
+  width: 2px;
+  background: rgba(253, 254, 255, 0.16);
+}
+
+.process__rail-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--m);
+  transform-origin: top;
+  transform: scaleY(var(--pass, 0));
+  transition: transform 120ms linear;
+}
+
+.process-list { display: grid; gap: clamp(2rem, 1rem + 3vw, 3.5rem); }
+
+.station {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-2);
+  padding-left: var(--sp-6);
+}
+
+@media (min-width: 820px) {
+  .station {
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: var(--sp-3) var(--sp-7);
+    align-items: start;
+    padding-left: var(--sp-7);
+  }
+}
+
+/* Station marker on the rail. Hollow until the step reveals, then inked. */
+.station__dot {
+  position: absolute;
+  left: -5px;
+  top: 0.6rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--m);
+  background: var(--ink);
+  transition: background-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-back);
+}
+
+.station.is-in .station__dot { background: var(--m); transform: scale(1.35); }
+
+.station__n {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(253, 254, 255, 0.42);
+  transition: color var(--dur-slow) var(--ease-out), -webkit-text-stroke-color var(--dur-slow) var(--ease-out);
+}
+
+/* Plate number inks in when the station arrives. */
+.station.is-in .station__n {
   color: var(--m);
-  -webkit-text-stroke: 1px var(--ink);
+  -webkit-text-stroke-color: transparent;
 }
 
-.process-step__title {
-  margin-bottom: var(--sp-2);
+.station__note {
+  margin: 0 0 var(--sp-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--y);
+}
+
+.station__title {
+  margin-bottom: var(--sp-3);
   font-family: var(--font-display);
-  font-size: var(--fs-h3);
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.4rem);
   text-transform: uppercase;
   letter-spacing: var(--tracking-display);
+  color: var(--paper);
 }
 
-.process-step__body p { margin: 0; max-width: 58ch; color: var(--ink-soft); }
-
-.process__press {
-  position: relative;
-  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
-  border: 3px solid var(--ink);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-hard-lg);
-  aspect-ratio: 16 / 9;
-  background: var(--paper);
+.station__copy {
+  margin: 0;
+  max-width: 56ch;
+  color: rgba(253, 254, 255, 0.74);
 }
 
-.process__press img { width: 100%; height: 100%; object-fit: cover; }
-.process__press .slot-ph { height: 100%; }
-.process__sticker { position: absolute; right: 1.5rem; bottom: 1.5rem; z-index: 3; font-family: var(--font-hand); font-size: 1.1rem; text-transform: none; letter-spacing: 0; }
+.process__close { margin: clamp(2.5rem, 1.5rem + 3vw, 4rem) 0 0; padding-left: var(--sp-6); }
+.process__close .sticker { font-family: var(--font-hand); font-size: 1.15rem; text-transform: none; letter-spacing: 0; }
+
+@media (min-width: 820px) {
+  .process__close { padding-left: var(--sp-7); }
+}
 
 /* ================================================================= Studio */
 .about__grid {
