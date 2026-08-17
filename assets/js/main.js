@@ -134,6 +134,40 @@
     update();
   }
 
+  /* --------------------------------------------------------------- Reels
+     Decorative clips: they play only while on screen, so a page left open in
+     a background tab is not burning battery decoding three videos. Under
+     reduced motion nothing plays and the poster frame stands in. */
+  function initReels() {
+    var reels = Array.prototype.slice.call(document.querySelectorAll('[data-reel]'));
+    if (!reels.length) return;
+
+    if (reduced || !('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var video = entry.target;
+
+        if (entry.isIntersecting) {
+          // preload="none" means there is nothing buffered until now.
+          if (!video.dataset.loaded) {
+            video.load();
+            video.dataset.loaded = '1';
+          }
+          var played = video.play();
+          if (played && played.catch) {
+            // Autoplay can still be refused; the poster remains, which is fine.
+            played.catch(function () {});
+          }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+
+    reels.forEach(function (video) { observer.observe(video); });
+  }
+
   /* ---------------------------------------------------------------- Rail
      Fills the process rail as the block travels the viewport, so the line
      advances with the reader the way a sheet advances through the press.
@@ -302,6 +336,7 @@
     initReveals();
     initRegistration();
     initParallax();
+    initReels();
     initRail();
     initMarquees();
     initHeader();

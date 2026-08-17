@@ -43,6 +43,10 @@ $include = @(
     'assets'
 )
 
+# Folders inside the include list that must never ship: the untouched client
+# originals are build inputs for tools/optimize-media.ps1, not site assets.
+$excludeDirs = @('_source')
+
 # Resolve the include list to concrete files, each paired with the entry name
 # it will carry inside the archive.
 $files = @()
@@ -56,7 +60,11 @@ foreach ($item in $include) {
 
     if (Test-Path $src -PathType Container) {
         Get-ChildItem $src -Recurse -File | ForEach-Object {
-            $rel = $_.FullName.Substring($root.Length).TrimStart('\', '/')
+            $rel   = $_.FullName.Substring($root.Length).TrimStart('\', '/')
+            $parts = $rel -split '\\'
+
+            if ($parts | Where-Object { $excludeDirs -contains $_ }) { return }
+
             $files += [pscustomobject]@{
                 Path  = $_.FullName
                 Entry = 'magenta/' + ($rel -replace '\\', '/')
