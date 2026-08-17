@@ -50,13 +50,19 @@ function magenta_doodle_set(): array {
 			),
 		),
 
-		// Curved arrow, tip bottom right.
+		/*
+		 * Arrowheads are drawn long relative to the shaft. These render at
+		 * under 100px on the page, where a head of 20 viewBox units against a
+		 * 240-unit shaft disappears into a speck. Stroke weights are up for
+		 * the same reason: 4 units in a 130-unit box scaled to 90px paints a
+		 * 2.7px line, which reads as a hairline rather than as marker.
+		 */
 		'arrow' => array(
 			'box'   => '0 0 130 112',
 			'paths' => array(
-				array( 'd' => 'M12 10c8 34 30 62 60 78 12 6 26 11 40 13', 'w' => 4 ),
-				array( 'd' => 'M112 101l-6-20', 'w' => 4 ),
-				array( 'd' => 'M112 101l-20 4', 'w' => 4 ),
+				array( 'd' => 'M12 10c8 34 30 62 60 78 12 6 26 11 40 13', 'w' => 5.5 ),
+				array( 'd' => 'M112 101l-9-27', 'w' => 5.5 ),
+				array( 'd' => 'M112 101l-28 6', 'w' => 5.5 ),
 			),
 		),
 
@@ -66,10 +72,10 @@ function magenta_doodle_set(): array {
 			'paths' => array(
 				array(
 					'd' => 'M10 16c18-9 35 1 33 18-2 16-25 19-29 5-4-16 19-31 44-25 27 6 48 35 54 68',
-					'w' => 4,
+					'w' => 5.5,
 				),
-				array( 'd' => 'M112 102l-3-21', 'w' => 4 ),
-				array( 'd' => 'M112 102l-20-3', 'w' => 4 ),
+				array( 'd' => 'M112 102l-6-29', 'w' => 5.5 ),
+				array( 'd' => 'M112 102l-28-5', 'w' => 5.5 ),
 			),
 		),
 

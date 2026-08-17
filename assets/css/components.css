@@ -604,10 +604,12 @@
   height: 164%;
 }
 
+/* Sits in the descender space, not below the line box. At -0.35em it dropped
+   out of the heading entirely and struck through the paragraph beneath. */
 .doodle--mark-underline {
-  inset: auto -3% -0.35em;
+  inset: auto -3% -0.06em;
   width: 106%;
-  height: 0.5em;
+  height: 0.32em;
 }
 
 @media (prefers-reduced-motion: reduce) {

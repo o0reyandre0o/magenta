@@ -683,6 +683,10 @@
   .tape--about { left: 6%; }
 }
 
+/* The heading carried no bottom margin, so the prose began against it. The
+   underline mark made the collision obvious but the spacing was wrong first. */
+.about__copy .display { margin-bottom: var(--sp-5); }
+
 .about__signature {
   margin: var(--sp-5) 0;
   font-family: var(--font-hand);
