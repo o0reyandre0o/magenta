@@ -98,6 +98,18 @@
 
 .tape--hero { top: -14px; right: 22%; rotate: 6deg; }
 
+/* The frame is rotated, so its bounding box is wider than its box: at -1.4deg
+   a 335px frame measures 345px and eats 5px of the 20px gutter on each side.
+   Add the sticker hanging 20px past the right edge and the whole block sat
+   flush against the screen. Ease the rotation and bring the stickers inboard
+   on narrow screens. */
+@media (max-width: 640px) {
+  .hero__frame { rotate: -0.7deg; }
+  .hero__sticker-a { top: -0.9rem; left: -0.25rem; }
+  .hero__sticker-b { right: -0.25rem; bottom: 1rem; }
+  .tape--hero { right: 26%; }
+}
+
 .hero__scroll {
   display: inline-flex;
   align-items: center;
@@ -177,9 +189,51 @@
 
 .services__note { margin: var(--sp-8) 0 0; text-align: center; }
 
+/* On a phone the six service cards stacked full width came to 3413px - more
+   than four screens for six short paragraphs. Laid on their side with a
+   thumbnail they read faster and cost about a quarter of the height. The copy
+   is the point in this section, not the picture. */
+@media (max-width: 640px) {
+  .service-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+
+  .service-card { flex-direction: row; align-items: stretch; }
+
+  .service-card__media {
+    flex: 0 0 116px;
+    aspect-ratio: auto;
+    border-bottom: 0;
+    border-right: var(--border);
+  }
+
+  .service-card__tag {
+    top: var(--sp-2);
+    left: var(--sp-2);
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.68rem;
+  }
+
+  .service-card__body { padding: var(--sp-4); }
+  .service-card__title { font-size: 1.15rem; }
+  .service-card__body p { font-size: var(--fs-xs); }
+
+  /* The lift-on-hover offset has no meaning on touch and only clips. */
+  .service-card:hover { transform: none; box-shadow: none; }
+}
+
 /* =================================================================== Work */
 .work .work-grid { margin-top: var(--sp-6); }
 .tape--card { top: -12px; left: 18%; rotate: -5deg; z-index: 2; }
+
+/* Two up on a phone. Full-width cards ran the section to 3662px; the work is
+   photographic so it keeps its image, just at half the width. */
+@media (max-width: 640px) {
+  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
+  .work-card__title { font-size: 1.05rem; }
+  .work-card__client { font-size: 0.95rem; }
+  .work-card__meta { font-size: 0.66rem; }
+  .tape--card { width: 74px; height: 22px; }
+}
 
 /* ================================================================== Reels
    Vertical phone footage, shown upright. On narrow screens the strip becomes
