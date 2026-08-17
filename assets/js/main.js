@@ -134,6 +134,156 @@
     update();
   }
 
+  /* ----------------------------------------------------------- Ink trail
+     Process-colour dots laid down behind the pointer. The dot pool is fixed
+     and recycled - creating and destroying nodes on mousemove is what makes
+     effects like this stutter. */
+  function initInkTrail() {
+    if (reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var COUNT = 20;
+    var plates = ['c', 'm', 'y', 'k'];
+
+    var layer = document.createElement('div');
+    layer.className = 'ink-trail';
+    layer.setAttribute('aria-hidden', 'true');
+
+    var dots = [];
+    for (var i = 0; i < COUNT; i++) {
+      var dot = document.createElement('span');
+      dot.className = 'ink-dot ink-dot--' + plates[i % plates.length];
+      layer.appendChild(dot);
+      dots.push(dot);
+    }
+    document.body.appendChild(layer);
+
+    var next = 0;
+    var lastX = 0;
+    var lastY = 0;
+    var since = 0;
+
+    document.addEventListener('mousemove', function (event) {
+      var dx = event.clientX - lastX;
+      var dy = event.clientY - lastY;
+      var moved = Math.sqrt(dx * dx + dy * dy);
+
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      // Space the dots by distance, not by time, so the trail stays even
+      // whether the pointer is dawdling or flying.
+      since += moved;
+      if (since < 26) return;
+      since = 0;
+
+      var dot = dots[next];
+      next = (next + 1) % COUNT;
+
+      // Restart the animation on a recycled node.
+      dot.style.animation = 'none';
+      // Reading offsetWidth forces the style flush that makes the restart take.
+      void dot.offsetWidth;
+
+      var size = 10 + Math.min(moved, 40) * 0.5;
+      dot.style.width = size + 'px';
+      dot.style.height = size + 'px';
+      dot.style.margin = (-size / 2) + 'px 0 0 ' + (-size / 2) + 'px';
+      dot.style.transform = 'translate3d(' + event.clientX + 'px,' + event.clientY + 'px,0)';
+      dot.style.animation = 'ink-dry 900ms var(--ease-out) forwards';
+    }, { passive: true });
+  }
+
+  /* --------------------------------------------------------- Cursor ring
+     A registration mark trailing the pointer, opening up over anything
+     clickable. Follows on an easing so it lags slightly behind. */
+  function initCursorRing() {
+    if (reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+
+    var targetX = 0, targetY = 0, x = 0, y = 0, live = false;
+
+    document.addEventListener('mousemove', function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      if (!live) {
+        x = targetX;
+        y = targetY;
+        live = true;
+        ring.classList.add('is-live');
+      }
+
+      var hot = event.target.closest('a, button, [role="button"], input, select, textarea, .work-card, .reel');
+      ring.classList.toggle('is-hot', !!hot);
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+      ring.classList.remove('is-live');
+      live = false;
+    });
+
+    (function follow() {
+      x += (targetX - x) * 0.18;
+      y += (targetY - y) * 0.18;
+      ring.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      window.requestAnimationFrame(follow);
+    })();
+  }
+
+  /* ------------------------------------------------------- Scroll energy
+     Two things at once: how far down the page you are, and how fast you are
+     travelling. The first fills the colour bar; the second throws the type
+     out of register and lets it settle when you stop. */
+  function initScrollEnergy() {
+    if (reduced) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'scroll-bar';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var lastY = window.scrollY;
+    var energy = 0;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+
+      var y = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = max > 0 ? y / max : 0;
+
+      bar.style.setProperty('--progress', Math.min(1, Math.max(0, progress)).toFixed(4));
+
+      // Velocity in pixels per frame, normalised and capped so a flick of the
+      // wheel does not tear the type apart.
+      var velocity = Math.abs(y - lastY);
+      lastY = y;
+      energy = Math.min(1, Math.max(energy, velocity / 90));
+    }
+
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+
+    // Decay runs on its own loop so the plates keep drifting back into
+    // register after the scrolling stops.
+    (function decay() {
+      energy *= 0.88;
+      if (energy < 0.002) energy = 0;
+      document.documentElement.style.setProperty('--energy', energy.toFixed(3));
+      window.requestAnimationFrame(decay);
+    })();
+
+    update();
+  }
+
   /* --------------------------------------------------------------- Reels
      Decorative clips: they play only while on screen, so a page left open in
      a background tab is not burning battery decoding three videos. Under
@@ -336,6 +486,9 @@
     initReveals();
     initRegistration();
     initParallax();
+    initInkTrail();
+    initCursorRing();
+    initScrollEnergy();
     initReels();
     initRail();
     initMarquees();
