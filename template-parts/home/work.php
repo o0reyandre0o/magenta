@@ -23,26 +23,58 @@ $projects = new WP_Query(
 	)
 );
 
-$placeholders = array(
+/**
+ * Real jobs, shipped with the theme.
+ *
+ * These are the client's own photographs of work already produced, so the grid
+ * shows genuine output from launch rather than placeholders. Publishing any
+ * `project` post replaces this list entirely - see the query above.
+ *
+ * `alt` describes the photograph for anyone who cannot see it; it is not a
+ * repeat of the title.
+ */
+$bundled = array(
 	array(
-		'title'  => __( 'Beachfront resort', 'magenta' ),
-		'client' => __( 'Hospitality', 'magenta' ),
-		'meta'   => __( 'Menus &middot; Signage &middot; Collateral', 'magenta' ),
+		'slug'   => 'coffee-cart-cards',
+		'title'  => __( 'The Coffee Cart', 'magenta' ),
+		'client' => __( 'Mobile coffee &amp; matcha', 'magenta' ),
+		'meta'   => __( 'Business cards &middot; Uncoated stock', 'magenta' ),
+		'alt'    => __( 'Two stacks of square business cards, one black and one cream, showing a retro running coffee-cup mascot.', 'magenta' ),
 	),
 	array(
-		'title'  => __( 'Waterfront restaurant', 'magenta' ),
-		'client' => __( 'Food &amp; beverage', 'magenta' ),
-		'meta'   => __( 'Identity &middot; Menus &middot; Packaging', 'magenta' ),
+		'slug'   => 'amuse-bouche-menu',
+		'title'  => __( 'Amuse Bouche', 'magenta' ),
+		'client' => __( 'Restaurant', 'magenta' ),
+		'meta'   => __( 'Tasting menu &middot; Die-cut &middot; Coloured stock', 'magenta' ),
+		'alt'    => __( 'A tasting menu standing open beside a red die-cut envelope closed with a small paper heart.', 'magenta' ),
 	),
 	array(
-		'title'  => __( 'Island retailer', 'magenta' ),
-		'client' => __( 'Retail', 'magenta' ),
-		'meta'   => __( 'Packaging &middot; Labels &middot; Bags', 'magenta' ),
+		'slug'   => 'goddess-beer',
+		'title'  => __( 'Goddess Hazy IPA', 'magenta' ),
+		'client' => __( '19&middot;81 Brewing Co.', 'magenta' ),
+		'meta'   => __( 'Coasters &middot; Die-cut &middot; Brochure', 'magenta' ),
+		'alt'    => __( 'Round pink beer coasters and a matching folded brochure for a collaborative brew.', 'magenta' ),
 	),
 	array(
-		'title'  => __( 'Creative agency', 'magenta' ),
-		'client' => __( 'Agency partner', 'magenta' ),
-		'meta'   => __( 'Large format &middot; Event build', 'magenta' ),
+		'slug'   => 'anytime-wellness-cards',
+		'title'  => __( 'Anytime Wellness', 'magenta' ),
+		'client' => __( 'Wellness', 'magenta' ),
+		'meta'   => __( 'Gift cards &middot; Gold foil', 'magenta' ),
+		'alt'    => __( 'Stacks of white gift cards stamped in gold foil, styled with dried flowers and a wooden salt scoop.', 'magenta' ),
+	),
+	array(
+		'slug'   => 'lalique-brochures',
+		'title'  => __( '60 Lalique', 'magenta' ),
+		'client' => __( 'Property', 'magenta' ),
+		'meta'   => __( 'Property brochure &middot; Offset', 'magenta' ),
+		'alt'    => __( 'A fanned stack of property brochures for a Crystal Harbour home, opened to interior photography.', 'magenta' ),
+	),
+	array(
+		'slug'   => 'align-brochures',
+		'title'  => __( 'Align', 'magenta' ),
+		'client' => __( 'Healthcare', 'magenta' ),
+		'meta'   => __( 'Brochure suite &middot; Offset', 'magenta' ),
+		'alt'    => __( 'A spread of purple and white healthcare brochures for adult and paediatric therapy services.', 'magenta' ),
 	),
 );
 ?>
@@ -114,14 +146,16 @@ $placeholders = array(
 
 			<?php else : ?>
 
-				<?php foreach ( $placeholders as $i => $card ) : ?>
-					<article class="work-card work-card--placeholder" data-reveal style="--i:<?php echo esc_attr( (string) $i ); ?>">
+				<?php foreach ( $bundled as $i => $card ) : ?>
+					<article class="work-card work-card--bundled" data-reveal style="--i:<?php echo esc_attr( (string) $i ); ?>">
 						<div class="work-card__media">
-							<div class="slot-ph slot-ph--4x5">
-								<span class="slot-ph__mark" aria-hidden="true"></span>
-								<span class="slot-ph__id"><?php echo esc_html( sprintf( 'PROJECT %02d', $i + 1 ) ); ?></span>
-								<span class="slot-ph__spec"><?php esc_html_e( 'Flat lay of the full job: printed pieces from one client photographed together on a neutral surface, shot overhead.', 'magenta' ); ?></span>
-							</div>
+							<?php
+							magenta_asset_image(
+								$card['slug'],
+								$card['alt'],
+								array( 'sizes' => '(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw' )
+							);
+							?>
 							<span class="tape tape--card" aria-hidden="true"></span>
 						</div>
 						<div class="work-card__body">
