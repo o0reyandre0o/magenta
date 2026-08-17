@@ -582,8 +582,15 @@
    the same footprint as the hero's, which the hero earns and a bio section
    does not. Setting the two frames side by side keeps the portrait ratio
    intact (cropping it to landscape would cut the subject in half) while
-   dropping it to about a third of the viewport. */
-@media (max-width: 640px) {
+   dropping it to about a third of the viewport.
+
+   The breakpoint tracks the layout switch at 940px, NOT the 640px used
+   elsewhere in this file. The overlapping absolute placement below only has
+   room in the two-column arrangement; while the grid is still one column the
+   small frame's `right: -1.5rem` hangs past the viewport and gets clipped by
+   the section. That left a 300px-wide band - large phones in landscape and
+   small tablets - where the swatch frame ran off the right edge. */
+@media (max-width: 939.98px) {
   .about__media {
     display: flex;
     align-items: flex-end;
