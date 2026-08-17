@@ -46,7 +46,7 @@
   /* The h1 is one long word in a condensed face, so its minimum is governed
      by fitting "MAGENTA" inside a 375px viewport's gutters, not by what looks
      big. At 3.2rem it overflowed its own line box by 6px. */
-  --fs-h1:    clamp(2.75rem, 1rem    + 9.4vw,  9.5rem);
+  --fs-h1:    clamp(2.6rem,  0.85rem + 9.4vw,  9.5rem);
 
   --lh-tight: 0.88;
   --lh-snug:  1.1;

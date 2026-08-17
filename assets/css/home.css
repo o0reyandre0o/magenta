@@ -52,7 +52,9 @@
    on a phone and cost 164px of height for three short labels. */
 .hero__facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  /* 5rem, not 6: at 6rem three columns plus two gaps came to 336px against a
+     335px content box and dropped to two rows. */
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   gap: var(--sp-4) var(--sp-5);
   margin: 0;
   padding-top: var(--sp-5);
