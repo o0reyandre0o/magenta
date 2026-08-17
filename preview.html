@@ -266,25 +266,84 @@
 </section>
 
 <!-- ========================================================== PROCESS -->
-<section class="section section--stock process" id="process">
-  <div class="wrap">
-    <header class="section-head section-head--center">
-      <p class="eyebrow">How it works</p>
-      <h2 class="display display--lg" data-reveal>From file to <em>finish.</em></h2>
-    </header>
+<section class="process" id="process">
+  <div class="process__band">
+    <div class="process__band-media" data-parallax="0.04">
+      <div class="slot-ph slot-ph--16x9"><span class="slot-ph__mark"></span><span class="slot-ph__id">HERO PRESS</span><span class="slot-ph__spec">A printed sheet coming off the press, shot with a slow enough shutter that the movement smears. Blur is the point — do not freeze it.</span></div>
+    </div>
+
+    <div class="process__band-inner wrap">
+      <p class="eyebrow eyebrow--light">How it works</p>
+      <h2 class="process__title" data-reveal>
+        From file
+        <span class="process__title-rule" aria-hidden="true"></span>
+        <em>to finish.</em>
+      </h2>
+      <p class="process__standfirst">Five stations. A job does not skip any of them, and nothing leaves the building that has not cleared all five.</p>
+    </div>
+
+    <div class="process__band-bar" aria-hidden="true">
+      <div class="colour-bar">
+        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
+        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
+        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
+        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="process__stations wrap" data-rail>
+    <div class="process__rail" aria-hidden="true"><span class="process__rail-fill"></span></div>
 
     <ol class="process-list">
-      <li class="process-step" data-reveal style="--i:0"><span class="process-step__n" aria-hidden="true">01</span><div class="process-step__body"><h3 class="process-step__title">Brief</h3><p>We start with the finished object, not the file. Quantity, stock, budget, deadline, and where it will actually live once it leaves here.</p></div></li>
-      <li class="process-step" data-reveal style="--i:1"><span class="process-step__n" aria-hidden="true">02</span><div class="process-step__body"><h3 class="process-step__title">Design</h3><p>Artwork built by people who know what the press will do with it. No surprises at plate stage, no last-minute redraws.</p></div></li>
-      <li class="process-step" data-reveal style="--i:2"><span class="process-step__n" aria-hidden="true">03</span><div class="process-step__body"><h3 class="process-step__title">Proof</h3><p>You see it on the real stock before we commit. Sign off on something you can hold, not a PDF on a screen.</p></div></li>
-      <li class="process-step" data-reveal style="--i:3"><span class="process-step__n" aria-hidden="true">04</span><div class="process-step__body"><h3 class="process-step__title">Press</h3><p>Colour matched and checked through the run. If a sheet drifts, it does not leave the building.</p></div></li>
-      <li class="process-step" data-reveal style="--i:4"><span class="process-step__n" aria-hidden="true">05</span><div class="process-step__body"><h3 class="process-step__title">Finish</h3><p>Cut, folded, foiled, bound, packed. Delivered to the property, the restaurant or the stand, on the day it was promised.</p></div></li>
+      <li class="station" data-reveal style="--i:0">
+        <span class="station__dot" aria-hidden="true"></span>
+        <span class="station__n" aria-hidden="true">01</span>
+        <div class="station__body">
+          <p class="station__note">Before anything opens</p>
+          <h3 class="station__title">Brief</h3>
+          <p class="station__copy">We start with the finished object, not the file. Quantity, stock, budget, deadline, and where it will actually live once it leaves here.</p>
+        </div>
+      </li>
+      <li class="station" data-reveal style="--i:1">
+        <span class="station__dot" aria-hidden="true"></span>
+        <span class="station__n" aria-hidden="true">02</span>
+        <div class="station__body">
+          <p class="station__note">Artwork &amp; prepress</p>
+          <h3 class="station__title">Design</h3>
+          <p class="station__copy">Artwork built by people who know what the press will do with it. No surprises at plate stage, no last-minute redraws.</p>
+        </div>
+      </li>
+      <li class="station" data-reveal style="--i:2">
+        <span class="station__dot" aria-hidden="true"></span>
+        <span class="station__n" aria-hidden="true">03</span>
+        <div class="station__body">
+          <p class="station__note">On the real stock</p>
+          <h3 class="station__title">Proof</h3>
+          <p class="station__copy">You see it on the real stock before we commit. Sign off on something you can hold, not a PDF on a screen.</p>
+        </div>
+      </li>
+      <li class="station" data-reveal style="--i:3">
+        <span class="station__dot" aria-hidden="true"></span>
+        <span class="station__n" aria-hidden="true">04</span>
+        <div class="station__body">
+          <p class="station__note">Colour held through the run</p>
+          <h3 class="station__title">Press</h3>
+          <p class="station__copy">Colour matched and checked through the run. If a sheet drifts, it does not leave the building.</p>
+        </div>
+      </li>
+      <li class="station" data-reveal style="--i:4">
+        <span class="station__dot" aria-hidden="true"></span>
+        <span class="station__n" aria-hidden="true">05</span>
+        <div class="station__body">
+          <p class="station__note">Out the door</p>
+          <h3 class="station__title">Finish</h3>
+          <p class="station__copy">Cut, folded, foiled, bound, packed. Delivered to the property, the restaurant or the stand, on the day it was promised.</p>
+        </div>
+      </li>
     </ol>
 
-    <div class="process__press">
-      <div class="slot-ph slot-ph--16x9"><span class="slot-ph__mark"></span><span class="slot-ph__id">HERO PRESS</span><span class="slot-ph__spec">A printed sheet coming off the press, shot with a slow enough shutter that the movement smears. Blur is the point — do not freeze it.</span></div>
-      <span class="sticker sticker--rotate-r sticker--yellow process__sticker" data-parallax="0.1">proofed before it prints</span>
-    </div>
+    <p class="process__close"><span class="sticker sticker--rotate-r sticker--yellow">proofed before it prints</span></p>
   </div>
 </section>
 
