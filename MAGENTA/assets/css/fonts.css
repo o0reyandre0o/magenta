@@ -1,0 +1,51 @@
+/* =========================================================================
+   Magenta - self-hosted webfonts
+
+   Loaded only when every file listed in MAGENTA_LOCAL_FONT_FILES exists in
+   /assets/fonts/. Until then inc/enqueue.php falls back to the Google Fonts
+   CDN so the design still reads correctly during the build.
+
+   To switch over: download the woff2 files (see assets/fonts/README.md),
+   commit them, and this file takes over automatically - no code change.
+   ========================================================================= */
+
+@font-face {
+  font-family: "Anton";
+  src: url("../fonts/anton-v25-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2122, U+2191, U+2193, U+2212;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-v19-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-v19-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/space-mono-v13-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/caveat-v18-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

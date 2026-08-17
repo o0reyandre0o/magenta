@@ -1,0 +1,110 @@
+/* =========================================================================
+   Magenta - design tokens
+   Everything downstream reads from here. Change a value once, site follows.
+   ========================================================================= */
+
+:root {
+  /* --- Process colours -------------------------------------------------
+     Magenta is the brand, and it is also the M in CMYK. Cyan and yellow
+     are not decoration - they are the other plates, which is why they are
+     allowed on the page at all. Keep them under ~8% of any given screen. */
+  --m:            #EA028C;
+  --m-deep:       #B80170;
+  --m-tint:       #FDE4F2;
+  --c:            #00AEEF;
+  --y:            #FFE800;
+  --k:            #0D0D0D;
+
+  --paper:        #FDFEFF;   /* coated white - the default ground */
+  --stock:        #F2EDE4;   /* uncoated / raw stock - section breathers */
+  --ink:          #0D0D0D;
+  --ink-soft:     #4A4A4A;
+  --rule:         rgba(13, 13, 13, 0.14);
+
+  /* --- Semantic --------------------------------------------------------- */
+  --bg:           var(--paper);
+  --fg:           var(--ink);
+  --accent:       var(--m);
+
+  /* --- Type ------------------------------------------------------------
+     Display is a heavy condensed grotesque; the fallbacks are chosen to
+     keep roughly the same width so layout does not jump before the
+     webfonts land. See assets/fonts/README. */
+  --font-display: "Anton", "Archivo Black", "Haettenschweiler",
+                  "Arial Narrow Bold", Impact, sans-serif;
+  --font-body:    "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-hand:    "Caveat", "Bradley Hand", "Segoe Script", cursive;
+
+  /* Fluid scale, 360px -> 1600px viewport */
+  --fs-xs:    clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+  --fs-sm:    clamp(0.84rem, 0.79rem + 0.22vw, 0.95rem);
+  --fs-base:  clamp(1rem,    0.95rem + 0.26vw, 1.14rem);
+  --fs-lede:  clamp(1.12rem, 1rem    + 0.62vw, 1.5rem);
+  --fs-h3:    clamp(1.25rem, 1.1rem  + 0.75vw, 1.75rem);
+  --fs-h2:    clamp(2rem,    1.4rem  + 3vw,    4rem);
+  --fs-h1:    clamp(3.2rem,  1.6rem  + 9vw,    9.5rem);
+
+  --lh-tight: 0.88;
+  --lh-snug:  1.1;
+  --lh-body:  1.6;
+
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.16em;
+
+  /* --- Space ------------------------------------------------------------ */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-7:  3rem;
+  --sp-8:  4rem;
+  --sp-9:  6rem;
+  --sp-10: 8rem;
+
+  --section-y: clamp(4rem, 2rem + 8vw, 9rem);
+  --wrap:      1320px;
+  --gutter:    clamp(1.25rem, 0.5rem + 3vw, 3rem);
+
+  /* --- Form ------------------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius:    10px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Hard offset shadow - printed sticker, not soft UI drop shadow */
+  --shadow-hard:  4px 4px 0 var(--ink);
+  --shadow-hard-lg: 8px 8px 0 var(--ink);
+
+  --border: 2px solid var(--ink);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:  180ms;
+  --dur:       420ms;
+  --dur-slow:  900ms;
+
+  /* Plate misregistration, 1 = fully out of register, 0 = in register.
+     Driven per-section by JS; falls back to in-register with no JS. */
+  --reg: 0;
+
+  /* --- Layers ------------------------------------------------------------ */
+  --z-grain:  1;
+  --z-base:   2;
+  --z-sticky: 50;
+  --z-header: 60;
+  --z-nav:    70;
+}
+
+/* The design is a single committed light palette - it is a print shop, the
+   ground is paper. Dark mode only softens the paper white so an OLED screen
+   at night is not a torch; the ink stays ink. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #F4F2EE;
+    --stock: #E8E2D6;
+  }
+}

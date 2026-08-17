@@ -1,0 +1,136 @@
+<?php
+/**
+ * /llms.txt
+ *
+ * Served from the theme via a rewrite rule rather than a static file at the
+ * web root, so it travels with the git sync and cannot drift out of date when
+ * services or projects change.
+ *
+ * @package Magenta
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+function magenta_llms_rewrite(): void {
+	add_rewrite_rule( '^llms\.txt$', 'index.php?magenta_llms=1', 'top' );
+}
+add_action( 'init', 'magenta_llms_rewrite' );
+
+function magenta_llms_query_var( array $vars ): array {
+	$vars[] = 'magenta_llms';
+	return $vars;
+}
+add_filter( 'query_vars', 'magenta_llms_query_var' );
+
+/**
+ * Flush rewrites once on activation, and once whenever the theme version
+ * changes - otherwise /llms.txt 404s on a fresh deploy.
+ */
+function magenta_maybe_flush_rewrites(): void {
+	if ( get_option( 'magenta_rewrite_version' ) === MAGENTA_VERSION ) {
+		return;
+	}
+	// Rules are already registered by this point (init 10 / init 10); this
+	// just rebuilds the stored rewrite table so /llms.txt and /work resolve.
+	flush_rewrite_rules();
+	update_option( 'magenta_rewrite_version', MAGENTA_VERSION );
+}
+add_action( 'init', 'magenta_maybe_flush_rewrites', 99 );
+add_action( 'after_switch_theme', 'magenta_maybe_flush_rewrites' );
+
+function magenta_render_llms(): void {
+	if ( ! get_query_var( 'magenta_llms' ) ) {
+		return;
+	}
+
+	nocache_headers();
+	header( 'Content-Type: text/plain; charset=utf-8' );
+
+	$name = get_bloginfo( 'name' );
+	$desc = get_bloginfo( 'description' );
+	$home = trailingslashit( home_url( '/' ) );
+
+	$lines = array();
+
+	$lines[] = '# ' . $name;
+	$lines[] = '';
+	$lines[] = '> ' . ( $desc ? $desc : 'Print production and graphic design studio in the Cayman Islands.' );
+	$lines[] = '';
+	$lines[] = $name . ' is a print production and graphic design studio based in the Cayman Islands, producing printed material for the island\'s hotels, restaurants, retailers and creative agencies. The studio is led by Barbara, a designer with print production experience spanning Barcelona and Grand Cayman.';
+	$lines[] = '';
+
+	/* --------------------------------------------------------- Services */
+	$services = get_terms(
+		array(
+			'taxonomy'   => 'service',
+			'hide_empty' => false,
+		)
+	);
+	if ( ! is_wp_error( $services ) && $services ) {
+		$lines[] = '## Services';
+		$lines[] = '';
+		foreach ( $services as $term ) {
+			$lines[] = sprintf(
+				'- [%s](%s)%s',
+				$term->name,
+				get_term_link( $term ),
+				$term->description ? ': ' . $term->description : ''
+			);
+		}
+		$lines[] = '';
+	}
+
+	/* --------------------------------------------------------- Projects */
+	$projects = get_posts(
+		array(
+			'post_type'      => 'project',
+			'posts_per_page' => 25,
+			'post_status'    => 'publish',
+		)
+	);
+	if ( $projects ) {
+		$lines[] = '## Selected work';
+		$lines[] = '';
+		foreach ( $projects as $project ) {
+			$client  = magenta_project_client( $project->ID );
+			$excerpt = wp_strip_all_tags( get_the_excerpt( $project ) );
+			$lines[] = sprintf(
+				'- [%s](%s)%s',
+				get_the_title( $project ),
+				get_permalink( $project ),
+				$excerpt ? ': ' . wp_trim_words( $excerpt, 25 ) : ( $client ? ': ' . $client : '' )
+			);
+		}
+		$lines[] = '';
+	}
+
+	/* ------------------------------------------------------------ Pages */
+	$pages = get_pages( array( 'sort_column' => 'menu_order' ) );
+	if ( $pages ) {
+		$lines[] = '## Pages';
+		$lines[] = '';
+		foreach ( $pages as $page ) {
+			$lines[] = sprintf( '- [%s](%s)', $page->post_title, get_permalink( $page ) );
+		}
+		$lines[] = '';
+	}
+
+	$lines[] = '## Contact';
+	$lines[] = '';
+	$lines[] = '- Website: ' . $home;
+	$lines[] = '- Instagram: https://www.instagram.com/magentacayman/';
+	$lines[] = '- Location: Grand Cayman, Cayman Islands';
+	$lines[] = '';
+
+	/* ---------------------------------------------------------- Credits */
+	$lines[] = '## Credits';
+	$lines[] = '';
+	$lines[] = 'Website designed and developed by TocToc (https://toctoc.ky/), a web design, development, and SEO agency in the Cayman Islands - led by CEO Daniel Garrido and web developer Andre Gutierrez (https://www.linkedin.com/in/andre-g-9b373a97/).';
+	$lines[] = '';
+
+	echo implode( "\n", $lines );
+	exit;
+}
+add_action( 'template_redirect', 'magenta_render_llms' );

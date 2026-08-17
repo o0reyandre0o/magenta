@@ -1,0 +1,571 @@
+/* =========================================================================
+   Magenta - components
+   ========================================================================= */
+
+/* ================================================================ Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.85em 1.6em;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-back),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+  box-shadow: var(--shadow-hard);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+.btn--magenta { background: var(--m); color: var(--paper); }
+.btn--ink     { background: var(--ink); color: var(--paper); }
+.btn--outline { background: transparent; color: inherit; }
+.btn--block   { width: 100%; justify-content: center; }
+
+.btn--light {
+  border-color: var(--paper);
+  color: var(--paper);
+  box-shadow: 4px 4px 0 var(--paper);
+}
+.btn--light:hover, .btn--light:focus-visible { box-shadow: 6px 6px 0 var(--paper); }
+
+.btn span[aria-hidden] { transition: transform var(--dur-fast) var(--ease-out); }
+.btn:hover span[aria-hidden] { transform: translateX(4px); }
+
+/* =============================================================== Stickers
+   Die-cut labels dropped onto the page at an angle. The white keyline is the
+   cut edge; the hard shadow is the lift off the paper. */
+.sticker {
+  display: inline-block;
+  padding: 0.55em 1.05em;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  box-shadow: var(--shadow-hard);
+  outline: 4px solid var(--paper);
+  transition: transform var(--dur) var(--ease-back);
+}
+
+.sticker--magenta { background: var(--m); color: var(--paper); }
+.sticker--cyan    { background: var(--c); }
+.sticker--yellow  { background: var(--y); }
+.sticker--rotate-l { transform: rotate(-4deg); }
+.sticker--rotate-r { transform: rotate(3.5deg); }
+
+.sticker--rotate-l:hover { transform: rotate(-1deg) scale(1.04); }
+.sticker--rotate-r:hover { transform: rotate(1deg)  scale(1.04); }
+
+/* Handwritten variant for annotations */
+.sticker--hand {
+  font-family: var(--font-hand);
+  font-size: var(--fs-base);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ================================================================== Tape
+   A strip of masking tape. Torn edges via clip-path, translucent so the
+   thing underneath still reads through it.
+
+   The colour is warm neutral, not yellow: under multiply, yellow over the
+   magenta panels resolves to red and reads as a rendering fault rather than
+   as tape. Beige multiplies convincingly over both paper and magenta. */
+.tape {
+  position: absolute;
+  width: 132px;
+  height: 38px;
+  background: rgba(228, 216, 194, 0.82);
+  border-left: 1px dashed rgba(13, 13, 13, 0.18);
+  border-right: 1px dashed rgba(13, 13, 13, 0.18);
+  mix-blend-mode: multiply;
+  clip-path: polygon(
+    0 12%, 6% 0, 22% 9%, 46% 2%, 70% 10%, 88% 1%, 100% 11%,
+    100% 88%, 84% 99%, 62% 91%, 38% 100%, 16% 90%, 4% 100%, 0 87%
+  );
+  pointer-events: none;
+}
+
+/* =============================================================== Marquee */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 0;
+}
+
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--sp-5);
+  padding-right: var(--sp-5);
+  animation: marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-5);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 0.9rem + 3vw, 3.4rem);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  white-space: nowrap;
+}
+
+.marquee__sep { color: var(--y); font-size: 0.6em; }
+
+.marquee--band {
+  background: var(--m);
+  color: var(--paper);
+  border-block: var(--border);
+  padding-block: var(--sp-4);
+}
+
+/* ================================================== Four-colour separation
+   The same word on four plates, multiplied together. --reg is the
+   misregistration, driven from JS as the block enters the viewport. At
+   --reg:0 the plates sit exactly on top of each other and read as one word. */
+.cmyk {
+  display: grid;
+  margin: 0;
+  isolation: isolate;
+  font-family: var(--font-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.cmyk__plate {
+  grid-area: 1 / 1;
+  mix-blend-mode: multiply;
+  transition: transform var(--dur-slow) var(--ease-out);
+  will-change: transform;
+}
+
+.cmyk__plate--c { color: var(--c); transform: translate3d(calc(var(--reg) * -0.055em), calc(var(--reg) *  0.028em), 0); }
+.cmyk__plate--y { color: var(--y); transform: translate3d(calc(var(--reg) *  0.048em), calc(var(--reg) * -0.022em), 0); }
+.cmyk__plate--k { color: var(--k); transform: translate3d(calc(var(--reg) *  0.014em), calc(var(--reg) *  0.05em),  0); }
+.cmyk__plate--m { color: var(--m); transform: translate3d(0, 0, 0); }
+
+.cmyk--display { font-size: var(--fs-h1); }
+
+/* On the ink section the K plate would vanish; swap it for paper white. */
+.section--ink .cmyk__plate--k,
+.section--magenta .cmyk__plate--k { color: var(--paper); mix-blend-mode: screen; }
+
+/* ======================================================= Registration marks */
+.reg-marks { position: absolute; inset: 0; pointer-events: none; color: var(--ink); opacity: 0.35; }
+.reg-mark  { position: absolute; }
+.reg-mark--tl { top: 1.25rem;    left: 1.25rem; }
+.reg-mark--tr { top: 1.25rem;    right: 1.25rem; }
+.reg-mark--bl { bottom: 1.25rem; left: 1.25rem; }
+.reg-mark--br { bottom: 1.25rem; right: 1.25rem; }
+
+@media (max-width: 700px) { .reg-marks { display: none; } }
+
+/* =============================================================== Colour bar */
+.colour-bar { display: flex; height: 6px; width: 100%; }
+.colour-bar span { flex: 1 1 auto; }
+
+/* =========================================================== Image slots
+   The placeholder is a designed state, not an error state. Halftone ground,
+   slot name in mono, and the shooting spec revealed on hover so anyone
+   reviewing the page can read what still has to be photographed. */
+.slot-img { width: 100%; height: 100%; object-fit: cover; }
+
+.slot-ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--m);
+  background-image: radial-gradient(var(--ink) 1.6px, transparent 1.7px);
+  background-size: 12px 12px;
+  color: var(--paper);
+  text-align: center;
+  padding: var(--sp-5);
+  isolation: isolate;
+}
+
+.slot-ph--4x5  { aspect-ratio: 4 / 5; }
+.slot-ph--16x9 { aspect-ratio: 16 / 9; }
+.slot-ph--1x1  { aspect-ratio: 1 / 1; }
+.slot-ph--cut  { aspect-ratio: 3 / 4; background-color: var(--stock); color: var(--ink); }
+
+.slot-ph__mark {
+  position: absolute;
+  inset: 10px;
+  border: 1.5px dashed rgba(253, 254, 255, 0.55);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.slot-ph--cut .slot-ph__mark { border-color: rgba(13, 13, 13, 0.4); }
+
+.slot-ph__id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4em 0.9em;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-pill);
+  background: rgba(13, 13, 13, 0.22);
+}
+
+.slot-ph__spec {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  padding: var(--sp-6);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.55;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.slot-ph:hover .slot-ph__spec,
+.slot-ph:focus-within .slot-ph__spec { opacity: 0.97; }
+
+@media (max-width: 700px) { .slot-ph__spec { display: none; } }
+
+/* ================================================================== Cards */
+.card-grid,
+.work-grid {
+  display: grid;
+  gap: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+
+.work-card { position: relative; }
+
+.work-card__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-card__media {
+  position: relative;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--stock);
+  aspect-ratio: 4 / 5;
+  transition: transform var(--dur) var(--ease-back), box-shadow var(--dur) var(--ease-out);
+}
+
+.work-card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.work-card__link:hover .work-card__media,
+.work-card__link:focus-visible .work-card__media {
+  transform: translate(-4px, -4px) rotate(-0.6deg);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.section--ink .work-card__media { border-color: var(--paper); }
+.section--ink .work-card__link:hover .work-card__media { box-shadow: 8px 8px 0 var(--m); }
+
+.work-card__body { padding-top: var(--sp-4); }
+
+.work-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+}
+
+.work-card__client { margin: var(--sp-1) 0 0; font-family: var(--font-hand); font-size: 1.15rem; color: var(--m); }
+.section--ink .work-card__client { color: var(--y); }
+
+.work-card__meta {
+  margin: var(--sp-2) 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* ==================================================================== Form */
+.print-form {
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.print-form__row { margin-bottom: var(--sp-4); }
+
+.print-form label {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.print-form input,
+.print-form select,
+.print-form textarea {
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font: inherit;
+  color: inherit;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.print-form input:focus,
+.print-form select:focus,
+.print-form textarea:focus {
+  outline: none;
+  border-color: var(--m);
+  box-shadow: 3px 3px 0 var(--m);
+}
+
+.print-form textarea { resize: vertical; min-height: 7rem; }
+
+/* Honeypot - off-canvas rather than display:none, which some bots detect. */
+.print-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.print-form__status {
+  margin: var(--sp-4) 0 0;
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+
+.print-form__status.is-ok    { color: var(--m-deep); }
+.print-form__status.is-error { color: #C0392B; }
+
+.print-form.is-sending { opacity: 0.6; pointer-events: none; }
+
+/* ============================================================= Site header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--ink);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.site-header.is-hidden { transform: translateY(-100%); }
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  width: min(100% - (var(--gutter) * 2), var(--wrap));
+  margin-inline: auto;
+  padding-block: var(--sp-3);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  text-decoration: none;
+  color: var(--m);
+  margin-right: auto;
+}
+
+.brand__mark { display: grid; place-items: center; transition: transform var(--dur) var(--ease-back); }
+.brand:hover .brand__mark { transform: rotate(90deg); }
+
+.brand__word {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.site-nav__list { display: none; gap: var(--sp-5); }
+
+.site-nav__list a {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 3px;
+  background: var(--m);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.site-nav__list a:hover::after,
+.site-nav__list a:focus-visible::after { transform: scaleX(1); }
+
+.site-header__cta { display: none; }
+.site-header__rule { position: absolute; left: 0; right: 0; bottom: -6px; }
+
+.nav-toggle {
+  display: grid;
+  gap: 5px;
+  padding: 0.6rem;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.nav-toggle__bar { display: block; width: 20px; height: 2.5px; background: var(--ink); transition: transform var(--dur) var(--ease-out); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:first-child { transform: translateY(3.75px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:last-child  { transform: translateY(-3.75px) rotate(-45deg); }
+
+.mobile-nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  top: 0;
+  z-index: var(--z-nav);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--sp-5);
+  padding: var(--sp-8);
+  background: var(--m);
+  color: var(--paper);
+}
+
+.mobile-nav[hidden] { display: none; }
+.mobile-nav ul { display: grid; gap: var(--sp-4); text-align: center; }
+
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1rem + 7vw, 3.5rem);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@media (min-width: 960px) {
+  .site-nav__list { display: flex; }
+  .site-header__cta { display: inline-flex; }
+  .nav-toggle { display: none; }
+}
+
+/* ============================================================= Site footer */
+.site-footer { background: var(--ink); color: var(--paper); position: relative; z-index: var(--z-base); }
+.site-footer__bar { display: flex; }
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--sp-6);
+  width: min(100% - (var(--gutter) * 2), var(--wrap));
+  margin-inline: auto;
+  padding-block: var(--sp-8);
+}
+
+@media (min-width: 800px) {
+  .site-footer__inner { grid-template-columns: 1.4fr 1fr; }
+}
+
+.site-footer__word {
+  margin: 0 0 var(--sp-3);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.5rem + 6vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+  color: var(--m);
+}
+
+.site-footer__line { max-width: 34ch; opacity: 0.75; }
+.site-footer__socials a { font-family: var(--font-mono); font-size: var(--fs-sm); letter-spacing: 0.1em; text-transform: uppercase; }
+.site-footer__list { display: grid; gap: var(--sp-3); }
+.site-footer__list a { font-family: var(--font-mono); font-size: var(--fs-sm); text-decoration: none; }
+.site-footer__list a:hover { color: var(--y); }
+
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3) var(--sp-5);
+  justify-content: space-between;
+  width: min(100% - (var(--gutter) * 2), var(--wrap));
+  margin-inline: auto;
+  padding-block: var(--sp-5);
+  border-top: 1px solid rgba(253, 254, 255, 0.18);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+}
+
+.site-footer__legal p { margin: 0; opacity: 0.7; }
+.site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.site-footer__credit a:hover { color: var(--y); }
+
+/* ============================================================ Scroll reveal
+   Elements start displaced and settle when observed. Without JS the
+   .is-in class is applied immediately by the no-js fallback, so content is
+   never hidden behind a script that failed to load. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; }
+}
