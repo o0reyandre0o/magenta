@@ -100,6 +100,51 @@ function magenta_site_nodes(): array {
 		),
 	);
 
+	/*
+	 * Contact and location, from Appearance > Magenta Business.
+	 *
+	 * Each property appears only once it holds a real value. Nothing here is
+	 * defaulted or inferred: a fabricated address or telephone in structured
+	 * data is a false claim about a real business, and in local search it is
+	 * worse than an omission - Google reconciles this against Google Business
+	 * Profile and directory citations, and disagreement between sources costs
+	 * more ranking than silence does.
+	 */
+	$address = magenta_business_address_schema();
+	if ( $address ) {
+		$organization['address'] = $address;
+	}
+
+	$geo = magenta_business_geo_schema();
+	if ( $geo ) {
+		$organization['geo'] = $geo;
+	}
+
+	$hours = magenta_business_hours_schema();
+	if ( $hours ) {
+		$organization['openingHoursSpecification'] = $hours;
+	}
+
+	foreach ( array(
+		'telephone'  => 'telephone',
+		'email'      => 'email',
+		'priceRange' => 'price_range',
+	) as $prop => $key ) {
+		$value = magenta_business_field( $key );
+		if ( '' !== $value ) {
+			$organization[ $prop ] = $value;
+		}
+	}
+
+	/*
+	 * LocalBusiness requires an address. Claiming the type without one is an
+	 * invalid entity, so the site falls back to plain Organization until the
+	 * address is filled in - accurate and narrower beats broad and broken.
+	 */
+	if ( ! $address ) {
+		$organization['@type'] = 'Organization';
+	}
+
 	$logo_id = get_theme_mod( 'custom_logo' );
 	if ( $logo_id ) {
 		$logo = wp_get_attachment_image_src( $logo_id, 'full' );
@@ -110,7 +155,13 @@ function magenta_site_nodes(): array {
 				'width'  => $logo[1],
 				'height' => $logo[2],
 			);
+			$organization['image'] = $logo[0];
 		}
+	}
+
+	// Falls back to the share card so the entity always carries an image.
+	if ( ! isset( $organization['image'] ) ) {
+		$organization['image'] = MAGENTA_URI . '/assets/img/social/og-default.jpg';
 	}
 
 	$website = array(
