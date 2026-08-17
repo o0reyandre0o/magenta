@@ -177,6 +177,93 @@
 .work .work-grid { margin-top: var(--sp-6); }
 .tape--card { top: -12px; left: 18%; rotate: -5deg; z-index: 2; }
 
+/* ================================================================== Reels
+   Vertical phone footage, shown upright. On narrow screens the strip becomes
+   a swipeable rail rather than stacking three tall videos down the page. */
+.reel-strip {
+  display: grid;
+  gap: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 780px) {
+  .reel-strip {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 68%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    padding-bottom: var(--sp-3);
+    /* Bleed to the screen edge so the rail reads as scrollable. */
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+  .reel { scroll-snap-align: start; }
+}
+
+.reel__frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9 / 16;
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--ink);
+  box-shadow: var(--shadow-hard);
+  transition: transform var(--dur) var(--ease-back), box-shadow var(--dur) var(--ease-out);
+}
+
+.reel:nth-child(even) .reel__frame { rotate: 1.2deg; }
+.reel:nth-child(odd) .reel__frame { rotate: -1deg; }
+
+.reel__frame:hover {
+  rotate: 0deg;
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.reel__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reel__badge {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--m);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+.reel__body { padding-top: var(--sp-3); }
+
+.reel__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+}
+
+.reel__meta {
+  margin: var(--sp-1) 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
 /* ================================================================ Process
    A sheet running through the machine. The press shot goes full bleed with
    the title on it, then the stations hang off a rail that fills with the
