@@ -551,6 +551,130 @@
 .site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .site-footer__credit a:hover { color: var(--y); }
 
+/* ============================================================== Ink trail
+   Process-colour dots dropped behind the pointer and left to dry. Multiply
+   blending means overlapping dots build secondary colours the way wet ink
+   does - cyan over magenta goes violet, magenta over yellow goes red.
+
+   The native cursor is deliberately left alone. Hiding it for a decorative
+   replacement costs more in usability than the effect returns. */
+.ink-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ink-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.ink-dot--c { background: var(--c); }
+.ink-dot--m { background: var(--m); }
+.ink-dot--y { background: var(--y); }
+.ink-dot--k { background: var(--ink); }
+
+/* Sections printed on ink need the dots to add light, not subtract it. */
+.section--ink .ink-dot,
+.process .ink-dot { mix-blend-mode: screen; }
+
+/* Pointer ring: a registration mark that lags a frame behind the cursor and
+   opens up over anything clickable. */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid var(--m);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 220ms var(--ease-back), height 220ms var(--ease-back),
+              margin 220ms var(--ease-back), opacity 220ms var(--ease-out),
+              border-color 220ms var(--ease-out);
+}
+
+.cursor-ring::before,
+.cursor-ring::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  color: var(--m);
+}
+.cursor-ring::before { left: 50%; top: -8px; bottom: -8px; width: 1px; margin-left: -0.5px; }
+.cursor-ring::after  { top: 50%; left: -8px; right: -8px; height: 1px; margin-top: -0.5px; }
+
+.cursor-ring.is-live { opacity: 0.85; }
+
+.cursor-ring.is-hot {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-color: var(--c);
+  color: var(--c);
+}
+
+/* ========================================================= Scroll progress
+   The press control strip, doubling as a read-position indicator. */
+.scroll-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 9997;
+  height: 4px;
+  pointer-events: none;
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--c) 0 22px,
+    var(--m) 22px 44px,
+    var(--y) 44px 66px,
+    var(--ink) 66px 88px
+  );
+}
+
+/* ========================================================== Scroll energy
+   Scrolling fast throws the plates out of register; stopping lets them fall
+   back in. --energy is the scroll velocity, normalised, set on :root.
+
+   Implemented with text-shadow rather than duplicated elements so it costs
+   nothing when idle: at --energy 0 both shadows sit exactly behind the glyphs
+   and are invisible. */
+.display,
+.station__title,
+.work-card__title,
+.service-card__title,
+.reel__title,
+.process__title,
+.marquee__item {
+  text-shadow:
+    calc(var(--energy, 0) * -0.05em) calc(var(--energy, 0) * 0.018em) 0 var(--c),
+    calc(var(--energy, 0) * 0.042em) calc(var(--energy, 0) * -0.015em) 0 var(--y);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --energy: 0; }
+  .ink-trail, .cursor-ring, .scroll-bar { display: none; }
+}
+
+/* Touch: no pointer to trail, and the ring would be meaningless. */
+@media (hover: none), (pointer: coarse) {
+  .ink-trail, .cursor-ring { display: none; }
+}
+
 /* ============================================================ Scroll reveal
    Elements start displaced and settle when observed. Without JS the
    .is-in class is applied immediately by the no-js fallback, so content is
