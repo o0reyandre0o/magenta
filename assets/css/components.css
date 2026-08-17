@@ -458,9 +458,14 @@
 .site-header__cta { display: none; }
 .site-header__rule { position: absolute; left: 0; right: 0; bottom: -6px; }
 
+/* 44px minimum in both directions - it was 43x33, under the comfortable
+   touch target on every platform guideline. */
 .nav-toggle {
   display: grid;
+  place-content: center;
   gap: 5px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0.6rem;
   border: var(--border);
   border-radius: var(--radius-pill);

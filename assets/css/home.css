@@ -48,10 +48,12 @@
   margin-bottom: var(--sp-7);
 }
 
+/* Grid rather than wrapping flex: as flex these fell into three stacked rows
+   on a phone and cost 164px of height for three short labels. */
 .hero__facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: var(--sp-4) var(--sp-5);
   margin: 0;
   padding-top: var(--sp-5);
   border-top: 2px solid var(--rule);
@@ -437,7 +439,8 @@
 .station__n {
   font-family: var(--font-display);
   font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
-  line-height: 0.82;
+  /* 0.82 cropped the digits at their own font size on narrow screens. */
+  line-height: 0.95;
   letter-spacing: -0.03em;
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(253, 254, 255, 0.42);
