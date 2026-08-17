@@ -84,22 +84,36 @@ foreach ($reel in $reels) {
     $webm   = Join-Path $video "$($reel.Slug).webm"
     $poster = Join-Path $video "$($reel.Slug)-poster.webp"
 
-    # Cap the long edge at 1080: these display in a narrow column, and two of
-    # the three originals are well below that already.
+    # These display in a narrow column, and two of the three originals are
+    # well below 720 already.
     $scale = "scale='min(720,iw)':-2"
 
     & ffmpeg -y -v error -i $src -an -vf $scale `
         -c:v libx264 -profile:v main -crf 30 -preset slow -pix_fmt yuv420p `
         -movflags +faststart $mp4
+    $made++
 
+    # VP9 only earns its place when it actually beats H.264. On short, noisy,
+    # low-resolution phone footage it frequently loses - on this set it came
+    # out more than twice the size for two of the three clips. Encode it, then
+    # keep it only if it is smaller; the <source> is emitted conditionally.
     & ffmpeg -y -v error -i $src -an -vf $scale `
         -c:v libvpx-vp9 -crf 38 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 `
         $webm
 
-    & ffmpeg -y -v error -i $src -frames:v 1 -vf $scale `
-        -c:v libwebp -quality 70 $poster
+    if ((Get-Item $webm).Length -lt (Get-Item $mp4).Length) {
+        $made++
+    } else {
+        $saved = [math]::Round(((Get-Item $webm).Length - (Get-Item $mp4).Length) / 1KB)
+        Write-Host "  dropped $($reel.Slug).webm (+$saved KB vs mp4)"
+        Remove-Item $webm -Force
+    }
 
-    $made += 3
+    # Grab the poster a second in, not at frame zero: these clips open on a
+    # fade, and frame zero is black.
+    & ffmpeg -y -v error -ss 1 -i $src -frames:v 1 -vf $scale `
+        -c:v libwebp -quality 70 $poster
+    $made++
 }
 
 Write-Host "Generated $made files."
