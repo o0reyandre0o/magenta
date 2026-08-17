@@ -638,6 +638,45 @@
   color: var(--c);
 }
 
+/* ========================================================= Scrollbar
+   The browser's own scrollbar, made into a strip of process colour. The thumb
+   is a four-colour bar; the track is uncoated stock.
+
+   Firefox only accepts two flat colours, so it gets magenta on stock. WebKit
+   takes the full gradient. Both are styled - neither is left at the host
+   default grey. */
+html {
+  scrollbar-color: var(--m) var(--stock);
+  scrollbar-width: auto;
+}
+
+::-webkit-scrollbar { width: 14px; height: 14px; }
+
+::-webkit-scrollbar-track {
+  background: var(--stock);
+  border-left: 1px solid var(--rule);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--stock);
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--c) 0 10px,
+    var(--m) 10px 20px,
+    var(--y) 20px 30px,
+    var(--ink) 30px 40px
+  );
+}
+
+::-webkit-scrollbar-thumb:hover { border-width: 1px; }
+::-webkit-scrollbar-corner { background: var(--stock); }
+
+/* Horizontal rails inside the page (the reel strip) get the same treatment
+   at a smaller weight so they do not shout. */
+.reel-strip::-webkit-scrollbar { height: 8px; }
+.reel-strip::-webkit-scrollbar-thumb { border-width: 1px; }
+
 /* ========================================================= Scroll progress
    The press control strip, doubling as a read-position indicator. */
 .scroll-bar {
