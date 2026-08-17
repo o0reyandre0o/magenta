@@ -1,0 +1,908 @@
+<title>Magenta — Brief de Fotografía</title>
+
+<style>
+/* ==========================================================================
+   Magenta — brief de fotografía
+   Documento de producción. Se lee en pantalla y se imprime para el set.
+   ========================================================================== */
+
+:root {
+  /* Tinta directa: el magenta de marca es el único color saturado que manda */
+  --m:        #EA028C;
+  --m-soft:   #FCE3F1;
+  --c:        #00AEEF;
+  --y:        #FFE800;
+
+  /* Neutros con sesgo frío-rosado hacia el acento, no grises de catálogo */
+  --paper:    #FCFCFD;
+  --surface:  #F4F2F5;
+  --ink:      #141216;
+  --ink-2:    #55505C;
+  --ink-3:    #837D8B;
+  --rule:     #DCD7E0;
+  --rule-2:   #EBE7EE;
+
+  --ok:       #0E7C55;
+
+  --font-display: "Haettenschweiler", "Arial Narrow Bold", "Franklin Gothic Heavy",
+                  Impact, "Anton", sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                  "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    ui-monospace, "Cascadia Mono", "SF Mono", "Consolas",
+                  "Liberation Mono", monospace;
+
+  --fs-xs:   0.72rem;
+  --fs-sm:   0.82rem;
+  --fs-base: 1rem;
+  --fs-lg:   1.12rem;
+  --fs-xl:   1.45rem;
+  --fs-2xl:  2rem;
+  --fs-3xl:  clamp(2.6rem, 1.6rem + 4.4vw, 5rem);
+
+  --sp-1: .25rem; --sp-2: .5rem;  --sp-3: .75rem; --sp-4: 1rem;
+  --sp-5: 1.5rem; --sp-6: 2rem;   --sp-7: 3rem;   --sp-8: 4.5rem;
+
+  --wrap: 74rem;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --m:       #FF44AC;
+    --m-soft:  #3A0E27;
+    --c:       #3FC6F5;
+    --y:       #FFEE4D;
+    --paper:   #131116;
+    --surface: #1C191F;
+    --ink:     #F1EEF4;
+    --ink-2:   #B3ACBB;
+    --ink-3:   #857E8E;
+    --rule:    #332E39;
+    --rule-2:  #262230;
+    --ok:      #4ECFA0;
+  }
+}
+
+:root[data-theme="dark"] {
+  --m:       #FF44AC;
+  --m-soft:  #3A0E27;
+  --c:       #3FC6F5;
+  --y:       #FFEE4D;
+  --paper:   #131116;
+  --surface: #1C191F;
+  --ink:     #F1EEF4;
+  --ink-2:   #B3ACBB;
+  --ink-3:   #857E8E;
+  --rule:    #332E39;
+  --rule-2:  #262230;
+  --ok:      #4ECFA0;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Canto de pliego: la barra de color que corre por el borde de la hoja */
+.edge {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 12px;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+.edge span { flex: 1; }
+.edge span:nth-child(4n+1) { background: var(--c); }
+.edge span:nth-child(4n+2) { background: var(--m); }
+.edge span:nth-child(4n+3) { background: var(--y); }
+.edge span:nth-child(4n+4) { background: var(--ink); }
+
+@media (max-width: 720px) { .edge { width: 6px; } }
+
+.page {
+  width: min(100% - 3rem, var(--wrap));
+  margin-inline: auto;
+  padding-left: 12px;
+}
+
+:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; }
+
+/* ------------------------------------------------------------------ Tipos */
+h1, h2, h3, h4 { margin: 0; line-height: 1.08; text-wrap: balance; }
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .005em;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+p { margin: 0 0 var(--sp-4); max-width: 68ch; }
+a { color: var(--m); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+strong { font-weight: 650; }
+
+/* ----------------------------------------------------------------- Portada */
+.cover {
+  padding: var(--sp-8) 0 var(--sp-7);
+  border-bottom: 2px solid var(--ink);
+}
+
+.cover__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin-bottom: var(--sp-6);
+}
+
+.cover__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  text-transform: uppercase;
+  line-height: .92;
+  margin-bottom: var(--sp-4);
+}
+.cover__title em { font-style: normal; color: var(--m); }
+
+.cover__lede {
+  font-size: var(--fs-lg);
+  color: var(--ink-2);
+  max-width: 58ch;
+}
+
+.cover__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--sp-4);
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--rule);
+}
+.cover__facts dt { margin-bottom: var(--sp-1); }
+.cover__facts dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- Secciones */
+.sec { padding-block: var(--sp-8) var(--sp-6); border-bottom: 1px solid var(--rule); }
+
+.sec__head { margin-bottom: var(--sp-6); }
+
+.sec__n {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .16em;
+  color: var(--m);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+.sec__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ Reglas */
+.rules { display: grid; gap: var(--sp-4); counter-reset: rule; }
+
+.rule-item {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: var(--sp-4);
+  align-items: start;
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--rule-2);
+}
+.rule-item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.rule-item::before {
+  counter-increment: rule;
+  content: counter(rule, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+}
+
+.rule-item h3 { font-size: var(--fs-lg); margin-bottom: var(--sp-1); }
+.rule-item p { margin: 0; color: var(--ink-2); font-size: var(--fs-sm); }
+
+/* ------------------------------------------------------------------ Tabla */
+.table-scroll { overflow-x: auto; margin-bottom: var(--sp-5); }
+
+table { border-collapse: collapse; width: 100%; min-width: 34rem; }
+
+th, td {
+  text-align: left;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--rule-2);
+  font-size: var(--fs-sm);
+}
+
+th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 2px solid var(--ink);
+}
+
+td:first-child { font-family: var(--font-mono); font-weight: 600; }
+td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------- Lista tomas */
+.group { margin-bottom: var(--sp-7); }
+
+.group__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-2);
+  border-bottom: 2px solid var(--m);
+}
+
+.group__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  text-transform: uppercase;
+}
+
+.group__count { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); }
+
+.shots {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+}
+
+.shot {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.shot__n {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--m);
+  grid-column: 1 / -1;
+  letter-spacing: .14em;
+}
+
+.shot__title { font-size: var(--fs-lg); margin-bottom: var(--sp-2); grid-column: 2; }
+
+/* Ventana de encuadre: dibujo a escala del recorte real, con la zona que
+   hay que dejar libre para la tipografía sombreada en magenta. */
+.crop {
+  position: relative;
+  width: 100%;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  background: var(--paper);
+  overflow: hidden;
+}
+.crop--4x5  { aspect-ratio: 4 / 5; }
+.crop--16x9 { aspect-ratio: 16 / 9; }
+.crop--1x1  { aspect-ratio: 1 / 1; }
+.crop--free { aspect-ratio: 3 / 4; border-style: dashed; }
+
+.crop__safe { position: absolute; background: var(--m); opacity: .22; }
+.crop__safe--left  { inset: 0 auto 0 0; width: 38%; }
+.crop__safe--right { inset: 0 0 0 auto; width: 34%; }
+.crop__safe--bottom{ inset: auto 0 0 0; height: 32%; }
+
+.crop__ratio {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2px 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+.shot__spec { grid-column: 2; margin: 0 0 var(--sp-3); font-size: var(--fs-sm); color: var(--ink-2); }
+
+.shot__data {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.chip {
+  padding: 2px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.chip--slot { color: var(--ink); border-color: var(--ink); }
+.chip--must { color: var(--m); border-color: var(--m); }
+
+@media (max-width: 480px) {
+  .shot { grid-template-columns: 4.25rem 1fr; }
+}
+
+/* --------------------------------------------------------------- Destacado */
+.callout {
+  padding: var(--sp-5);
+  background: var(--m-soft);
+  border-left: 4px solid var(--m);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: var(--sp-5);
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout h3 { font-size: var(--fs-lg); margin-bottom: var(--sp-2); }
+
+/* --------------------------------------------------------------- Checklist */
+.check { display: grid; gap: var(--sp-2); }
+
+.check li {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr;
+  gap: var(--sp-3);
+  align-items: start;
+  font-size: var(--fs-sm);
+  padding-block: var(--sp-2);
+  border-bottom: 1px solid var(--rule-2);
+}
+
+.check li::before {
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: .18rem;
+  border: 2px solid var(--ink-3);
+  border-radius: 3px;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+
+.plain { margin: 0 0 var(--sp-4); padding-left: 1.1rem; list-style: disc; color: var(--ink-2); }
+.plain li { margin-bottom: var(--sp-2); max-width: 66ch; font-size: var(--fs-sm); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: .92em;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ------------------------------------------------------------------- Cierre */
+.colophon {
+  padding-block: var(--sp-7) var(--sp-8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4) var(--sp-6);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.colophon p { margin: 0; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); }
+
+@media print {
+  .edge { display: none; }
+  .page { padding-left: 0; width: 100%; }
+  .shot, .callout { break-inside: avoid; }
+  .sec { break-before: auto; }
+}
+</style>
+
+<div class="edge" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+
+<div class="page">
+
+  <!-- ================================================================ Portada -->
+  <header class="cover">
+    <div class="cover__meta">
+      <span class="label">Magenta · Cayman</span>
+      <span class="label">Brief de fotografía</span>
+      <span class="label">v1 · 17 ago 2026</span>
+    </div>
+
+    <h1 class="cover__title">Qué hay que<br><em>fotografiar</em></h1>
+
+    <p class="cover__lede">
+      La web de Magenta ya está construida y funciona sin una sola foto. Cada
+      imagen tiene un hueco con nombre, medida y recorte definido. Este
+      documento dice exactamente qué toma va en cada hueco.
+    </p>
+
+    <dl class="cover__facts">
+      <div><dt class="label">Tomas</dt><dd>14 obligatorias</dd></div>
+      <div><dt class="label">Formatos</dt><dd>4:5 · 16:9 · 1:1</dd></div>
+      <div><dt class="label">Entrega</dt><dd>RAW + JPEG</dd></div>
+      <div><dt class="label">Para</dt><dd>Bárbara / fotógrafo</dd></div>
+    </dl>
+  </header>
+
+  <!-- ================================================================= Reglas -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">Sección 01</span>
+      <h2 class="sec__title">Reglas para todo el set</h2>
+    </div>
+
+    <p>
+      Estas siete valen para las catorce tomas. Si algo de aquí no se cumple,
+      la foto no entra en la web aunque sea bonita — no por gusto, sino porque
+      el recorte automático de WordPress la va a cortar mal.
+    </p>
+
+    <ul class="rules">
+      <li class="rule-item">
+        <div>
+          <h3>Dispara en RAW</h3>
+          <p>Y entrega el RAW junto al JPEG. Vamos a ajustar el color para que el magenta de marca calce exacto en pantalla, y eso no se puede hacer sobre un JPEG ya comprimido.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>Dos encuadres por montaje</h3>
+          <p>Sin mover luces ni objeto: una vertical y una horizontal. La web usa la vertical en móvil y la horizontal en escritorio. Si solo hay una, media web se queda coja.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>Deja aire</h3>
+          <p>La tipografía es enorme y va encima de la foto. En las fichas de abajo, la zona sombreada en magenta es la que debe quedar vacía — sin objeto importante, sin cara, sin texto.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>Una pasada completa sobre fondo blanco</h3>
+          <p>Todos los objetos, otra vez, sobre pared o ciclorama blanco liso y luz pareja. De ahí salen los recortes que se usan como stickers en el collage. Sin esto no existe el look.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>Luz dura, no plana</h3>
+          <p>Natural lateral o un solo foco directo. Queremos sombra y textura: es una imprenta, el papel y la tinta tienen relieve. Nada de flash frontal de catálogo.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>No recortes miembros ni objetos en el borde</h3>
+          <p>Sobre todo en las tomas de recorte. Si una mano o una esquina de caja toca el borde del cuadro, no se puede recortar limpio después.</p>
+        </div>
+      </li>
+      <li class="rule-item">
+        <div>
+          <h3>Cinco clips de video con el celular</h3>
+          <p>3 a 5 segundos, horizontal, sin zoom: rodillo girando, papel cayendo, guillotina cortando, foil pasando, rasero de serigrafía. Se usan en loop y suben muchísimo la producción.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================================================== Recortes -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">Sección 02</span>
+      <h2 class="sec__title">Recortes y proporciones</h2>
+    </div>
+
+    <p>
+      WordPress recorta a la fuerza a estas medidas. Si la toma llega en otra
+      proporción, el recorte entra al cuadro y corta lo que estorbe — cabezas
+      incluidas. Estas cuatro son las únicas que existen en la web.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Formato</th>
+            <th scope="col">Proporción</th>
+            <th scope="col">Mínimo a entregar</th>
+            <th scope="col">Dónde se usa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>4:5</td><td class="num">4 : 5 vertical</td><td class="num">2400 × 3000 px</td><td>Retratos, fichas verticales, hero</td></tr>
+          <tr><td>16:9</td><td class="num">16 : 9 horizontal</td><td class="num">3200 × 1800 px</td><td>Banda ancha, estudio, cierre</td></tr>
+          <tr><td>1:1</td><td class="num">1 : 1 cuadrado</td><td class="num">1800 × 1800 px</td><td>Las seis fichas de servicios</td></tr>
+          <tr><td>Recorte</td><td class="num">libre</td><td class="num">2400 px lado largo</td><td>Objetos sobre blanco, para calar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <h3>Cómo leer las fichas</h3>
+      <p>
+        Cada toma trae un rectángulo dibujado a la proporción real. La franja
+        sombreada en magenta es <strong>zona muerta</strong>: ahí va el texto de
+        la web, así que tiene que quedar sin nada importante. El resto del
+        cuadro es tuyo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ Lista tomas -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">Sección 03</span>
+      <h2 class="sec__title">La lista de tomas</h2>
+    </div>
+
+    <!-- ---------------------------------------------------------- Hero -->
+    <div class="group">
+      <div class="group__head">
+        <h3 class="group__name">Hero</h3>
+        <span class="group__count">2 tomas · lo primero que ve todo el mundo</span>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <span class="shot__n">Toma 01</span>
+          <div class="crop crop--4x5">
+            <span class="crop__safe crop__safe--left"></span>
+            <span class="crop__ratio">4:5</span>
+          </div>
+          <h4 class="shot__title">Rodillo con tinta magenta</h4>
+          <p class="shot__spec">
+            Macro del rodillo cargado de tinta magenta: húmeda, viscosa, con luz
+            lateral dura que le saque el brillo. Métete lo suficientemente cerca
+            para que la tinta se lea como textura, no como maquinaria.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">hero_main</span>
+            <span class="chip">2400 × 3000</span>
+            <span class="chip chip--must">aire a la izquierda</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 02</span>
+          <div class="crop crop--16x9">
+            <span class="crop__safe crop__safe--bottom"></span>
+            <span class="crop__ratio">16:9</span>
+          </div>
+          <h4 class="shot__title">Pliego saliendo de la máquina</h4>
+          <p class="shot__spec">
+            Con obturación lenta para que el movimiento se arrastre. El barrido
+            es el punto — no lo congeles. Ángulo cenital o de tres cuartos.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">hero_press</span>
+            <span class="chip">3200 × 1800</span>
+            <span class="chip chip--must">con movimiento</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------ Servicios -->
+    <div class="group">
+      <div class="group__head">
+        <h3 class="group__name">Servicios</h3>
+        <span class="group__count">6 tomas · todas cuadradas, mismo criterio de luz</span>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <span class="shot__n">Toma 03</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Offset</h4>
+          <p class="shot__spec">
+            Pila de pliegos recién guillotinados, vista de canto, para que las
+            capas se lean como líneas. Fondo neutro, luz dura, sombra marcada.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_offset</span>
+            <span class="chip">1800 × 1800</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 04</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Gran formato</h4>
+          <p class="shot__spec">
+            Vinilo o banner ya instalado en un sitio real de Cayman — lobby de
+            hotel, vitrina de restaurante. De frente, luz de día.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_large</span>
+            <span class="chip">1800 × 1800</span>
+            <span class="chip chip--must">en sitio real</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 05</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Serigrafía</h4>
+          <p class="shot__spec">
+            El rasero a mitad de pasada sobre la malla, con las manos en cuadro.
+            Dispara ráfaga y escoge el fotograma donde la tinta está corriendo.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_screen</span>
+            <span class="chip">1800 × 1800</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 06</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Foil y acabados</h4>
+          <p class="shot__spec">
+            Detalle de foil en caliente o relieve atrapando la luz. Inclina el
+            papel hasta que el foil destelle. Fondo oscuro para que el brillo
+            separe.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_finishing</span>
+            <span class="chip">1800 × 1800</span>
+            <span class="chip chip--must">fondo oscuro</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 07</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Packaging</h4>
+          <p class="shot__spec">
+            Una caja troquelada plana y sin armar, cenital sobre blanco, más la
+            misma caja ya montada. Dos fotogramas, misma luz.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_packaging</span>
+            <span class="chip">1800 × 1800</span>
+            <span class="chip chip--must">plana + armada</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 08</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Señalética</h4>
+          <p class="shot__spec">
+            Acrílico cortado o letras corpóreas montadas en pared, con luz
+            rasante para que las letras tiren sombra.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">service_signage</span>
+            <span class="chip">1800 × 1800</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------- Estudio -->
+    <div class="group">
+      <div class="group__head">
+        <h3 class="group__name">Estudio</h3>
+        <span class="group__count">3 tomas · la parte humana, la que genera confianza</span>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <span class="shot__n">Toma 09</span>
+          <div class="crop crop--4x5">
+            <span class="crop__safe crop__safe--right"></span>
+            <span class="crop__ratio">4:5</span>
+          </div>
+          <h4 class="shot__title">Bárbara trabajando</h4>
+          <p class="shot__spec">
+            En la máquina o revisando una prueba, de perfil, con luz natural
+            lateral. Que sea candid: mirando el trabajo, no la cámara.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">about_portrait</span>
+            <span class="chip">2400 × 3000</span>
+            <span class="chip chip--must">de perfil</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 10</span>
+          <div class="crop crop--free"><span class="crop__ratio">recorte</span></div>
+          <h4 class="shot__title">Bárbara — recorte</h4>
+          <p class="shot__spec">
+            Mirando directo al lente, contra pared blanca lisa o ciclorama, luz
+            pareja, cuerpo entero o medio cuerpo. Esta se cala y se usa como
+            sticker: bordes limpios y sin cortar miembros en el marco.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">about_cutout</span>
+            <span class="chip">2400 px lado largo</span>
+            <span class="chip chip--must">fondo blanco liso</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 11</span>
+          <div class="crop crop--16x9"><span class="crop__ratio">16:9</span></div>
+          <h4 class="shot__title">El taller</h4>
+          <p class="shot__spec">
+            Plano general del taller con las máquinas andando y gente adentro.
+            Un poco desordenado es mejor que montado: esta es la prueba de que
+            el trabajo es real.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">about_studio</span>
+            <span class="chip">3200 × 1800</span>
+            <span class="chip chip--must">con gente</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------------------- Texturas -->
+    <div class="group">
+      <div class="group__head">
+        <h3 class="group__name">Texturas</h3>
+        <span class="group__count">2 tomas · alimentan el fondo de toda la web</span>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <span class="shot__n">Toma 12</span>
+          <div class="crop crop--1x1"><span class="crop__ratio">1:1</span></div>
+          <h4 class="shot__title">Textura de papel</h4>
+          <p class="shot__spec">
+            Cenital a 90°, luz plana y pareja, sin sombra: papel sin estucar
+            llenando todo el cuadro. Tiene que estar perfectamente paralelo
+            porque se usa como fondo repetido. Dispara tres papeles: blanco sin
+            estucar, kraft y uno de color.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">texture_paper</span>
+            <span class="chip">3000 × 3000</span>
+            <span class="chip chip--must">90° exactos · 3 papeles</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <span class="shot__n">Toma 13</span>
+          <div class="crop crop--free"><span class="crop__ratio">recorte</span></div>
+          <h4 class="shot__title">Muestrario Pantone</h4>
+          <p class="shot__spec">
+            Pantonera abierta en abanico sobre blanco, cenital. Ábrela de modo
+            que las que queden a la vista sean el magenta y los colores de
+            proceso.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">texture_swatches</span>
+            <span class="chip">2400 px lado largo</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ---------------------------------------------------------- Cierre -->
+    <div class="group">
+      <div class="group__head">
+        <h3 class="group__name">Cierre</h3>
+        <span class="group__count">1 toma · la última imagen antes del formulario</span>
+      </div>
+
+      <div class="shots">
+        <article class="shot">
+          <span class="shot__n">Toma 14</span>
+          <div class="crop crop--16x9">
+            <span class="crop__safe crop__safe--left"></span>
+            <span class="crop__ratio">16:9</span>
+          </div>
+          <h4 class="shot__title">Manos con pieza terminada</h4>
+          <p class="shot__spec">
+            Manos sosteniendo algo acabado — una tarjeta en letterpress, una
+            carta — lo bastante cerca para ver el hundido en el papel.
+            Profundidad de campo corta.
+          </p>
+          <div class="shot__data">
+            <span class="chip chip--slot">cta_background</span>
+            <span class="chip">3200 × 1800</span>
+            <span class="chip chip--must">se ve el relieve</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== Entrega -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">Sección 04</span>
+      <h2 class="sec__title">Cómo entregar</h2>
+    </div>
+
+    <p>
+      Nombra los archivos con el nombre del hueco que aparece en cada ficha (el
+      recuadro negro). Así se sube directo sin tener que adivinar cuál es cuál:
+    </p>
+
+    <ul class="plain">
+      <li><code>hero_main_4x5_01.jpg</code> — vertical de la toma 01</li>
+      <li><code>hero_main_16x9_01.jpg</code> — la horizontal del mismo montaje</li>
+      <li><code>about_cutout_01.jpg</code> — recorte, sin sufijo de proporción</li>
+      <li><code>video_rodillo_01.mp4</code> — los clips, aparte</li>
+    </ul>
+
+    <p>
+      Manda todo en una carpeta por Drive o WeTransfer, con los RAW en una
+      subcarpeta <code>/raw</code>. No comprimas ni redimensiones nada: de eso
+      se encarga la web sola.
+    </p>
+
+    <div class="callout">
+      <h3>No hace falta esperar a tenerlo todo</h3>
+      <p>
+        Los huecos se llenan de uno en uno. En cuanto tengas las dos del hero,
+        mándalas y las montamos ese mismo día. La web ya está de pie y se ve
+        terminada con los huecos vacíos — cada foto que entra solo la mejora.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================= Checklist -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">Sección 05</span>
+      <h2 class="sec__title">Antes de guardar el equipo</h2>
+    </div>
+
+    <ul class="check">
+      <li>Las 14 tomas, cada una en vertical y en horizontal</li>
+      <li>La pasada completa de objetos sobre fondo blanco, para los recortes</li>
+      <li>Los tres papeles de textura, cenital a 90°</li>
+      <li>Las dos de Bárbara: trabajando y de frente sobre blanco</li>
+      <li>Los cinco clips de video</li>
+      <li>Los RAW copiados a la subcarpeta <code>/raw</code></li>
+      <li>Archivos renombrados con el nombre del hueco</li>
+      <li>Revisado que en las tomas con zona muerta no haya nada importante ahí</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <p>Magenta · Brief de fotografía v1 · 17 ago 2026</p>
+    <p>Preparado por <a href="https://toctoc.ky/" target="_blank" rel="noopener">Toc Toc Marketing</a></p>
+  </footer>
+
+</div>

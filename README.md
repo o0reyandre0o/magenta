@@ -59,16 +59,33 @@ pushing to `main` offers a theme update inside wp-admin. Two headers in
 `style.css` drive it:
 
 ```
-GitHub Theme URI: TOCTOC-ORG/magenta-theme
+GitHub Theme URI: o0reyandre0o/magenta
 Primary Branch: main
 ```
-
-> **Change `TOCTOC-ORG/magenta-theme` to the real repo path before the first
-> deploy.** Git Updater will not resolve updates until it matches.
 
 Alternative if you would rather not run Git Updater: a GitHub Action that
 rsyncs over SFTP on push to `main`. Say the word and it's a ten-line workflow
 file.
+
+## Packaging for upload
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/build-zip.ps1
+```
+
+Writes `dist/magenta.zip`, ready for **Appearance → Themes → Add New →
+Upload**. The zip contains only the production theme — `preview.html`, `docs/`,
+`tools/` and git metadata are left out. `dist/` is gitignored.
+
+## Reviewing the design without PHP
+
+```bash
+node tools/serve.js
+```
+
+Serves the repo at <http://localhost:4173>, which opens `preview.html` — a
+static mirror of the front page that links the real theme CSS and JS, so it
+cannot drift from the live styling.
 
 ---
 
@@ -224,7 +241,6 @@ only one carries the real text.
 
 ## Still to do
 
-- [ ] Set the real repo path in `style.css` (`GitHub Theme URI`)
 - [ ] Commit the five `.woff2` files (see `assets/fonts/README.md`)
 - [ ] Fill the image slots as photography arrives
 - [ ] Publish real projects; the placeholder grid retires itself

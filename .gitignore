@@ -1,0 +1,22 @@
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+node_modules/
+vendor/
+
+# Build output — the packaged theme zip is a release artifact, not source
+dist/
+
+# Local editor noise
+.vscode/
+.idea/
+*.code-workspace
+
+# Never commit anything WordPress generates
+*.sql
+uploads/
+
+# Stray nested repo created by GitHub Desktop - not part of the theme
+magenta/
