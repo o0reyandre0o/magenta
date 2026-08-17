@@ -92,10 +92,13 @@ $bundled = array(
 				<p class="lede lede--light">
 					<?php esc_html_e( 'A sample of what has come off the press lately. If you have eaten out, checked in or walked past a window on this island, you have probably already seen some of it.', 'magenta' ); ?>
 				</p>
-				<a class="btn btn--outline btn--light" href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ?: '#' ); ?>">
-					<?php esc_html_e( 'All projects', 'magenta' ); ?>
-					<span aria-hidden="true">&rarr;</span>
-				</a>
+				<span class="work__cta-wrap">
+					<a class="btn btn--outline btn--light" href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ?: '#' ); ?>">
+						<?php esc_html_e( 'All projects', 'magenta' ); ?>
+						<span aria-hidden="true">&rarr;</span>
+					</a>
+					<?php magenta_doodle( 'arrow-loop', array( 'colour' => 'y', 'class' => 'doodle--work-arrow' ) ); ?>
+				</span>
 			</div>
 		</header>
 

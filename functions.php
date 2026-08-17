@@ -24,6 +24,7 @@ require_once MAGENTA_DIR . '/inc/setup.php';
 require_once MAGENTA_DIR . '/inc/enqueue.php';
 require_once MAGENTA_DIR . '/inc/media-slots.php';
 require_once MAGENTA_DIR . '/inc/helpers.php';
+require_once MAGENTA_DIR . '/inc/doodles.php';
 require_once MAGENTA_DIR . '/inc/cpt-project.php';
 require_once MAGENTA_DIR . '/inc/contact.php';
 require_once MAGENTA_DIR . '/inc/schema.php';

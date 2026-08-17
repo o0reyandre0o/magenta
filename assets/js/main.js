@@ -134,6 +134,45 @@
     update();
   }
 
+  /* ------------------------------------------------------------- Doodles
+     Each path is measured so the dash animation covers exactly its own
+     length - a shared guess would leave short strokes finished early and long
+     ones still drawing. Paths within one doodle are staggered so a two-stroke
+     underline or a three-stroke arrow lands in sequence rather than at once. */
+  function initDoodles() {
+    var doodles = Array.prototype.slice.call(document.querySelectorAll('.doodle--draw'));
+    if (!doodles.length) return;
+
+    doodles.forEach(function (svg) {
+      Array.prototype.forEach.call(svg.querySelectorAll('path'), function (path, i) {
+        var length = 0;
+        try {
+          length = path.getTotalLength();
+        } catch (e) {
+          // getTotalLength throws on a detached or zero-length path.
+        }
+        if (!length) return;
+        path.style.setProperty('--len', Math.ceil(length));
+        path.style.setProperty('--d', i);
+      });
+    });
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      doodles.forEach(function (svg) { svg.classList.add('is-in'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.2 });
+
+    doodles.forEach(function (svg) { observer.observe(svg); });
+  }
+
   /* ----------------------------------------------------------- Ink trail
      Process-colour dots laid down behind the pointer. The dot pool is fixed
      and recycled - creating and destroying nodes on mousemove is what makes
@@ -486,6 +525,7 @@
     initReveals();
     initRegistration();
     initParallax();
+    initDoodles();
     initInkTrail();
     initCursorRing();
     initScrollEnergy();

@@ -54,7 +54,14 @@ $services = array(
 		<header class="section-head">
 			<p class="eyebrow"><?php esc_html_e( 'What we make', 'magenta' ); ?></p>
 			<h2 class="display display--lg" data-reveal>
-				<?php esc_html_e( 'Ink on', 'magenta' ); ?> <em><?php esc_html_e( 'everything.', 'magenta' ); ?></em>
+				<?php esc_html_e( 'Ink on', 'magenta' ); ?>
+				<em>
+					<?php
+					// See the note in hero.php on why this is not run through kses.
+					echo magenta_mark( __( 'everything.', 'magenta' ), 'underline', 'c' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</em>
+				<?php magenta_doodle( 'squiggle', array( 'colour' => 'm', 'class' => 'doodle--services' ) ); ?>
 			</h2>
 			<p class="lede section-head__lede">
 				<?php esc_html_e( 'Design and production are the same conversation here. Nothing gets handed over a wall, which is why nothing comes back wrong.', 'magenta' ); ?>

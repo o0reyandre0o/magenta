@@ -31,7 +31,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<p class="hero__tagline" aria-hidden="true">
 				<?php esc_html_e( 'We put ink', 'magenta' ); ?>
-				<em><?php esc_html_e( 'on the island.', 'magenta' ); ?></em>
+				<em>
+					<?php
+					/*
+					 * Echoed raw rather than through wp_kses_post, which strips
+					 * svg and path outright. Safe: magenta_mark() escapes the
+					 * text itself and the shape comes from a fixed set in
+					 * inc/doodles.php, never from input.
+					 */
+					echo magenta_mark( __( 'on the island.', 'magenta' ), 'lasso', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</em>
 			</p>
 
 			<p class="lede hero__lede">
@@ -92,6 +102,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</span>
 
 			<span class="tape tape--hero" aria-hidden="true"></span>
+
+			<?php magenta_doodle( 'asterisk', array( 'colour' => 'c', 'class' => 'doodle--hero-star' ) ); ?>
+			<?php magenta_doodle( 'arrow', array( 'colour' => 'm', 'class' => 'doodle--hero-arrow' ) ); ?>
 		</div>
 
 	</div>

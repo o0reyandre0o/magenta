@@ -556,6 +556,64 @@
 .site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .site-footer__credit a:hover { color: var(--y); }
 
+/* ============================================================== Doodles
+   The hand-drawn layer: marks a designer makes on top of a proof. Always
+   decorative, never interactive, never in the accessibility tree. */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 4;
+}
+
+.doodle--ink-m     { color: var(--m); }
+.doodle--ink-c     { color: var(--c); }
+.doodle--ink-y     { color: var(--y); }
+.doodle--ink-k     { color: var(--ink); }
+.doodle--ink-paper { color: var(--paper); }
+
+/* Draw-on. --len is the measured path length, written by initDoodles(); the
+   fallback covers the case where the script never runs, in which case the
+   stroke is simply drawn from the start. */
+.doodle--draw path {
+  stroke-dasharray: var(--len, 0);
+  stroke-dashoffset: var(--len, 0);
+  transition: stroke-dashoffset 900ms var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 120ms);
+}
+
+.doodle--draw.is-in path { stroke-dashoffset: 0; }
+
+/* A mark thrown around a run of text. The wrapper is inline-block so the SVG
+   can stretch to whatever the words happen to measure at that viewport. */
+.marked {
+  position: relative;
+  display: inline-block;
+}
+
+.doodle--mark {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* A lasso needs to sit outside the word; an underline sits below it. */
+.doodle--mark-lasso {
+  inset: -32% -9%;
+  width: 118%;
+  height: 164%;
+}
+
+.doodle--mark-underline {
+  inset: auto -3% -0.35em;
+  width: 106%;
+  height: 0.5em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle--draw path { stroke-dashoffset: 0; transition: none; }
+}
+
 /* ============================================================== Ink trail
    Process-colour dots dropped behind the pointer and left to dry. Multiply
    blending means overlapping dots build secondary colours the way wet ink
@@ -703,16 +761,18 @@ html {
    Implemented with text-shadow rather than duplicated elements so it costs
    nothing when idle: at --energy 0 both shadows sit exactly behind the glyphs
    and are invisible. */
+/* Display type only. On card and station titles - 24px and under - a 0.05em
+   colour offset stopped being an effect and started being a legibility
+   problem: the ghosts sit inside the letterforms instead of beside them.
+   Misregistration reads as misregistration only when the type is big enough
+   to carry it. */
 .display,
-.station__title,
-.work-card__title,
-.service-card__title,
-.reel__title,
 .process__title,
+.site-footer__word,
 .marquee__item {
   text-shadow:
-    calc(var(--energy, 0) * -0.05em) calc(var(--energy, 0) * 0.018em) 0 var(--c),
-    calc(var(--energy, 0) * 0.042em) calc(var(--energy, 0) * -0.015em) 0 var(--y);
+    calc(var(--energy, 0) * -0.035em) calc(var(--energy, 0) * 0.013em) 0 var(--c),
+    calc(var(--energy, 0) * 0.03em) calc(var(--energy, 0) * -0.011em) 0 var(--y);
 }
 
 @media (prefers-reduced-motion: reduce) {

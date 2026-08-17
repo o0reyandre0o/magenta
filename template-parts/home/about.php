@@ -27,7 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<h2 class="display display--md" data-reveal>
 				<?php esc_html_e( 'From Barcelona', 'magenta' ); ?><br>
-				<em><?php esc_html_e( 'to Grand Cayman.', 'magenta' ); ?></em>
+				<em>
+					<?php
+					// See the note in hero.php on why this is not run through kses.
+					echo magenta_mark( __( 'to Grand Cayman.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</em>
 			</h2>
 
 			<div class="prose">

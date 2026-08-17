@@ -35,6 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<span class="sticker sticker--rotate-l sticker--cyan cta__sticker" data-parallax="0.1">
 				<?php esc_html_e( 'quotes within 24h', 'magenta' ); ?>
 			</span>
+
+			<?php magenta_doodle( 'arrow', array( 'colour' => 'm', 'class' => 'doodle--cta-arrow' ) ); ?>
+			<?php magenta_doodle( 'sparkle', array( 'colour' => 'y', 'class' => 'doodle--cta-sparkle' ) ); ?>
 		</div>
 
 		<div class="cta__form-wrap">
