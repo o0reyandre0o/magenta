@@ -17,6 +17,3 @@ dist/
 # Never commit anything WordPress generates
 *.sql
 uploads/
-
-# Stray nested repo created by GitHub Desktop - not part of the theme
-magenta/

@@ -1,0 +1,19 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Keep shell and PHP line endings LF in the repository regardless of the
+# machine committing them - these run on a Linux host.
+*.php   text eol=lf
+*.js    text eol=lf
+*.css   text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+
+# PowerShell is Windows-only tooling; leave it CRLF on checkout.
+*.ps1   text eol=crlf
+
+# Binary - never diff or normalise
+*.woff2 binary
+*.png   binary
+*.jpg   binary
+*.zip   binary
