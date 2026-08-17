@@ -27,4 +27,5 @@ require_once MAGENTA_DIR . '/inc/helpers.php';
 require_once MAGENTA_DIR . '/inc/cpt-project.php';
 require_once MAGENTA_DIR . '/inc/contact.php';
 require_once MAGENTA_DIR . '/inc/schema.php';
+require_once MAGENTA_DIR . '/inc/meta.php';
 require_once MAGENTA_DIR . '/inc/llms-txt.php';
