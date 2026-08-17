@@ -1,0 +1,193 @@
+<?php
+/**
+ * Hand-drawn layer.
+ *
+ * The rest of the theme speaks in press language - registration marks, colour
+ * bars, halftone, tape. That vocabulary is precise by nature, and precision
+ * alone reads cold. These are the marks a designer makes *on top of* a proof:
+ * a word lassoed in marker, an arrow pointing at the thing that matters, a
+ * squiggle in the margin. They are what stops the page looking machined.
+ *
+ * Every doodle is inline SVG - no requests, no raster, scales to any size, and
+ * takes its colour from `currentColor` so one shape serves every section.
+ *
+ * The paths are drawn deliberately irregular: loops overshoot where they
+ * close, strokes vary, nothing is concentric. A geometrically perfect circle
+ * reads as a border, not as a hand.
+ *
+ * @package Magenta
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * The mark set.
+ *
+ * @return array<string, array{box:string, paths:array<int, array{d:string, w:float}>}>
+ */
+function magenta_doodle_set(): array {
+	return array(
+
+		// A loop thrown around a word, closing past where it started.
+		'lasso' => array(
+			'box'   => '0 0 240 92',
+			'paths' => array(
+				array(
+					'd' => 'M64 16C36 20 12 34 10 50c-2 18 30 30 78 32 48 2 108-8 138-26 26-16 6-32-34-38-42-6-88 0-114 12-22 10-16 26 6 32',
+					'w' => 4.5,
+				),
+			),
+		),
+
+		// Marker underline: two passes, because one never lands flat.
+		'underline' => array(
+			'box'   => '0 0 230 26',
+			'paths' => array(
+				array( 'd' => 'M8 15c48-8 110-11 176-5', 'w' => 7 ),
+				array( 'd' => 'M18 21c44-6 102-8 158-3', 'w' => 3.5 ),
+			),
+		),
+
+		// Curved arrow, tip bottom right.
+		'arrow' => array(
+			'box'   => '0 0 130 112',
+			'paths' => array(
+				array( 'd' => 'M12 10c8 34 30 62 60 78 12 6 26 11 40 13', 'w' => 4 ),
+				array( 'd' => 'M112 101l-6-20', 'w' => 4 ),
+				array( 'd' => 'M112 101l-20 4', 'w' => 4 ),
+			),
+		),
+
+		// Arrow that curls back on itself before setting off.
+		'arrow-loop' => array(
+			'box'   => '0 0 144 122',
+			'paths' => array(
+				array(
+					'd' => 'M10 16c18-9 35 1 33 18-2 16-25 19-29 5-4-16 19-31 44-25 27 6 48 35 54 68',
+					'w' => 4,
+				),
+				array( 'd' => 'M112 102l-3-21', 'w' => 4 ),
+				array( 'd' => 'M112 102l-20-3', 'w' => 4 ),
+			),
+		),
+
+		// Margin scribble.
+		'squiggle' => array(
+			'box'   => '0 0 124 74',
+			'paths' => array(
+				array(
+					'd' => 'M8 48c4-21 21-35 35-29 15 6 11 31-6 33-17 2-23-21-6-33 17-13 46-6 61 13',
+					'w' => 4,
+				),
+			),
+		),
+
+		// Six-arm asterisk, arms not quite even.
+		'asterisk' => array(
+			'box'   => '0 0 46 46',
+			'paths' => array(
+				array( 'd' => 'M23 4v38', 'w' => 4 ),
+				array( 'd' => 'M7 13l32 20', 'w' => 4 ),
+				array( 'd' => 'M39 13L7 33', 'w' => 4 ),
+			),
+		),
+
+		// Four-point sparkle, drawn as a stroke so it animates with the rest.
+		'sparkle' => array(
+			'box'   => '0 0 44 44',
+			'paths' => array(
+				array( 'd' => 'M22 3c2 13 6 19 19 19-13 2-17 6-19 19-2-13-6-17-19-19 13 0 17-6 19-19', 'w' => 3.5 ),
+			),
+		),
+
+		// Energy line.
+		'zigzag' => array(
+			'box'   => '0 0 146 32',
+			'paths' => array(
+				array( 'd' => 'M6 24l23-17 22 17 23-17 22 17 23-17 21 16', 'w' => 4 ),
+			),
+		),
+	);
+}
+
+/**
+ * Print a doodle.
+ *
+ * @param string $name Key from magenta_doodle_set().
+ * @param array  $args {
+ *     @type string $class  Extra classes for placement.
+ *     @type string $colour Token suffix: m, c, y, k, paper.
+ *     @type bool   $draw   Animate the stroke on entry.
+ * }
+ */
+function magenta_doodle( string $name, array $args = array() ): void {
+	$set = magenta_doodle_set();
+
+	if ( ! isset( $set[ $name ] ) ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			printf( '<!-- magenta: unknown doodle "%s" -->', esc_html( $name ) );
+		}
+		return;
+	}
+
+	$a = wp_parse_args(
+		$args,
+		array(
+			'class'  => '',
+			'colour' => 'm',
+			'draw'   => true,
+		)
+	);
+
+	$doodle = $set[ $name ];
+
+	printf(
+		'<svg class="doodle doodle--%1$s doodle--ink-%2$s %3$s%4$s" viewBox="%5$s" fill="none" aria-hidden="true" focusable="false">',
+		esc_attr( $name ),
+		esc_attr( $a['colour'] ),
+		esc_attr( $a['class'] ),
+		$a['draw'] ? ' doodle--draw' : '',
+		esc_attr( $doodle['box'] )
+	);
+
+	foreach ( $doodle['paths'] as $path ) {
+		printf(
+			'<path d="%s" stroke="currentColor" stroke-width="%s" stroke-linecap="round" stroke-linejoin="round"/>',
+			esc_attr( $path['d'] ),
+			esc_attr( (string) $path['w'] )
+		);
+	}
+
+	echo '</svg>';
+}
+
+/**
+ * Wrap a run of text in a mark - a lasso thrown round it, or a marker
+ * underline swept beneath it.
+ *
+ * Returns markup rather than printing so it can be dropped into a translated
+ * string alongside other content.
+ *
+ * @param string $text   Text to mark. Escaped here.
+ * @param string $doodle 'lasso' or 'underline'.
+ * @param string $colour Token suffix.
+ */
+function magenta_mark( string $text, string $doodle = 'lasso', string $colour = 'y' ): string {
+	ob_start();
+	magenta_doodle(
+		$doodle,
+		array(
+			'colour' => $colour,
+			'class'  => 'doodle--mark doodle--mark-' . $doodle,
+		)
+	);
+	$svg = ob_get_clean();
+
+	return sprintf(
+		'<span class="marked">%s%s</span>',
+		esc_html( $text ),
+		$svg
+	);
+}
