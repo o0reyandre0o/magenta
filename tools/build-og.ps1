@@ -83,15 +83,18 @@ foreach ($p in $plates) {
     Add-Filter "drawtext=fontfile='$display':text='MAGENTA':fontcolor=$($p.C):fontsize=150:x=$($p.X):y=$($p.Y)"
 }
 
+# Separators are ASCII on purpose: ffmpeg reads the filter script as Latin-1,
+# so a UTF-8 middot arrives as mojibake ("Â·").
 Add-Filter "drawtext=fontfile='$display':text='WE PUT INK ON THE ISLAND.':fontcolor=$($ink):fontsize=52:x=58:y=372"
-Add-Filter "drawtext=fontfile='$mono':text='Menus \· Packaging \· Signage \· Identity':fontcolor=$($ink)@0.66:fontsize=22:x=60:y=452"
-Add-Filter "drawtext=fontfile='$mono':text='GRAND CAYMAN \· CAYMAN ISLANDS':fontcolor=$($magenta):fontsize=21:x=60:y=524"
+Add-Filter "drawtext=fontfile='$mono':text='Menus / Packaging / Signage / Identity':fontcolor=$($ink)@0.66:fontsize=22:x=60:y=452"
+Add-Filter "drawtext=fontfile='$mono':text='GRAND CAYMAN, CAYMAN ISLANDS':fontcolor=$($magenta):fontsize=21:x=60:y=524"
 
 # Terminate the chain on the default output label.
 $filters[$filters.Count - 1] = $filters[$filters.Count - 1] -replace '\[s\d+\]$', '[out]'
 
 $scriptPath = Join-Path $env:TEMP 'magenta-og-filter.txt'
-[System.IO.File]::WriteAllText($scriptPath, ($filters -join ";`n"))
+$encoding   = New-Object System.Text.ASCIIEncoding
+[System.IO.File]::WriteAllText($scriptPath, ($filters -join ";`n"), $encoding)
 
 & ffmpeg -y -v error `
     -f lavfi -i "color=c=$($paper):s=1200x630" `
