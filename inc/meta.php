@@ -215,9 +215,25 @@ function magenta_print_meta(): void {
 	$tags[] = sprintf( '<meta property="og:image:width" content="%d">', $image['width'] );
 	$tags[] = sprintf( '<meta property="og:image:height" content="%d">', $image['height'] );
 	$tags[] = sprintf( '<meta property="og:image:alt" content="%s">', esc_attr( $image['alt'] ) );
+	/*
+	 * Extension read off the path, not off the whole URL: a query string would
+	 * defeat a naive suffix test. Deliberately not str_ends_with() - that is
+	 * PHP 8.0 only, and this file runs on wp_head for every request, so on a
+	 * 7.4 host it took the entire site down with a fatal rather than
+	 * degrading. Nothing else in the theme needs 8.0.
+	 */
+	$path = (string) wp_parse_url( $image['url'], PHP_URL_PATH );
+	$ext  = strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
+
+	$types = array(
+		'png'  => 'image/png',
+		'webp' => 'image/webp',
+		'gif'  => 'image/gif',
+	);
+
 	$tags[] = sprintf(
 		'<meta property="og:image:type" content="%s">',
-		str_ends_with( strtolower( $image['url'] ), '.png' ) ? 'image/png' : 'image/jpeg'
+		isset( $types[ $ext ] ) ? $types[ $ext ] : 'image/jpeg'
 	);
 
 	if ( $is_project ) {
