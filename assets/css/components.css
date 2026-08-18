@@ -35,7 +35,7 @@
 
 .btn--magenta { background: var(--m); color: var(--paper); }
 .btn--ink     { background: var(--ink); color: var(--paper); }
-.btn--paper   { background: var(--paper); color: var(--m); }
+.btn--paper   { background: var(--header-cta-bg); color: var(--header-cta-fg); }
 .btn--outline { background: transparent; color: inherit; }
 .btn--block   { width: 100%; justify-content: center; }
 
@@ -395,8 +395,8 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: var(--m);
-  color: var(--paper);
+  background: var(--header-bg);
+  color: var(--header-fg);
   border-bottom: 2px solid var(--ink);
   transition: transform var(--dur) var(--ease-out);
 }
@@ -405,7 +405,7 @@
    Without the blur, 92% magenta just shows page content ghosting through. */
 @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
   .site-header {
-    background: color-mix(in srgb, var(--m) 92%, transparent);
+    background: color-mix(in srgb, var(--header-bg) 92%, transparent);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
@@ -426,7 +426,7 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: var(--paper);
+  color: var(--header-fg);
   margin-right: auto;
 }
 
@@ -460,7 +460,7 @@
   position: absolute;
   left: 0; right: 0; bottom: -6px;
   height: 3px;
-  background: var(--paper);
+  background: var(--header-fg);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur) var(--ease-out);

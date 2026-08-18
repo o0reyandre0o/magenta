@@ -26,6 +26,19 @@
   --fg:           var(--ink);
   --accent:       var(--m);
 
+  /* --- Header ----------------------------------------------------------
+     The header runs magenta with paper type on it. Measured contrast of
+     paper on --m is 3.84:1, which clears WCAG AA for large text but not for
+     the 13px nav labels (needs 4.5:1). Swapping --header-bg to --m-deep
+     takes it to 5.73:1 and still reads unmistakably magenta - it is a
+     one-value change, kept here so it does not have to be hunted for.
+     The CTA sits the other way round: paper ground, magenta type. That text
+     is small too, so it uses --m-deep rather than --m to clear AA. */
+  --header-bg:      var(--m);
+  --header-fg:      var(--paper);
+  --header-cta-bg:  var(--paper);
+  --header-cta-fg:  var(--m-deep);
+
   /* --- Type ------------------------------------------------------------
      Display is a heavy condensed grotesque; the fallbacks are chosen to
      keep roughly the same width so layout does not jump before the
