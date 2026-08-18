@@ -797,3 +797,79 @@
 }
 
 .cta__sticker { display: inline-block; margin-top: var(--sp-6); }
+
+/* ==================================================================== FAQ */
+/* Answers stay visible rather than sitting behind a disclosure control. The
+   section reads as a printed FAQ sheet: numbered entries, rules between them,
+   answer set narrower than the question so the eye finds the question first. */
+.faq-list {
+  display: grid;
+  gap: 0;
+  border-top: 2px solid var(--ink);
+}
+
+.faq-item {
+  padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-bottom: 2px solid var(--ink);
+}
+
+.faq-item__q {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+.faq-item__num {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  color: var(--m);
+}
+
+.faq-item__a {
+  /* Indented to clear the number column so answers line up under the question
+     text, not under its counter. */
+  margin: var(--sp-3) 0 0;
+  padding-left: calc(2ch + var(--sp-4));
+  max-width: 68ch;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 600px) {
+  .faq-item__a { padding-left: 0; }
+}
+
+/* Editor-only backlog. Deliberately plain - it is a work note, not design. */
+.faq-pending {
+  margin-top: var(--sp-7);
+  padding: var(--sp-5);
+  border: 2px dashed var(--m);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--m-tint) 60%, transparent);
+}
+
+.faq-pending__head,
+.faq-pending__how {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-body);
+  letter-spacing: 0.04em;
+}
+
+.faq-pending ul {
+  margin: var(--sp-4) 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.faq-pending li { font-size: var(--fs-sm); }

@@ -552,6 +552,7 @@
 }
 
 .site-footer__line { max-width: 34ch; opacity: 0.75; }
+.site-footer__socials { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); }
 .site-footer__socials a { font-family: var(--font-mono); font-size: var(--fs-sm); letter-spacing: 0.1em; text-transform: uppercase; }
 .site-footer__list { display: grid; gap: var(--sp-3); }
 .site-footer__list a { font-family: var(--font-mono); font-size: var(--fs-sm); text-decoration: none; }

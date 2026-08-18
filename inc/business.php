@@ -78,6 +78,11 @@ function magenta_business_fields(): array {
 			'type'  => 'text',
 			'hint'  => __( 'A band, not a price list. Google expects $ to $$$$.', 'magenta' ),
 		),
+		'socials'     => array(
+			'label' => __( 'Social profiles', 'magenta' ),
+			'type'  => 'textarea',
+			'hint'  => __( 'One full URL per line - Facebook, LinkedIn, Google Business Profile, TikTok, Pinterest, a Yelp or directory listing. These become the sameAs links that tell search engines and AI assistants the profile they already know and this website are the same business.', 'magenta' ),
+		),
 		'hours'       => array(
 			'label' => __( 'Opening hours', 'magenta' ),
 			'type'  => 'textarea',
@@ -86,9 +91,37 @@ function magenta_business_fields(): array {
 	);
 }
 
+/**
+ * Values known from the client directly, used when wp-admin has nothing saved.
+ *
+ * This is not a place to guess. A default belongs here only once the studio
+ * has actually confirmed the value, and the admin screen still overrides it -
+ * the point is that a confirmed detail works the moment the theme syncs,
+ * without depending on someone remembering to retype it into a form.
+ *
+ * @return array<string, string>
+ */
+function magenta_business_defaults(): array {
+	return array(
+		// Confirmed by the studio, 2026-08-18.
+		'email' => 'hello@magenta.ky',
+	);
+}
+
 function magenta_business(): array {
 	$saved = get_option( MAGENTA_BUSINESS_OPTION, array() );
-	return is_array( $saved ) ? $saved : array();
+	$saved = is_array( $saved ) ? $saved : array();
+
+	// A saved value wins, but only if it actually holds something - a field
+	// blanked in wp-admin should not out-rank a detail we know is correct.
+	$out = magenta_business_defaults();
+	foreach ( $saved as $key => $value ) {
+		if ( '' !== trim( (string) $value ) ) {
+			$out[ $key ] = $value;
+		}
+	}
+
+	return $out;
 }
 
 /**
@@ -166,6 +199,40 @@ function magenta_business_hours_schema(): array {
 	}
 
 	return $out;
+}
+
+/**
+ * The sameAs list: every profile that corroborates this is the same business.
+ *
+ * sameAs is how an entity gets confirmed rather than merely asserted. A site
+ * claiming to be a business is one source; that claim agreeing with an
+ * Instagram profile, a Google Business Profile and a directory listing is what
+ * turns it into a resolved entity that can be cited with confidence.
+ *
+ * The Instagram account is known and hardcoded. Anything else is whatever has
+ * been entered in Appearance > Magenta Business. Entries that are not valid
+ * absolute URLs are dropped rather than published broken.
+ *
+ * @return array<int, string>
+ */
+function magenta_business_same_as(): array {
+	$urls = array( 'https://www.instagram.com/magentacayman/' );
+
+	foreach ( preg_split( '/\R/', magenta_business_field( 'socials' ) ) as $line ) {
+		$line = trim( $line );
+		if ( '' === $line ) {
+			continue;
+		}
+
+		$url = esc_url_raw( $line );
+		if ( '' === $url || ! wp_http_validate_url( $url ) ) {
+			continue;
+		}
+
+		$urls[] = $url;
+	}
+
+	return array_values( array_unique( $urls ) );
 }
 
 /**

@@ -95,9 +95,7 @@ function magenta_site_nodes(): array {
 			'Graphic Design',
 			'Brand Identity',
 		),
-		'sameAs'      => array_values(
-			array_filter( array( 'https://www.instagram.com/magentacayman/' ) )
-		),
+		'sameAs'      => magenta_business_same_as(),
 	);
 
 	/*

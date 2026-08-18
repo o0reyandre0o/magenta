@@ -26,6 +26,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 			<p class="site-footer__socials">
 				<a href="https://www.instagram.com/magentacayman/" rel="me noopener" target="_blank">Instagram</a>
+				<?php
+				/*
+				 * Published as visible text, not only inside the JSON-LD. An
+				 * entity detail that a reader can see is corroboration; one
+				 * that exists only in markup is an unsupported assertion.
+				 */
+				$magenta_email = magenta_business_field( 'email' );
+				if ( $magenta_email ) :
+					?>
+					<a href="mailto:<?php echo esc_attr( $magenta_email ); ?>"><?php echo esc_html( $magenta_email ); ?></a>
+				<?php endif; ?>
 			</p>
 		</div>
 
