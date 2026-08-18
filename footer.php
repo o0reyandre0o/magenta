@@ -56,7 +56,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 			</nav>
 
-			<a class="seo-badge" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="noopener">
+			<?php
+		/*
+		 * nofollow is deliberate, and it costs the badge nothing.
+		 *
+		 * Badge and widget links replicated across many sites are a named
+		 * example in Google's link spam guidance - the pattern has been
+		 * actioned before in "certified partner" programmes. The credit link
+		 * below is the opposite case: one branded anchor, the long-standing
+		 * designer convention, so that is the one left carrying equity.
+		 *
+		 * Nothing the badge is actually for is affected. It is still seen,
+		 * still clicked, and still sends referral traffic. TocToc's entity
+		 * authority does not run through these links at all - it runs through
+		 * the fixed @id consolidation in inc/schema.php.
+		 */
+		?>
+		<a class="seo-badge" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="nofollow noopener">
 				<?php
 				/*
 				 * Lazy and last: the badge is rendered by admin-ajax on another
