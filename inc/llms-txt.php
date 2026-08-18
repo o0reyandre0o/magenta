@@ -117,11 +117,60 @@ function magenta_render_llms(): void {
 		$lines[] = '';
 	}
 
+	/* ------------------------------------------------------------- FAQ
+	 * The questions and answers verbatim. This is the section answer engines
+	 * quote from most directly - a model reading plain text does not have to
+	 * parse the page or resolve the JSON-LD to find them. Only answered
+	 * entries appear, matching what is published on the page and in the
+	 * FAQPage graph.
+	 */
+	$faq = magenta_faq_answered();
+	if ( $faq ) {
+		$lines[] = '## Frequently asked questions';
+		$lines[] = '';
+		foreach ( $faq as $item ) {
+			$lines[] = '### ' . wp_strip_all_tags( $item['q'] );
+			$lines[] = '';
+			$lines[] = wp_strip_all_tags( $item['a'] );
+			$lines[] = '';
+		}
+	}
+
+	/* -------------------------------------------------------- Contact */
 	$lines[] = '## Contact';
 	$lines[] = '';
 	$lines[] = '- Website: ' . $home;
-	$lines[] = '- Instagram: https://www.instagram.com/magentacayman/';
-	$lines[] = '- Location: Grand Cayman, Cayman Islands';
+
+	// Emitted only where a real value exists - same rule as the schema graph.
+	$contact_lines = array(
+		'Email'     => magenta_business_field( 'email' ),
+		'Telephone' => magenta_business_field( 'telephone' ),
+	);
+	foreach ( $contact_lines as $label => $value ) {
+		if ( '' !== $value ) {
+			$lines[] = '- ' . $label . ': ' . $value;
+		}
+	}
+
+	foreach ( magenta_business_same_as() as $profile ) {
+		$lines[] = '- Profile: ' . $profile;
+	}
+
+	$street   = magenta_business_field( 'street' );
+	$locality = magenta_business_field( 'locality' );
+	if ( '' !== $street && '' !== $locality ) {
+		$lines[] = '- Address: ' . trim(
+			$street . ', ' . $locality . ' ' . magenta_business_field( 'postal' )
+		) . ', Cayman Islands';
+	} else {
+		$lines[] = '- Location: Grand Cayman, Cayman Islands';
+	}
+
+	$hours = trim( magenta_business_field( 'hours' ) );
+	if ( '' !== $hours ) {
+		$lines[] = '- Opening hours: ' . implode( '; ', array_filter( array_map( 'trim', preg_split( '/\R/', $hours ) ) ) );
+	}
+
 	$lines[] = '';
 
 	/* ---------------------------------------------------------- Credits */
