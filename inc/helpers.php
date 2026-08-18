@@ -108,12 +108,22 @@ function magenta_slot_image( string $slot, array $args = array() ): void {
 	 * uploaded to the slot.
 	 */
 	if ( ! empty( $def['graphic'] ) ) {
+		// Intrinsic size comes from the slot's own ratio, so the box is
+		// reserved at the right shape and the artwork cannot shift the layout.
+		$ratios = array(
+			'4x5'  => array( 1000, 1250 ),
+			'16x9' => array( 1600, 900 ),
+			'1x1'  => array( 900, 900 ),
+			'cut'  => array( 1200, 900 ),
+		);
+		$dim = isset( $ratios[ $def['ratio'] ] ) ? $ratios[ $def['ratio'] ] : array( 1200, 1200 );
+
 		printf(
 			'<img src="%1$s" alt="" role="presentation" class="slot-img slot-img--graphic %2$s" width="%3$d" height="%4$d" loading="%5$s" decoding="%6$s"%7$s>',
 			esc_url( MAGENTA_URI . '/assets/img/graphics/' . $def['graphic'] ),
 			esc_attr( $a['class'] ),
-			1600,
-			1600,
+			$dim[0],
+			$dim[1],
 			$a['eager'] ? 'eager' : 'lazy',
 			$a['eager'] ? 'sync' : 'async',
 			$a['eager'] ? ' fetchpriority="high"' : ''
