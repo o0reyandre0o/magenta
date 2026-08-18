@@ -96,6 +96,31 @@ function magenta_slot_image( string $slot, array $args = array() ): void {
 		return;
 	}
 
+	/*
+	 * No photograph uploaded yet, but the slot ships with brand artwork.
+	 *
+	 * These are drawn in the same CMYK process language as the rest of the
+	 * site - halftone screens on their real angles, registration marks, colour
+	 * bars. They are deliberately non-representational: a generated graphic
+	 * must never be mistaken for a photograph of work the studio has produced,
+	 * so none of them depicts a printed job. They make the page look finished
+	 * while the real shoot is outstanding, and step aside the moment a photo is
+	 * uploaded to the slot.
+	 */
+	if ( ! empty( $def['graphic'] ) ) {
+		printf(
+			'<img src="%1$s" alt="" role="presentation" class="slot-img slot-img--graphic %2$s" width="%3$d" height="%4$d" loading="%5$s" decoding="%6$s"%7$s>',
+			esc_url( MAGENTA_URI . '/assets/img/graphics/' . $def['graphic'] ),
+			esc_attr( $a['class'] ),
+			1600,
+			1600,
+			$a['eager'] ? 'eager' : 'lazy',
+			$a['eager'] ? 'sync' : 'async',
+			$a['eager'] ? ' fetchpriority="high"' : ''
+		);
+		return;
+	}
+
 	printf(
 		'<div class="slot-ph slot-ph--%1$s %2$s" role="img" aria-label="%3$s" title="%4$s">
 			<span class="slot-ph__mark" aria-hidden="true"></span>
