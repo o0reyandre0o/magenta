@@ -30,13 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="site-header__inner">
 
 		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> &mdash; home">
-			<span class="brand__mark" aria-hidden="true">
-				<svg viewBox="0 0 32 32" width="26" height="26" fill="none">
-					<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="2"/>
-					<path d="M16 2v28M2 16h28" stroke="currentColor" stroke-width="2"/>
-				</svg>
-			</span>
-			<span class="brand__word">MAGENTA</span>
+			<?php get_template_part( 'template-parts/logo' ); ?>
 		</a>
 
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'magenta' ); ?>">
@@ -67,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</nav>
 
-		<a class="btn btn--ink site-header__cta" href="#contact">
+		<a class="btn btn--paper site-header__cta" href="#contact">
 			<?php esc_html_e( 'Start a job', 'magenta' ); ?>
 			<span aria-hidden="true">&rarr;</span>
 		</a>
@@ -95,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		);
 	}
 	?>
-	<a class="btn btn--magenta" href="#contact"><?php esc_html_e( 'Start a job', 'magenta' ); ?></a>
+	<a class="btn btn--paper" href="#contact"><?php esc_html_e( 'Start a job', 'magenta' ); ?></a>
 </div>
 
 <main id="main" class="site-main">
