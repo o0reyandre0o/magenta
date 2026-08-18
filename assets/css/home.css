@@ -773,6 +773,43 @@
   .cta__grid { grid-template-columns: 1.05fr 0.95fr; }
 }
 
+/* Closing background, washed back so the copy holds over whatever exposure
+   comes back from the shoot. Same reasoning as .process__band::after: the
+   photograph is not taken yet, so the section cannot depend on it. */
+.cta { position: relative; isolation: isolate; }
+
+.cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cta__bg img,
+.cta__bg .slot-ph {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    var(--paper) 0%,
+    color-mix(in srgb, var(--paper) 92%, transparent) 48%,
+    color-mix(in srgb, var(--paper) 72%, transparent) 100%
+  );
+}
+
+/* Everything real sits above the wash. */
+.cta > .wrap,
+.cta .reg-marks { position: relative; z-index: 2; }
+
 .cta__copy { position: relative; }
 
 .cta__title { margin: 0 0 var(--sp-5); }
@@ -873,3 +910,28 @@
 }
 
 .faq-pending li { font-size: var(--fs-sm); }
+
+/* Workshop band closing the studio section. Full width on purpose - it is the
+   evidence for the paragraph above it, so it should not sit in a column. */
+.about__studio {
+  margin: clamp(3rem, 2rem + 4vw, 5rem) auto 0;
+  width: min(100% - (var(--gutter) * 2), var(--wrap));
+}
+
+.about__studio img,
+.about__studio .slot-ph {
+  width: 100%;
+  height: auto;
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.about__studio-cap {
+  margin-top: var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}

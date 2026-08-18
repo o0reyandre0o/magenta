@@ -12,6 +12,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 <section class="section section--paper cta" id="contact" data-reg-scope>
 	<?php magenta_reg_marks(); ?>
 
+	<?php
+	/*
+	 * Closing background. The slot was written into the brief as "Closing
+	 * section background" but no template ever output it, so the shot could
+	 * have been taken and had nowhere to land.
+	 *
+	 * It sits under a heavy paper wash rather than at full strength: the
+	 * photograph does not exist yet, so the section cannot assume it will be
+	 * light in the places the type needs it to be. The form on top carries its
+	 * own opaque ground, so only the copy column depends on the wash.
+	 */
+	?>
+	<div class="cta__bg" aria-hidden="true">
+		<?php magenta_slot_image( 'cta_background', array( 'sizes' => '100vw' ) ); ?>
+	</div>
+
 	<div class="wrap cta__grid">
 
 		<div class="cta__copy">
