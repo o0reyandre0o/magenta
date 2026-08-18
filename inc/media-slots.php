@@ -269,6 +269,15 @@ function magenta_media_admin_assets( string $hook ): void {
 	wp_enqueue_style(
 		'magenta-admin-media',
 		MAGENTA_URI . '/assets/css/admin.css',
+			'graphic' => 'hero-main.svg',
+			'graphic' => 'press-band.svg',
+			'graphic' => 'cta-bg.svg',
+			'graphic' => 'service-offset.svg',
+			'graphic' => 'service-large.svg',
+			'graphic' => 'service-screen.svg',
+			'graphic' => 'service-finishing.svg',
+			'graphic' => 'service-packaging.svg',
+			'graphic' => 'service-signage.svg',
 		array(),
 		MAGENTA_VERSION
 	);
