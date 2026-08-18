@@ -122,6 +122,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-4x5',
 			'min'   => '2400 x 3000px',
 			'spec'  => 'Barbara at the press or over a proof, in profile, natural side light. Candid - she should be looking at the work, not the camera.',
+			'graphic' => 'studio-panel.svg',
 		),
 		'about_cutout'       => array(
 			'group' => 'About',
@@ -156,6 +157,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-cut',
 			'min'   => '2400px long edge',
 			'spec'  => 'Pantone book fanned open on white, shot overhead. Fan it so magenta and the process colours are the ones showing.',
+			'graphic' => 'swatch-fan.svg',
 		),
 
 		/* ---------------------------------------------------------- Close */
