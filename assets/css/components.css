@@ -35,6 +35,7 @@
 
 .btn--magenta { background: var(--m); color: var(--paper); }
 .btn--ink     { background: var(--ink); color: var(--paper); }
+.btn--paper   { background: var(--paper); color: var(--m); }
 .btn--outline { background: transparent; color: inherit; }
 .btn--block   { width: 100%; justify-content: center; }
 
@@ -394,10 +395,20 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--m);
+  color: var(--paper);
   border-bottom: 2px solid var(--ink);
   transition: transform var(--dur) var(--ease-out);
+}
+
+/* Only let the ground go translucent where the blur can actually pay for it.
+   Without the blur, 92% magenta just shows page content ghosting through. */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .site-header {
+    background: color-mix(in srgb, var(--m) 92%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .site-header.is-hidden { transform: translateY(-100%); }
@@ -414,21 +425,24 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-2);
   text-decoration: none;
-  color: var(--m);
+  color: var(--paper);
   margin-right: auto;
 }
 
-.brand__mark { display: grid; place-items: center; transition: transform var(--dur) var(--ease-back); }
-.brand:hover .brand__mark { transform: rotate(90deg); }
-
-.brand__word {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  letter-spacing: 0.01em;
-  color: var(--ink);
+/* The lockup is one piece of artwork with a cropped viewBox, so height is the
+   only dimension worth setting - width follows the 3.09:1 ratio on its own.
+   It carries a descending G and an ascending T, so it needs a touch more room
+   than a plain wordmark of the same cap height would. */
+.brand__logo {
+  display: block;
+  height: clamp(2.1rem, 1.55rem + 1.5vw, 2.75rem);
+  width: auto;
+  transition: transform var(--dur) var(--ease-back);
 }
+
+.brand:hover .brand__logo,
+.brand:focus-visible .brand__logo { transform: translateY(-2px) rotate(-1deg); }
 
 .site-nav__list { display: none; gap: var(--sp-5); }
 
@@ -446,7 +460,7 @@
   position: absolute;
   left: 0; right: 0; bottom: -6px;
   height: 3px;
-  background: var(--m);
+  background: var(--paper);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur) var(--ease-out);
