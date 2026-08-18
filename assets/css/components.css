@@ -533,15 +533,20 @@
   .site-footer__inner { grid-template-columns: 1.4fr 1fr; }
 }
 
-/* The footer lockup is a brand statement rather than a UI element, so it is
-   sized by width off the column it sits in - height follows the ratio. */
+/* Sized to land on the same cap height the wordmark had when it was live
+   text, so replacing the type with artwork did not change how big the brand
+   reads. That type was Anton at clamp(2.5rem, 1.5rem + 6vw, 6rem); Anton's
+   caps measure 0.865em, and the cap band is 0.614 of this viewBox's height,
+   so the lockup runs 1.408x the old font size - 56px tall at the small end,
+   135px at the large. Driven by width (height x 3.086) so min() can cap it
+   against the column without the aspect ratio drifting. */
 .site-footer__logo {
-  margin: 0 0 var(--sp-4);
+  margin: 0 0 var(--sp-3);
 }
 
 .site-footer__logo .brand__logo {
   display: block;
-  width: min(100%, clamp(11rem, 6rem + 20vw, 21rem));
+  width: min(100%, clamp(10.9rem, 6.5rem + 26.1vw, 26.1rem));
   height: auto;
   color: var(--paper);
 }

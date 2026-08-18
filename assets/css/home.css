@@ -111,7 +111,12 @@
 }
 
 .hero__scroll {
-  display: inline-flex;
+  /* Block-level flex, not inline-flex: this box carries an explicit width and
+     relies on margin-inline:auto to line its left edge up with the wrap. Auto
+     margins do not centre an inline-level box, so as inline-flex it sat at
+     x:0, hard against the screen edge while the rest of the page was inset by
+     the gutter - which read as the cue having lost its styling entirely. */
+  display: flex;
   align-items: center;
   gap: var(--sp-2);
   margin-top: var(--sp-8);
