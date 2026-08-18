@@ -185,6 +185,52 @@ function magenta_title_separator(): string {
 }
 add_filter( 'document_title_separator', 'magenta_title_separator' );
 
+/**
+ * Keyword terms for the current view.
+ *
+ * Built from the same topic list the entity graph uses, with the two or three
+ * geo-qualified phrases the studio actually competes for, and whatever the
+ * current archive or project is about pushed to the front.
+ *
+ * Worth being straight about what this tag is: Google has ignored
+ * meta keywords as a ranking signal since 2009 and has said so on the record,
+ * and Bing treats it at best as a spam signal. It is emitted because audit
+ * tools still check for it and because some smaller crawlers and content
+ * classifiers do read it - not because it will move a position. The terms that
+ * do work are the ones in the title, the headings and the entity graph.
+ *
+ * @return array<int, string>
+ */
+function magenta_keywords(): array {
+	$terms = array(
+		'Printing Cayman Islands',
+		'Print Production Grand Cayman',
+		'Graphic Design Cayman',
+	);
+
+	// The current view leads, when it has a subject of its own.
+	if ( is_tax( 'service' ) || is_tax( 'sector' ) ) {
+		array_unshift( $terms, (string) single_term_title( '', false ) );
+	} elseif ( is_singular( 'project' ) ) {
+		$client = magenta_project_client();
+		if ( $client ) {
+			array_unshift( $terms, $client );
+		}
+	}
+
+	$terms = array_merge( $terms, magenta_knows_about() );
+
+	// A long tail here reads as stuffing to anything that does parse it.
+	$terms = array_slice( array_values( array_unique( array_filter( $terms ) ) ), 0, 12 );
+
+	/**
+	 * Filter the keyword terms.
+	 *
+	 * @param array $terms Keyword phrases.
+	 */
+	return apply_filters( 'magenta_keywords', $terms );
+}
+
 function magenta_print_meta(): void {
 	static $printed = false;
 	if ( $printed ) {
@@ -202,6 +248,21 @@ function magenta_print_meta(): void {
 
 	$tags[] = sprintf( '<meta name="description" content="%s">', esc_attr( $description ) );
 	$tags[] = sprintf( '<link rel="canonical" href="%s">', esc_url( $url ) );
+	$tags[] = sprintf( '<meta name="keywords" content="%s">', esc_attr( implode( ', ', magenta_keywords() ) ) );
+
+	/*
+	 * Author and publisher.
+	 *
+	 * The studio authors and publishes its own site, so both resolve to the
+	 * organisation rather than to a person. These two tags exist because audit
+	 * tools look for them; the signal search engines and AI assistants
+	 * actually resolve is the publisher property on the WebSite node in
+	 * inc/schema.php, which points at the Organization entity by @id. A meta
+	 * name of "publisher" was never part of any spec - the standardised form
+	 * was <link rel="publisher">, which Google retired with Google+.
+	 */
+	$tags[] = sprintf( '<meta name="author" content="%s">', esc_attr( get_bloginfo( 'name' ) ) );
+	$tags[] = sprintf( '<meta name="publisher" content="%s">', esc_attr( get_bloginfo( 'name' ) ) );
 
 	/* ----------------------------------------------------------- Open Graph */
 	$tags[] = sprintf( '<meta property="og:type" content="%s">', $is_project ? 'article' : 'website' );
