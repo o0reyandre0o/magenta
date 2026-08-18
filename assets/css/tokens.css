@@ -111,8 +111,11 @@
   --z-grain:  1;
   --z-base:   2;
   --z-sticky: 50;
-  --z-header: 60;
-  --z-nav:    70;
+  /* The mobile drawer sits below the header, not above it. The close control
+     IS the header's toggle - its bars rotate into an X when the drawer opens -
+     so stacking the drawer on top buried the only way out of the menu. */
+  --z-nav:    60;
+  --z-header: 70;
 }
 
 /* The design is a single committed light palette - it is a print shop, the

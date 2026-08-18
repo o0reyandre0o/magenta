@@ -34,31 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</a>
 
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'magenta' ); ?>">
-			<?php
-			if ( has_nav_menu( 'primary' ) ) {
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'container'      => false,
-						'menu_class'     => 'site-nav__list',
-						'depth'          => 1,
-					)
-				);
-			} else {
-				// Placeholder navigation until the menu is built in wp-admin.
-				echo '<ul class="site-nav__list">';
-				$fallback = array(
-					'#work'     => __( 'Work', 'magenta' ),
-					'#services' => __( 'Services', 'magenta' ),
-					'#process'  => __( 'Process', 'magenta' ),
-					'#studio'   => __( 'Studio', 'magenta' ),
-				);
-				foreach ( $fallback as $href => $label ) {
-					printf( '<li><a href="%s">%s</a></li>', esc_url( $href ), esc_html( $label ) );
-				}
-				echo '</ul>';
-			}
-			?>
+			<?php magenta_primary_nav( 'site-nav__list' ); ?>
 		</nav>
 
 		<a class="btn btn--paper site-header__cta" href="#contact">
@@ -77,18 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </header>
 
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
-	<?php
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_nav_menu(
-			array(
-				'theme_location' => 'primary',
-				'container'      => false,
-				'menu_class'     => 'mobile-nav__list',
-				'depth'          => 1,
-			)
-		);
-	}
-	?>
+	<?php magenta_primary_nav( 'mobile-nav__list' ); ?>
 	<a class="btn btn--paper" href="#contact"><?php esc_html_e( 'Start a job', 'magenta' ); ?></a>
 </div>
 

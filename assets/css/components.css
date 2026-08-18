@@ -576,9 +576,17 @@
 .site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .site-footer__credit a:hover { color: var(--y); }
 
-/* Audited score badge. Scales down on narrow screens rather than forcing the
-   legal row to scroll; the intrinsic 460x72 is declared on the element so the
-   space is reserved before the image arrives. */
+/* Right-hand column of the footer's top row. That column holds only the
+   footer menu, which is short or empty, so the badge fills space that was
+   otherwise dead rather than competing with anything for it. */
+.site-footer__aside {
+  display: grid;
+  gap: var(--sp-6);
+  align-content: start;
+}
+
+/* Audited score badge. The intrinsic 460x72 is declared on the element so the
+   space is reserved before the image arrives over the network. */
 .seo-badge {
   display: block;
   line-height: 0;
@@ -596,9 +604,14 @@
   height: auto;
 }
 
-@media (max-width: 900px) {
-  /* Left-align with everything else once the row has wrapped. */
-  .seo-badge { margin-right: auto; }
+@media (min-width: 800px) {
+  /* Hard against the right edge of the wrap, which is where the empty space
+     was. Below this width the grid is one column and it stacks left like
+     everything else. */
+  .site-footer__aside .seo-badge { justify-self: end; }
+}
+
+@media (max-width: 799px) {
   .seo-badge img { width: 320px; }
 }
 

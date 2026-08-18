@@ -10,6 +10,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * The primary navigation, or the placeholder standing in for it.
+ *
+ * Shared by the header bar and the mobile drawer. The placeholder used to be
+ * written inline in header.php for the desktop bar only, so a site with no
+ * menu assigned in wp-admin rendered four links on desktop and nothing at all
+ * in the drawer - the mobile menu looked broken because it was empty except
+ * for the button underneath it.
+ *
+ * @param string $class Class for the generated <ul>.
+ */
+function magenta_primary_nav( string $class ): void {
+	if ( has_nav_menu( 'primary' ) ) {
+		wp_nav_menu(
+			array(
+				'theme_location' => 'primary',
+				'container'      => false,
+				'menu_class'     => $class,
+				'depth'          => 1,
+			)
+		);
+		return;
+	}
+
+	// Placeholder navigation until the menu is built in wp-admin. The targets
+	// are the section ids front-page.php actually renders.
+	$fallback = array(
+		'#work'     => __( 'Work', 'magenta' ),
+		'#services' => __( 'Services', 'magenta' ),
+		'#process'  => __( 'Process', 'magenta' ),
+		'#studio'   => __( 'Studio', 'magenta' ),
+	);
+
+	printf( '<ul class="%s">', esc_attr( $class ) );
+	foreach ( $fallback as $href => $label ) {
+		printf( '<li><a href="%s">%s</a></li>', esc_url( $href ), esc_html( $label ) );
+	}
+	echo '</ul>';
+}
+
+/**
  * Render an image slot, or the print placeholder standing in for it.
  *
  * The placeholder is not a broken-image state. It is a designed element that
