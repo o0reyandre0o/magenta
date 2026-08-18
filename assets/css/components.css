@@ -484,8 +484,12 @@
 }
 
 .nav-toggle__bar { display: block; width: 20px; height: 2.5px; background: var(--ink); transition: transform var(--dur) var(--ease-out); }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:first-child { transform: translateY(3.75px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:last-child  { transform: translateY(-3.75px) rotate(-45deg); }
+/* Counted from the end, not the start. The button's first child is the
+   screen-reader label, so :first-child never matched a bar and only the lower
+   stroke ever rotated - the control showed a half-formed X. The two bars are
+   always the last two children whatever precedes them. */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-last-child(2) { transform: translateY(3.75px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:last-child        { transform: translateY(-3.75px) rotate(-45deg); }
 
 .mobile-nav {
   position: fixed;
@@ -496,7 +500,12 @@
   align-content: center;
   justify-items: center;
   gap: var(--sp-5);
-  padding: var(--sp-8);
+  /* Top padding clears the header, which paints over this panel now that it
+     carries the close control. overflow guards the case where a long menu on
+     a short screen would otherwise centre itself off the top edge. */
+  padding: calc(var(--sp-8) + 4rem) var(--sp-8) var(--sp-8);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--m);
   color: var(--paper);
 }
