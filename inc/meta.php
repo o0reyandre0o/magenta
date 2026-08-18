@@ -318,6 +318,41 @@ function magenta_print_meta(): void {
 add_action( 'wp_head', 'magenta_print_meta', 5 );
 
 /**
+ * Favicon set, drawn from the logo's own M.
+ *
+ * Only printed when no Site Icon has been set in the customiser. WordPress
+ * emits its own full set from that setting, and two competing sets in one
+ * <head> is how you end up with a browser picking the wrong one - so the
+ * theme's icons are a default that steps aside the moment a real one is
+ * uploaded, which is the same rule the business details follow.
+ *
+ * The SVG is the one that matters: it is 927 bytes, stays sharp at every
+ * size, and is what current browsers prefer. The PNGs are there for Safari,
+ * iOS and Android, which do not take SVG favicons.
+ */
+function magenta_print_favicon(): void {
+	if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
+		return;
+	}
+
+	$img = MAGENTA_URI . '/assets/img/';
+
+	$tags = array(
+		sprintf( '<link rel="icon" href="%s" type="image/svg+xml">', esc_url( $img . 'favicon.svg' ) ),
+		sprintf( '<link rel="icon" href="%s" sizes="32x32" type="image/png">', esc_url( $img . 'favicon-32.png' ) ),
+		sprintf( '<link rel="icon" href="%s" sizes="192x192" type="image/png">', esc_url( $img . 'icon-192.png' ) ),
+		sprintf( '<link rel="icon" href="%s" sizes="512x512" type="image/png">', esc_url( $img . 'icon-512.png' ) ),
+		sprintf( '<link rel="apple-touch-icon" href="%s">', esc_url( $img . 'apple-touch-icon.png' ) ),
+	);
+
+	echo "
+" . implode( "
+", $tags ) . "
+";
+}
+add_action( 'wp_head', 'magenta_print_favicon', 4 );
+
+/**
  * Stop WordPress emitting its own canonical alongside ours.
  */
 remove_action( 'wp_head', 'rel_canonical' );
