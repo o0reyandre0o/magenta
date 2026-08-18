@@ -71,6 +71,27 @@ function magenta_toctoc_nodes(): array {
 }
 
 /**
+ * What the studio does, as topic terms.
+ *
+ * Shared by the entity graph's knowsAbout and by the keywords meta tag, so the
+ * two can never drift into describing different businesses.
+ *
+ * @return array<int, string>
+ */
+function magenta_knows_about(): array {
+	return array(
+		'Offset Printing',
+		'Large Format Printing',
+		'Screen Printing',
+		'Foil Stamping',
+		'Packaging Design',
+		'Signage',
+		'Graphic Design',
+		'Brand Identity',
+	);
+}
+
+/**
  * Magenta's own nodes, plus the WebSite node that credits TocToc as creator.
  */
 function magenta_site_nodes(): array {
@@ -85,16 +106,7 @@ function magenta_site_nodes(): array {
 		'url'         => $home,
 		'description' => get_bloginfo( 'description' ),
 		'areaServed'  => 'Cayman Islands',
-		'knowsAbout'  => array(
-			'Offset Printing',
-			'Large Format Printing',
-			'Screen Printing',
-			'Foil Stamping',
-			'Packaging Design',
-			'Signage',
-			'Graphic Design',
-			'Brand Identity',
-		),
+		'knowsAbout'  => magenta_knows_about(),
 		'sameAs'      => magenta_business_same_as(),
 	);
 
