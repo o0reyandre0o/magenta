@@ -40,20 +40,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 		</div>
 
-		<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'magenta' ); ?>">
-			<?php
-			if ( has_nav_menu( 'footer' ) ) {
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer',
-						'container'      => false,
-						'menu_class'     => 'site-footer__list',
-						'depth'          => 1,
-					)
-				);
-			}
-			?>
-		</nav>
+		<div class="site-footer__aside">
+			<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'magenta' ); ?>">
+				<?php
+				if ( has_nav_menu( 'footer' ) ) {
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer',
+							'container'      => false,
+							'menu_class'     => 'site-footer__list',
+							'depth'          => 1,
+						)
+					);
+				}
+				?>
+			</nav>
+
+			<a class="seo-badge" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="noopener">
+				<?php
+				/*
+				 * Lazy and last: the badge is rendered by admin-ajax on another
+				 * host, which is an uncached round trip. Below the fold it costs
+				 * nothing, but eager it would sit in the critical path of a page
+				 * whose speed is already the weakest score on the audit. The
+				 * intrinsic size is declared so it cannot shift the layout when
+				 * it lands.
+				 */
+				?>
+				<img src="<?php echo esc_url( MAGENTA_AGENCY_BADGE_SRC ); ?>"
+					alt="<?php esc_attr_e( 'SEO score verified by TocToc Marketing', 'magenta' ); ?>"
+					width="460" height="72" loading="lazy" decoding="async">
+			</a>
+		</div>
 
 	</div>
 
@@ -76,21 +94,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</p>
 
-		<a class="seo-badge" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="noopener">
-			<?php
-			/*
-			 * Lazy and last: the badge is rendered by admin-ajax on another
-			 * host, which is an uncached round trip. Below the fold it costs
-			 * nothing, but eager it would sit in the critical path of a page
-			 * whose speed is already the weakest score on the audit. The
-			 * intrinsic size is declared so it cannot shift the layout when
-			 * it lands.
-			 */
-			?>
-			<img src="<?php echo esc_url( MAGENTA_AGENCY_BADGE_SRC ); ?>"
-				alt="<?php esc_attr_e( 'SEO score verified by TocToc Marketing', 'magenta' ); ?>"
-				width="460" height="72" loading="lazy" decoding="async">
-		</a>
 	</div>
 </footer>
 
