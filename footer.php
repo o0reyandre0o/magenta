@@ -17,7 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="site-footer__inner">
 
 		<div class="site-footer__brand">
-			<p class="site-footer__word">MAGENTA</p>
+			<p class="site-footer__logo">
+				<?php get_template_part( 'template-parts/logo' ); ?>
+				<span class="screen-reader-text">MAGENTA</span>
+			</p>
 			<p class="site-footer__line">
 				<?php esc_html_e( 'Print production and graphic design. Grand Cayman, Cayman Islands.', 'magenta' ); ?>
 			</p>

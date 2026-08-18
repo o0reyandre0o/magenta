@@ -438,11 +438,7 @@
   display: block;
   height: clamp(2.1rem, 1.55rem + 1.5vw, 2.75rem);
   width: auto;
-  transition: transform var(--dur) var(--ease-back);
 }
-
-.brand:hover .brand__logo,
-.brand:focus-visible .brand__logo { transform: translateY(-2px) rotate(-1deg); }
 
 .site-nav__list { display: none; gap: var(--sp-5); }
 
@@ -537,13 +533,17 @@
   .site-footer__inner { grid-template-columns: 1.4fr 1fr; }
 }
 
-.site-footer__word {
-  margin: 0 0 var(--sp-3);
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 1.5rem + 6vw, 6rem);
-  line-height: 0.9;
-  letter-spacing: var(--tracking-display);
-  color: var(--m);
+/* The footer lockup is a brand statement rather than a UI element, so it is
+   sized by width off the column it sits in - height follows the ratio. */
+.site-footer__logo {
+  margin: 0 0 var(--sp-4);
+}
+
+.site-footer__logo .brand__logo {
+  display: block;
+  width: min(100%, clamp(11rem, 6rem + 20vw, 21rem));
+  height: auto;
+  color: var(--paper);
 }
 
 .site-footer__line { max-width: 34ch; opacity: 0.75; }
@@ -784,7 +784,6 @@ html {
    to carry it. */
 .display,
 .process__title,
-.site-footer__word,
 .marquee__item {
   text-shadow:
     calc(var(--energy, 0) * -0.035em) calc(var(--energy, 0) * 0.013em) 0 var(--c),
