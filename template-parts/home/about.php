@@ -65,20 +65,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div>
 
-	<?php
-	/*
-	 * Wide of the workshop. Specced in the brief as "proof that the work is
-	 * real" but never rendered by any template until now - the strongest
-	 * credibility shot in the whole brief was one nobody could have seen.
-	 *
-	 * Full width and below the copy, so it reads as evidence for the claim the
-	 * paragraph just made rather than as decoration beside it.
-	 */
-	?>
-	<figure class="about__studio">
-		<?php magenta_slot_image( 'about_studio', array( 'sizes' => '100vw' ) ); ?>
-		<figcaption class="about__studio-cap">
-			<?php esc_html_e( 'The floor in George Town. Everything on this site was made in this room.', 'magenta' ); ?>
-		</figcaption>
-	</figure>
 </section>
