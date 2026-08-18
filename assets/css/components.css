@@ -576,6 +576,32 @@
 .site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .site-footer__credit a:hover { color: var(--y); }
 
+/* Audited score badge. Scales down on narrow screens rather than forcing the
+   legal row to scroll; the intrinsic 460x72 is declared on the element so the
+   space is reserved before the image arrives. */
+.seo-badge {
+  display: block;
+  line-height: 0;
+  opacity: 0.85;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.seo-badge:hover,
+.seo-badge:focus-visible { opacity: 1; }
+
+.seo-badge img {
+  display: block;
+  width: 460px;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  /* Left-align with everything else once the row has wrapped. */
+  .seo-badge { margin-right: auto; }
+  .seo-badge img { width: 320px; }
+}
+
 /* ============================================================== Doodles
    The hand-drawn layer: marks a designer makes on top of a proof. Always
    decorative, never interactive, never in the accessibility tree. */
