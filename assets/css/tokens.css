@@ -8,17 +8,25 @@
      Magenta is the brand, and it is also the M in CMYK. Cyan and yellow
      are not decoration - they are the other plates, which is why they are
      allowed on the page at all. Keep them under ~8% of any given screen. */
-  --m:            #EA028C;
-  --m-deep:       #B80170;
+  /* Sampled from the brand SVGs in the kickoff kit, which are authoritative -
+     the values that were here before were close but not exact, and the
+     secondary was process cyan rather than the brand's teal. */
+  --m:            #EC008C;   /* logo magenta */
+  --m-deep:       #B4006A;   /* darkened magenta - clears AA where --m does not */
   --m-tint:       #FDE4F2;
-  --c:            #00AEEF;
-  --y:            #FFE800;
-  --k:            #0D0D0D;
+  --teal:         #2BA48C;   /* brand secondary, from the icon set */
+  --y:            #FFF100;   /* brand yellow */
+  --k:            #333333;   /* brand dark, from the primary logo */
+
+  /* Kept so the existing process-colour effects still resolve. The brand does
+     not actually use cyan; anything still reading --c is a leftover of the
+     four-plate treatment and should move to --teal. */
+  --c:            var(--teal);
 
   --paper:        #FDFEFF;   /* coated white - the default ground */
   --stock:        #F2EDE4;   /* uncoated / raw stock - section breathers */
-  --ink:          #0D0D0D;
-  --ink-soft:     #4A4A4A;
+  --ink:          #333333;
+  --ink-soft:     #5A5A5A;
   --rule:         rgba(13, 13, 13, 0.14);
 
   /* --- Semantic --------------------------------------------------------- */
