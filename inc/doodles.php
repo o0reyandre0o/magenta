@@ -197,3 +197,35 @@ function magenta_mark( string $text, string $doodle = 'lasso', string $colour = 
 		$svg
 	);
 }
+
+/**
+ * The brand blob.
+ *
+ * Every icon and sticker in the brand kit sits on the same hand-drawn organic
+ * shape - it is the identity's core device, the way registration marks were
+ * the device of the treatment this replaced. Lifted verbatim from the submark
+ * artwork so it is the real curve, not an approximation of it.
+ *
+ * Decorative only: it is never in the accessibility tree, and it takes its
+ * colour from currentColor so a placement class can tint it.
+ *
+ * @param string $class Placement class.
+ * @param string $flip  '', 'h', 'v' or 'hv' to mirror it, so repeated blobs do
+ *                      not read as the same stamp copied around the page.
+ */
+function magenta_blob( string $class = '', string $flip = '' ): void {
+	$sx = false !== strpos( $flip, 'h' ) ? -1 : 1;
+	$sy = false !== strpos( $flip, 'v' ) ? -1 : 1;
+
+	printf(
+		'<svg class="blob %1$s" viewBox="0 0 500 500" fill="currentColor" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+			<g transform="translate(%2$d %3$d) scale(%4$d %5$d)"><path d="%6$s"/></g>
+		</svg>',
+		esc_attr( $class ),
+		1 === $sx ? 0 : 500,
+		1 === $sy ? 0 : 500,
+		$sx,
+		$sy,
+		'M270.25,38.89c-85.23-4.01-188.77,43.24-219.69,127.05-13.6,37.93-10.94,79.98-5.18,119.45,9.32,56.32,24.82,121.59,77.3,152.81,33.03,19.41,73.13,23.18,110.83,24.63,67.45,2.02,143.67-10.08,192.05-60.98,30.04-31.42,36.71-76.48,33.45-118.54-1.68-25.63-5.27-51.22-9.78-76.52-6.1-33.41-15.06-66.84-34.37-94.94-31.69-47.31-88.85-70.89-144.48-72.96h-.13Z'
+	);
+}

@@ -75,6 +75,21 @@ $steps = array(
 	</div>
 
 	<!-- Stations, threaded onto a rail that fills with the scroll. -->
+	<?php
+	/*
+	 * Brand shapes behind the steps. A flat dark slab with a rail down it was
+	 * the whole background before, which read as an empty grey panel once the
+	 * ink token moved to the brand's #333. These carry the identity's own
+	 * device instead, tinted and mirrored so they do not read as one stamp
+	 * repeated.
+	 */
+	?>
+	<div class="process__shapes" aria-hidden="true">
+		<?php magenta_blob( 'blob--process-a', '' ); ?>
+		<?php magenta_blob( 'blob--process-b', 'h' ); ?>
+		<?php magenta_blob( 'blob--process-c', 'hv' ); ?>
+	</div>
+
 	<div class="process__stations wrap" data-rail>
 		<div class="process__rail" aria-hidden="true">
 			<span class="process__rail-fill"></span>
