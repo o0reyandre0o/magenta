@@ -46,7 +46,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-4x5',
 			'min'   => '2400 x 3000px',
 			'spec'  => 'Macro of the roller loaded with magenta ink - wet, viscous, catching a hard side light. Shoot tight enough that the ink reads as texture, not as machinery. Leave empty space on the left third: the headline sits there.',
-			'graphic' => 'hero-main.svg',
+			'graphic' => 'graphics/hero-main.svg',
 		),
 		'hero_press'         => array(
 			'group' => 'Hero',
@@ -55,7 +55,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-16x9',
 			'min'   => '3200 x 1800px',
 			'spec'  => 'A printed sheet coming off the press, shot with a slow enough shutter that the movement smears. Blur is the point - do not freeze it. Overhead or three-quarter angle.',
-			'graphic' => 'press-band.svg',
+			'graphic' => 'graphics/press-band.svg',
 		),
 
 		/* ------------------------------------------------------ Services */
@@ -66,7 +66,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'Stack of freshly cut sheets, edge on, so the layers read as lines. Neutral background, hard light, strong shadow.',
-			'graphic' => 'service-offset.svg',
+			'graphic' => 'brand/icon-08.svg',
 		),
 		'service_large'      => array(
 			'group' => 'Services',
@@ -75,7 +75,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'Installed vinyl or a banner in a real Cayman location - a hotel lobby, a restaurant window. Shot straight on, daylight.',
-			'graphic' => 'service-large.svg',
+			'graphic' => 'brand/icon-05.svg',
 		),
 		'service_screen'     => array(
 			'group' => 'Services',
@@ -84,7 +84,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'The squeegee mid-pull across the screen, hands in frame. Shoot a burst and pick the frame where the ink is spreading.',
-			'graphic' => 'service-screen.svg',
+			'graphic' => 'brand/icon-03.svg',
 		),
 		'service_finishing'  => array(
 			'group' => 'Services',
@@ -93,7 +93,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'Detail of hot foil or embossing catching the light. Tilt the stock until the foil flares. Dark background so the shine separates.',
-			'graphic' => 'service-finishing.svg',
+			'graphic' => 'brand/icon-01.svg',
 		),
 		'service_packaging'  => array(
 			'group' => 'Services',
@@ -102,7 +102,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'A flat, unfolded die-cut box shot dead overhead on white, plus the same box assembled. Two frames, same lighting.',
-			'graphic' => 'service-packaging.svg',
+			'graphic' => 'brand/icon-02.svg',
 		),
 		'service_signage'    => array(
 			'group' => 'Services',
@@ -111,7 +111,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
 			'spec'  => 'Cut acrylic or dimensional letters mounted on a wall, raking light so the letters throw shadows.',
-			'graphic' => 'service-signage.svg',
+			'graphic' => 'brand/icon-06.svg',
 		),
 
 		/* --------------------------------------------------------- About */
@@ -122,7 +122,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-4x5',
 			'min'   => '2400 x 3000px',
 			'spec'  => 'Barbara at the press or over a proof, in profile, natural side light. Candid - she should be looking at the work, not the camera.',
-			'graphic' => 'studio-panel.svg',
+			'graphic' => 'brand/icon-04.svg',
 		),
 		'about_cutout'       => array(
 			'group' => 'About',
@@ -157,7 +157,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-cut',
 			'min'   => '2400px long edge',
 			'spec'  => 'Pantone book fanned open on white, shot overhead. Fan it so magenta and the process colours are the ones showing.',
-			'graphic' => 'swatch-fan.svg',
+			'graphic' => 'brand/icon-07.svg',
 		),
 
 		/* ---------------------------------------------------------- Close */
@@ -168,7 +168,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-16x9',
 			'min'   => '3200 x 1800px',
 			'spec'  => 'Hands holding a finished piece - a letterpress card, a menu - close enough that you can see the bite in the paper. Shallow depth of field.',
-			'graphic' => 'cta-bg.svg',
+			'graphic' => 'graphics/cta-bg.svg',
 		),
 	);
 
