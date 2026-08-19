@@ -15,6 +15,7 @@
   --m-deep:       #B4006A;   /* darkened magenta - clears AA where --m does not */
   --m-tint:       #FDE4F2;
   --teal:         #2BA48C;   /* brand secondary, from the icon set */
+  --teal-tint:    #D9F0EA;   /* pale teal - highlighter sweeps, same role as --m-tint */
   --y:            #FFF100;   /* brand yellow */
   --k:            #333333;   /* brand dark, from the primary logo */
 

@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					printf(
 						/* translators: %s: highlighted phrase. */
 						wp_kses_post( __( 'Today Magenta prints for a long list of the island\'s hotels, restaurants and retailers, and works as the production partner behind %s.', 'magenta' ) ),
-						wp_kses_post( magenta_highlight( __( 'several of Cayman\'s creative agencies', 'magenta' ), 'c' ) )
+						wp_kses_post( magenta_highlight( __( 'several of Cayman\'s creative agencies', 'magenta' ), 'teal' ) )
 					);
 					?>
 				</p>

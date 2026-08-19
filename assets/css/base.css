@@ -166,7 +166,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background-position: 0 78%;
 }
 
-.hl--c { background-image: linear-gradient(100deg, transparent 0.4%, var(--c) 2%, var(--c) 96%, transparent 99%); }
+.hl--teal { background-image: linear-gradient(100deg, transparent 0.4%, var(--teal-tint) 2%, var(--teal-tint) 96%, transparent 99%); }
 .hl--m { background-image: linear-gradient(100deg, transparent 0.4%, var(--m-tint) 2%, var(--m-tint) 96%, transparent 99%); }
 
 /* ------------------------------------------------------------ Section heads */
