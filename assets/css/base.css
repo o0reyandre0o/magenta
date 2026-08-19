@@ -69,8 +69,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--paper);
 }
 
+/* The deep magenta, not the bright one. Paper on --m measures 3.8:1, which
+   carries a big display heading but fails AA for the eyebrow and the note set
+   at 13px. --m-deep is the same brand magenta darkened and measures 5.96:1, so
+   everything on this ground is legible. The bright --m still does the vibrant
+   work everywhere it sits behind large type or under artwork. */
 .section--magenta {
-  background: var(--m);
+  background: var(--m-deep);
   color: var(--paper);
 }
 
