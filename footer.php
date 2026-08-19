@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </main><!-- /#main -->
 
 <footer class="site-footer">
-	<div class="site-footer__bar" aria-hidden="true"><?php magenta_colour_bar( 40 ); ?></div>
+	<?php magenta_brand_rule( 'site-footer__bar' ); ?>
 
 	<div class="site-footer__inner">
 

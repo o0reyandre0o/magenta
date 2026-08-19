@@ -71,7 +71,7 @@ $steps = array(
 			</p>
 		</div>
 
-		<div class="process__band-bar" aria-hidden="true"><?php magenta_colour_bar( 48 ); ?></div>
+		<?php magenta_brand_rule( 'process__band-bar' ); ?>
 	</div>
 
 	<!-- Stations, threaded onto a rail that fills with the scroll. -->

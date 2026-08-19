@@ -9,8 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<section class="section section--paper cta" id="contact" data-reg-scope>
-	<?php magenta_reg_marks(); ?>
+<section class="section section--paper cta" id="contact">
 
 	<?php
 	/*
@@ -34,9 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p class="eyebrow"><?php esc_html_e( 'Start a job', 'magenta' ); ?></p>
 
 			<h2 class="cta__title">
-				<span class="screen-reader-text"><?php esc_html_e( 'Let us make something you can hold.', 'magenta' ); ?></span>
-				<?php magenta_cmyk_text( 'LET’S PRINT', 'span', 'cmyk--display' ); ?>
-				<em aria-hidden="true"><?php esc_html_e( 'something real.', 'magenta' ); ?></em>
+				<?php esc_html_e( 'Let’s make', 'magenta' ); ?>
+				<em><?php esc_html_e( 'something real.', 'magenta' ); ?></em>
 			</h2>
 
 			<p class="lede">

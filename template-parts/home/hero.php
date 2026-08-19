@@ -13,8 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<section class="hero section" id="top" data-reg-scope>
-	<?php magenta_reg_marks(); ?>
+<section class="hero section" id="top">
+
+	<div class="hero__shapes" aria-hidden="true">
+		<?php magenta_blob( 'blob--hero-a', '' ); ?>
+		<?php magenta_blob( 'blob--hero-b', 'hv' ); ?>
+	</div>
 
 	<div class="hero__grid wrap">
 
@@ -25,11 +29,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 
 			<h1 class="hero__title">
-				<span class="screen-reader-text">Magenta &mdash; <?php esc_html_e( 'from idea to finished piece', 'magenta' ); ?></span>
-				<?php magenta_cmyk_text( 'MAGENTA', 'span', 'cmyk--display' ); ?>
-			</h1>
-
-			<p class="hero__tagline" aria-hidden="true">
 				<?php esc_html_e( 'From idea to', 'magenta' ); ?>
 				<em>
 					<?php
@@ -42,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'lasso', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
-			</p>
+			</h1>
 
 			<p class="lede hero__lede">
 				<?php
@@ -103,7 +102,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<span class="tape tape--hero" aria-hidden="true"></span>
 
-			<?php magenta_doodle( 'asterisk', array( 'colour' => 'c', 'class' => 'doodle--hero-star' ) ); ?>
+			<?php magenta_doodle( 'asterisk', array( 'colour' => 'teal', 'class' => 'doodle--hero-star' ) ); ?>
 			<?php magenta_doodle( 'arrow', array( 'colour' => 'm', 'class' => 'doodle--hero-arrow' ) ); ?>
 		</div>
 

@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</button>
 	</div>
 
-	<div class="site-header__rule" aria-hidden="true"><?php magenta_colour_bar( 40 ); ?></div>
+	<?php magenta_brand_rule( 'site-header__rule' ); ?>
 </header>
 
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>

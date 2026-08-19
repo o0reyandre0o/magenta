@@ -228,64 +228,25 @@ function magenta_reel( string $slug, string $alt ): void {
 	echo '</video>';
 }
 
+
+
 /**
- * The four-colour separation headline.
+ * The brand rule.
  *
- * Prints the same word four times - cyan, magenta, yellow, black - stacked and
- * multiplied. JavaScript drives --reg from 1 to 0 as the block scrolls into
- * view, pulling the plates into register. Only the magenta plate is exposed to
- * assistive technology; the rest are decorative duplicates.
+ * Three flat bands in the studio's own colours, used wherever the press
+ * colour bar used to run. That bar was a CMYK control strip - a device from
+ * the print-shop treatment this theme has moved away from, and one that
+ * implied a four-plate process the studio does not run. This says the same
+ * thing structurally, in the identity's own palette.
  *
- * @param string $text  Word or phrase to separate.
- * @param string $tag   Wrapping element.
- * @param string $class Extra classes.
+ * Decorative: never announced to assistive technology.
+ *
+ * @param string $class Extra classes for placement.
  */
-function magenta_cmyk_text( string $text, string $tag = 'h2', string $class = '' ): void {
-	$tag   = preg_match( '/^h[1-6]$|^p$|^span$|^div$/', $tag ) ? $tag : 'h2';
-	$plates = array( 'c', 'y', 'k' );
-
-	printf( '<%1$s class="cmyk %2$s" data-cmyk>', esc_html( $tag ), esc_attr( $class ) );
-	foreach ( $plates as $plate ) {
-		printf(
-			'<span class="cmyk__plate cmyk__plate--%1$s" aria-hidden="true">%2$s</span>',
-			esc_attr( $plate ),
-			esc_html( $text )
-		);
-	}
-	printf( '<span class="cmyk__plate cmyk__plate--m">%s</span>', esc_html( $text ) );
-	printf( '</%s>', esc_html( $tag ) );
-}
-
-/**
- * Registration marks, printed in the corners of a section the way they are
- * printed outside the trim on a real press sheet.
- */
-function magenta_reg_marks(): void {
-	echo '<div class="reg-marks" aria-hidden="true">';
-	foreach ( array( 'tl', 'tr', 'bl', 'br' ) as $corner ) {
-		printf(
-			'<svg class="reg-mark reg-mark--%s" viewBox="0 0 40 40" width="40" height="40" fill="none">
-				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
-				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
-			</svg>',
-			esc_attr( $corner )
-		);
-	}
-	echo '</div>';
-}
-
-/**
- * The colour bar that runs along the edge of a press sheet.
- */
-function magenta_colour_bar( int $steps = 24 ): void {
-	$ramp = array( 'var(--c)', 'var(--m)', 'var(--y)', 'var(--k)' );
-	echo '<div class="colour-bar" aria-hidden="true">';
-	for ( $i = 0; $i < $steps; $i++ ) {
-		printf(
-			'<span style="background:%s;opacity:%s"></span>',
-			esc_attr( $ramp[ $i % 4 ] ),
-			esc_attr( number_format( 0.35 + ( ( $i % 4 ) + 1 ) * 0.16, 2 ) )
-		);
+function magenta_brand_rule( string $class = '' ): void {
+	printf( '<div class="brand-rule %s" aria-hidden="true">', esc_attr( $class ) );
+	foreach ( array( 'm', 'teal', 'y' ) as $band ) {
+		printf( '<span class="brand-rule__band brand-rule__band--%s"></span>', esc_attr( $band ) );
 	}
 	echo '</div>';
 }
