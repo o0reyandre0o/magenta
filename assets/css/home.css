@@ -727,7 +727,7 @@
 
 .quote-note__by { margin: var(--sp-5) 0 0; font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; }
 .quote-note__by strong { display: block; }
-.quote-note__by span { opacity: 0.6; }
+.quote-note__by span { color: var(--ink-soft); }
 
 /* Pending state is meant to look unfinished. That is the point: nothing here
    pretends to be a real client statement until one exists. */
@@ -747,10 +747,10 @@
   font-size: var(--fs-h3);
   text-transform: uppercase;
   letter-spacing: var(--tracking-display);
-  opacity: 0.45;
+  color: var(--ink-soft);
 }
 
-.quote-note__hint { margin: var(--sp-2) 0 0; font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.55; }
+.quote-note__hint { margin: var(--sp-2) 0 0; font-family: var(--font-mono); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
 
 .testimonials__note {
   margin: var(--sp-6) 0 0;
@@ -759,7 +759,7 @@
   font-size: var(--fs-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(253, 254, 255, 0.7);
+  color: var(--paper);
 }
 
 /* ==================================================================== CTA */
