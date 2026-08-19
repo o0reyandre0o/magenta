@@ -59,59 +59,53 @@ function magenta_slots(): array {
 		),
 
 		/* ------------------------------------------------------ Services */
-		'service_offset'     => array(
+		'service_business'     => array(
 			'group' => 'Services',
-			'label' => 'Offset printing',
+			'label' => 'Business & marketing print',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'Stack of freshly cut sheets, edge on, so the layers read as lines. Neutral background, hard light, strong shadow.',
-			'graphic' => 'brand/icon-08.svg',
+			'spec'  => 'A spread of business cards, a folded brochure and a menu fanned on a plain surface, shot overhead. Show edge quality and stock weight - this is the everyday work, so it has to look considered rather than cheap.',
 		),
-		'service_large'      => array(
+		'service_weddings'      => array(
 			'group' => 'Services',
-			'label' => 'Large format',
+			'label' => 'Weddings & events',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'Installed vinyl or a banner in a real Cayman location - a hotel lobby, a restaurant window. Shot straight on, daylight.',
-			'graphic' => 'brand/icon-05.svg',
+			'spec'  => 'An invitation suite laid out flat: outer, insert, place card, ribbon or wax seal if there is one. Soft daylight, slight overhead angle. Texture of the paper is the subject.',
 		),
-		'service_screen'     => array(
+		'service_fineart'     => array(
 			'group' => 'Services',
-			'label' => 'Screen printing',
+			'label' => 'Fine art & photography',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'The squeegee mid-pull across the screen, hands in frame. Shoot a burst and pick the frame where the ink is spreading.',
-			'graphic' => 'brand/icon-03.svg',
+			'spec'  => 'A giclee or canvas print held or leaning against a wall, close enough to read the paper grain. Include a framed piece if one is finished.',
 		),
-		'service_finishing'  => array(
+		'service_stickers'  => array(
 			'group' => 'Services',
-			'label' => 'Foil and finishing',
+			'label' => 'Stickers & labels',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'Detail of hot foil or embossing catching the light. Tilt the stock until the foil flares. Dark background so the shine separates.',
-			'graphic' => 'brand/icon-01.svg',
+			'spec'  => 'Die-cut vinyl stickers scattered on a plain ground, a few peeled back so the cut shape reads. Hard light, strong shadow.',
 		),
-		'service_packaging'  => array(
+		'service_specialty'    => array(
 			'group' => 'Services',
-			'label' => 'Packaging',
+			'label' => 'Specialty & custom',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'A flat, unfolded die-cut box shot dead overhead on white, plus the same box assembled. Two frames, same lighting.',
-			'graphic' => 'brand/icon-02.svg',
+			'spec'  => 'A foiled, embossed or specialty-ink piece raked with hard side light so the finish catches. This is the shot that has to prove the studio does things a web-to-print shop cannot.',
 		),
-		'service_signage'    => array(
+		'service_framing'    => array(
 			'group' => 'Services',
-			'label' => 'Signage',
+			'label' => 'Custom framing',
 			'ratio' => '1x1',
 			'size'  => 'magenta-1x1',
 			'min'   => '1800 x 1800px',
-			'spec'  => 'Cut acrylic or dimensional letters mounted on a wall, raking light so the letters throw shadows.',
-			'graphic' => 'brand/icon-06.svg',
+			'spec'  => 'A framed piece on a wall or leaning, with a corner sample or moulding beside it. Show the join and the mat, not just the artwork.',
 		),
 
 		/* --------------------------------------------------------- About */
