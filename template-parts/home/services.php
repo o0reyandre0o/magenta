@@ -1,6 +1,12 @@
 <?php
 /**
- * Home / services.
+ * Home / what we make.
+ *
+ * These are the categories Magenta actually sells, taken from the studio's own
+ * brand brief. The section this replaced advertised offset, screen printing,
+ * large format, packaging and signage - a print shop's department list, none
+ * of which the studio offers. Anything named here has to survive a client
+ * ringing up and asking for it.
  *
  * @package Magenta
  */
@@ -11,39 +17,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $services = array(
 	array(
-		'slot'  => 'service_offset',
-		'title' => __( 'Offset printing', 'magenta' ),
-		'copy'  => __( 'Long runs with the colour held exactly where you signed it off. Menus, brochures, stationery, publications.', 'magenta' ),
+		'slot'  => 'service_business',
+		'title' => __( 'Business &amp; marketing', 'magenta' ),
+		'copy'  => __( 'Business cards, brochures, booklets and catalogues, stationery, menus, posters, folders. The everyday pieces, made like they matter.', 'magenta' ),
 		'tag'   => '01',
 	),
 	array(
-		'slot'  => 'service_large',
-		'title' => __( 'Large format', 'magenta' ),
-		'copy'  => __( 'Banners, window graphics, vehicle wraps and event build. Printed, finished and installed across the island.', 'magenta' ),
+		'slot'  => 'service_weddings',
+		'title' => __( 'Weddings &amp; events', 'magenta' ),
+		'copy'  => __( 'Invitation suites, save the dates, menus and programs, place cards, table numbers, seating charts, welcome signs, coasters and tags.', 'magenta' ),
 		'tag'   => '02',
 	),
 	array(
-		'slot'  => 'service_screen',
-		'title' => __( 'Screen printing', 'magenta' ),
-		'copy'  => __( 'Uniforms, merchandise, tote bags and staff kit. Ink that survives the salt, the sun and the wash.', 'magenta' ),
+		'slot'  => 'service_fineart',
+		'title' => __( 'Fine art &amp; photography', 'magenta' ),
+		'copy'  => __( 'Archival giclée and canvas prints, artist reproductions, and scanning and colour correction of original work. Colour managed end to end.', 'magenta' ),
 		'tag'   => '03',
 	),
 	array(
-		'slot'  => 'service_finishing',
-		'title' => __( 'Foil &amp; finishing', 'magenta' ),
-		'copy'  => __( 'Hot foil, emboss, deboss, spot UV, die-cutting. The part guests notice before they read a word.', 'magenta' ),
+		'slot'  => 'service_stickers',
+		'title' => __( 'Stickers &amp; labels', 'magenta' ),
+		'copy'  => __( 'Vinyl stickers, die-cut and custom shapes, laminated labels. Short runs welcome — you do not need to order a thousand.', 'magenta' ),
 		'tag'   => '04',
 	),
 	array(
-		'slot'  => 'service_packaging',
-		'title' => __( 'Packaging', 'magenta' ),
-		'copy'  => __( 'Structural design through to production. Boxes, sleeves, labels and bags that make the product feel worth it.', 'magenta' ),
+		'slot'  => 'service_specialty',
+		'title' => __( 'Specialty &amp; custom', 'magenta' ),
+		'copy'  => __( 'Foil, white specialty ink, soft-touch lamination, embossing, die-cut shapes and binding. Bespoke pieces and short-run custom production.', 'magenta' ),
 		'tag'   => '05',
 	),
 	array(
-		'slot'  => 'service_signage',
-		'title' => __( 'Signage', 'magenta' ),
-		'copy'  => __( 'Wayfinding, dimensional letters, acrylic and metal. Specified, fabricated and mounted.', 'magenta' ),
+		'slot'  => 'service_framing',
+		'title' => __( 'Custom framing', 'magenta' ),
+		'copy'  => __( 'Picture framing for fine art and photography, canvas and floater framing, custom matting and mounting, frame and material selection.', 'magenta' ),
 		'tag'   => '06',
 	),
 );
@@ -54,17 +60,16 @@ $services = array(
 		<header class="section-head">
 			<p class="eyebrow"><?php esc_html_e( 'What we make', 'magenta' ); ?></p>
 			<h2 class="display display--lg" data-reveal>
-				<?php esc_html_e( 'Ink on', 'magenta' ); ?>
+				<?php esc_html_e( 'From idea to', 'magenta' ); ?>
 				<em>
 					<?php
 					// See the note in hero.php on why this is not run through kses.
-					echo magenta_mark( __( 'everything.', 'magenta' ), 'underline', 'c' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'underline', 'teal' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
-				<?php magenta_doodle( 'squiggle', array( 'colour' => 'm', 'class' => 'doodle--services' ) ); ?>
 			</h2>
 			<p class="lede section-head__lede">
-				<?php esc_html_e( 'Design and production are the same conversation here. Nothing gets handed over a wall, which is why nothing comes back wrong.', 'magenta' ); ?>
+				<?php esc_html_e( 'Design and production live in the same studio, so we already know how a piece will be made while we are still drawing it. Come to us with an idea, not a production plan.', 'magenta' ); ?>
 			</p>
 		</header>
 
@@ -85,7 +90,7 @@ $services = array(
 
 		<p class="services__note">
 			<span class="sticker sticker--rotate-l sticker--magenta">
-				<?php esc_html_e( 'Not sure which one you need? That is what the first call is for.', 'magenta' ); ?>
+				<?php esc_html_e( 'Not sure which one you need? That is what the first conversation is for.', 'magenta' ); ?>
 			</span>
 		</p>
 
