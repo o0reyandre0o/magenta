@@ -31,7 +31,7 @@ function magenta_meta_description(): string {
 	} elseif ( is_tax() || is_category() || is_tag() ) {
 		$description = term_description();
 	} elseif ( is_post_type_archive( 'project' ) ) {
-		$description = __( 'Printed work produced by Magenta for hotels, restaurants, retailers and agencies across the Cayman Islands.', 'magenta' );
+		$description = __( 'Work designed and produced by Magenta for businesses, weddings, artists and photographers across the Cayman Islands.', 'magenta' );
 	}
 
 	if ( ! $description ) {
@@ -39,7 +39,7 @@ function magenta_meta_description(): string {
 	}
 
 	if ( ! $description ) {
-		$description = __( 'Print production and graphic design in Grand Cayman. Menus, packaging, signage and identity for the island\'s hotels, restaurants and agencies.', 'magenta' );
+		$description = __( 'Boutique design and production studio in Grand Cayman. Print, wedding stationery, fine art and photography printing, custom framing and artwork digitization.', 'magenta' );
 	}
 
 	$description = trim( wp_strip_all_tags( $description ) );
@@ -64,7 +64,7 @@ function magenta_share_image(): array {
 		'height' => 630,
 		'alt'    => sprintf(
 			/* translators: %s: site name. */
-			__( '%s - print production and graphic design, Grand Cayman', 'magenta' ),
+			__( '%s - design and production studio, Grand Cayman', 'magenta' ),
 			get_bloginfo( 'name' )
 		),
 	);
@@ -100,7 +100,7 @@ function magenta_share_title(): string {
 	if ( is_front_page() ) {
 		return sprintf(
 			/* translators: %s: site name. */
-			__( '%s - We put ink on the island', 'magenta' ),
+			__( '%s - From idea to finished piece', 'magenta' ),
 			get_bloginfo( 'name' )
 		);
 	}
@@ -131,13 +131,13 @@ function magenta_share_title(): string {
 function magenta_document_title( array $parts ): array {
 	if ( is_front_page() ) {
 		return array(
-			'title'   => __( 'Printing &amp; Graphic Design in Grand Cayman', 'magenta' ),
+			'title'   => __( 'Design, Print &amp; Custom Framing in Grand Cayman', 'magenta' ),
 			'tagline' => get_bloginfo( 'name' ),
 		);
 	}
 
 	if ( is_post_type_archive( 'project' ) ) {
-		$parts['title'] = __( 'Print Work for Cayman Hotels, Restaurants &amp; Retail', 'magenta' );
+		$parts['title'] = __( 'Design &amp; Print Work from a Grand Cayman Studio', 'magenta' );
 	}
 
 	if ( is_tax( 'service' ) ) {
@@ -203,9 +203,10 @@ add_filter( 'document_title_separator', 'magenta_title_separator' );
  */
 function magenta_keywords(): array {
 	$terms = array(
-		'Printing Cayman Islands',
-		'Print Production Grand Cayman',
-		'Graphic Design Cayman',
+		'Graphic Design Cayman Islands',
+		'Custom Framing Grand Cayman',
+		'Wedding Stationery Cayman',
+		'Fine Art Printing Cayman',
 	);
 
 	// The current view leads, when it has a subject of its own.

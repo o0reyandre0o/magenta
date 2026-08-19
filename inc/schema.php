@@ -80,14 +80,17 @@ function magenta_toctoc_nodes(): array {
  */
 function magenta_knows_about(): array {
 	return array(
-		'Offset Printing',
-		'Large Format Printing',
-		'Screen Printing',
-		'Foil Stamping',
-		'Packaging Design',
-		'Signage',
 		'Graphic Design',
 		'Brand Identity',
+		'Print Production',
+		'Wedding Stationery',
+		'Fine Art Printing',
+		'Giclee Printing',
+		'Custom Picture Framing',
+		'Artwork Digitization',
+		'Sticker Printing',
+		'Foil Stamping',
+		'Colour Management',
 	);
 }
 

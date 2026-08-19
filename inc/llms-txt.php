@@ -56,9 +56,9 @@ function magenta_render_llms(): void {
 
 	$lines[] = '# ' . $name;
 	$lines[] = '';
-	$lines[] = '> ' . ( $desc ? $desc : 'Print production and graphic design studio in the Cayman Islands.' );
+	$lines[] = '> ' . ( $desc ? $desc : 'Boutique graphic design and production studio in the Cayman Islands.' );
 	$lines[] = '';
-	$lines[] = $name . ' is a print production and graphic design studio based in the Cayman Islands, producing printed material for the island\'s hotels, restaurants, retailers and creative agencies. The studio is led by Barbara, a designer with print production experience spanning Barcelona and Grand Cayman.';
+	$lines[] = $name . ' is a boutique graphic design, print and creative production studio in Grand Cayman, Cayman Islands. Design and in-house production sit together, so projects run from the initial idea through to the finished physical product. Work covers business and marketing print, wedding and event stationery, fine art and photography printing, custom picture framing, artwork digitization, stickers and labels, and specialty production using foil, specialty inks, embossing and custom die-cut shapes. The studio specialises in custom work, specialty materials and hands-on production, particularly where a client wants something beyond a standard online print product. It is co-founded and creative-directed by Barbara, a graphic designer with more than a decade of experience across graphic design and print production, who began her career in Barcelona before making Grand Cayman home.';
 	$lines[] = '';
 
 	/* --------------------------------------------------------- Services */
