@@ -406,20 +406,130 @@
     });
   }
 
+  /* ------------------------------------------------- Accessibility panel
+     Adjusts the page for the visitor and remembers the choice on this device.
+     It is not a compliance overlay and does not claim to be one - the actual
+     accessibility work is in the markup and the colour choices. Each option
+     writes a data attribute on <html>; the CSS does the rest. */
+  var A11Y_KEY = 'magenta-a11y';
+  var A11Y_OPTIONS = ['text', 'contrast', 'motion', 'readable', 'links'];
+
+  function a11yRead() {
+    try {
+      return JSON.parse(localStorage.getItem(A11Y_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function a11yWrite(state) {
+    try {
+      localStorage.setItem(A11Y_KEY, JSON.stringify(state));
+    } catch (e) {
+      /* Private mode, or storage full. The setting still applies for this
+         page view; it just will not be remembered. */
+    }
+  }
+
+  function a11yApply(state) {
+    A11Y_OPTIONS.forEach(function (key) {
+      if (state[key]) {
+        document.documentElement.setAttribute('data-a11y-' + key, 'on');
+      } else {
+        document.documentElement.removeAttribute('data-a11y-' + key);
+      }
+    });
+  }
+
+  /* Applied before DOMContentLoaded so a remembered setting is already in
+     place when the page paints, rather than flashing the default first. */
+  a11yApply(a11yRead());
+
+  function initA11y() {
+    var root = document.querySelector('[data-a11y]');
+    if (!root) return;
+
+    var toggle = root.querySelector('[data-a11y-toggle]');
+    var panel = root.querySelector('[data-a11y-panel]');
+    var closer = root.querySelector('[data-a11y-close]');
+    var reset = root.querySelector('[data-a11y-reset]');
+    var boxes = Array.prototype.slice.call(root.querySelectorAll('[data-a11y-option]'));
+    if (!toggle || !panel) return;
+
+    var state = a11yRead();
+
+    function sync() {
+      boxes.forEach(function (box) {
+        box.checked = !!state[box.getAttribute('data-a11y-option')];
+      });
+    }
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (open) {
+        var first = panel.querySelector('input, button');
+        if (first) first.focus();
+      }
+    }
+
+    sync();
+
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    if (closer) {
+      closer.addEventListener('click', function () {
+        setOpen(false);
+        toggle.focus();
+      });
+    }
+
+    boxes.forEach(function (box) {
+      box.addEventListener('change', function () {
+        state[box.getAttribute('data-a11y-option')] = box.checked;
+        a11yApply(state);
+        a11yWrite(state);
+      });
+    });
+
+    if (reset) {
+      reset.addEventListener('click', function () {
+        state = {};
+        a11yApply(state);
+        a11yWrite(state);
+        sync();
+      });
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    /* Clicking away closes it, but only outside the whole control - otherwise
+       ticking a checkbox would dismiss the panel under the pointer. */
+    document.addEventListener('click', function (event) {
+      if (!panel.hidden && !root.contains(event.target)) setOpen(false);
+    });
+  }
+
   function init() {
     initReveals();
-    initRegistration();
     initParallax();
     initDoodles();
     initInkTrail();
     initCursorRing();
-    initScrollEnergy();
     initReels();
     initRail();
     initMarquees();
     initHeader();
     initNav();
     initContactForm();
+    initA11y();
   }
 
   if (document.readyState === 'loading') {

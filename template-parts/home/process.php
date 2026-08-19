@@ -62,9 +62,9 @@ $steps = array(
 		<div class="process__band-inner wrap">
 			<p class="eyebrow eyebrow--light"><?php esc_html_e( 'How it works', 'magenta' ); ?></p>
 			<h2 class="process__title" data-reveal>
-				<?php esc_html_e( 'From file', 'magenta' ); ?>
+				<?php esc_html_e( 'Five steps,', 'magenta' ); ?>
 				<span class="process__title-rule" aria-hidden="true"></span>
-				<em><?php esc_html_e( 'to finish.', 'magenta' ); ?></em>
+				<em><?php esc_html_e( 'none skipped.', 'magenta' ); ?></em>
 			</h2>
 			<p class="process__standfirst">
 				<?php esc_html_e( 'Five steps from a conversation to something you can hold. Nothing skips ahead, and nothing goes out that we would not put our own name on.', 'magenta' ); ?>

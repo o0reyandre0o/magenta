@@ -862,7 +862,9 @@ html {
 .a11y__toggle:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
 .a11y__toggle:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
 
-.a11y__mark { width: 2.6rem; height: 2.6rem; display: block; }
+/* Fills the button. The artwork is cropped to its ink in the partial, so
+   the round button supplies the only breathing room it needs. */
+.a11y__mark { width: 80%; height: 80%; display: block; }
 
 .a11y__panel {
   width: min(20rem, calc(100vw - 2rem));
@@ -957,5 +959,5 @@ html {
 
 @media (max-width: 480px) {
   .a11y__toggle { width: 3.25rem; height: 3.25rem; }
-  .a11y__mark { width: 2.2rem; height: 2.2rem; }
+
 }

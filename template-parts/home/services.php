@@ -60,11 +60,11 @@ $services = array(
 		<header class="section-head">
 			<p class="eyebrow"><?php esc_html_e( 'What we make', 'magenta' ); ?></p>
 			<h2 class="display display--lg" data-reveal>
-				<?php esc_html_e( 'From idea to', 'magenta' ); ?>
+				<?php esc_html_e( 'Creative ideas,', 'magenta' ); ?>
 				<em>
 					<?php
 					// See the note in hero.php on why this is not run through kses.
-					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'underline', 'teal' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'beautifully made.', 'magenta' ), 'underline', 'teal' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
 			</h2>
