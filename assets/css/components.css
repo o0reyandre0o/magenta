@@ -154,51 +154,24 @@
   padding-block: var(--sp-4);
 }
 
-/* ================================================== Four-colour separation
-   The same word on four plates, multiplied together. --reg is the
-   misregistration, driven from JS as the block enters the viewport. At
-   --reg:0 the plates sit exactly on top of each other and read as one word. */
-.cmyk {
-  display: grid;
-  margin: 0;
-  isolation: isolate;
-  font-family: var(--font-display);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--tracking-display);
-  text-transform: uppercase;
+/* =========================================================== Brand rule
+   Three flat bands in the studio's colours. This replaced a CMYK control
+   strip and a set of registration crosses - devices borrowed from press
+   production, which is not what this studio does. */
+.brand-rule { display: flex; height: 6px; width: 100%; }
+.brand-rule__band { flex: 1 1 auto; }
+.brand-rule__band--m    { background: var(--m); }
+.brand-rule__band--teal { background: var(--teal); }
+.brand-rule__band--y    { background: var(--y); }
+
+/* ============================================================ Brand blob
+   The organic shape every icon and sticker in the kit sits on. Decorative,
+   always behind content, always tinted by a placement class. */
+.blob {
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
-
-.cmyk__plate {
-  grid-area: 1 / 1;
-  mix-blend-mode: multiply;
-  transition: transform var(--dur-slow) var(--ease-out);
-  will-change: transform;
-}
-
-.cmyk__plate--c { color: var(--c); transform: translate3d(calc(var(--reg) * -0.055em), calc(var(--reg) *  0.028em), 0); }
-.cmyk__plate--y { color: var(--y); transform: translate3d(calc(var(--reg) *  0.048em), calc(var(--reg) * -0.022em), 0); }
-.cmyk__plate--k { color: var(--k); transform: translate3d(calc(var(--reg) *  0.014em), calc(var(--reg) *  0.05em),  0); }
-.cmyk__plate--m { color: var(--m); transform: translate3d(0, 0, 0); }
-
-.cmyk--display { font-size: var(--fs-h1); }
-
-/* On the ink section the K plate would vanish; swap it for paper white. */
-.section--ink .cmyk__plate--k,
-.section--magenta .cmyk__plate--k { color: var(--paper); mix-blend-mode: screen; }
-
-/* ======================================================= Registration marks */
-.reg-marks { position: absolute; inset: 0; pointer-events: none; color: var(--ink); opacity: 0.35; }
-.reg-mark  { position: absolute; }
-.reg-mark--tl { top: 1.25rem;    left: 1.25rem; }
-.reg-mark--tr { top: 1.25rem;    right: 1.25rem; }
-.reg-mark--bl { bottom: 1.25rem; left: 1.25rem; }
-.reg-mark--br { bottom: 1.25rem; right: 1.25rem; }
-
-@media (max-width: 700px) { .reg-marks { display: none; } }
-
-/* =============================================================== Colour bar */
-.colour-bar { display: flex; height: 6px; width: 100%; }
-.colour-bar span { flex: 1 1 auto; }
 
 /* =========================================================== Image slots
    The placeholder is a designed state, not an error state. Halftone ground,
@@ -823,26 +796,6 @@ html {
     var(--y) 44px 66px,
     var(--ink) 66px 88px
   );
-}
-
-/* ========================================================== Scroll energy
-   Scrolling fast throws the plates out of register; stopping lets them fall
-   back in. --energy is the scroll velocity, normalised, set on :root.
-
-   Implemented with text-shadow rather than duplicated elements so it costs
-   nothing when idle: at --energy 0 both shadows sit exactly behind the glyphs
-   and are invisible. */
-/* Display type only. On card and station titles - 24px and under - a 0.05em
-   colour offset stopped being an effect and started being a legibility
-   problem: the ghosts sit inside the letterforms instead of beside them.
-   Misregistration reads as misregistration only when the type is big enough
-   to carry it. */
-.display,
-.process__title,
-.marquee__item {
-  text-shadow:
-    calc(var(--energy, 0) * -0.035em) calc(var(--energy, 0) * 0.013em) 0 var(--c),
-    calc(var(--energy, 0) * 0.03em) calc(var(--energy, 0) * -0.011em) 0 var(--y);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -79,19 +79,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--paper);
 }
 
-/* Halftone wash used on the coloured sections. Dot size is the tell that this
-   is print and not a gradient. */
-.section--magenta::before,
-.section--ink::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  background-image: radial-gradient(currentColor 1.1px, transparent 1.2px);
-  background-size: 11px 11px;
-}
-
 /* -------------------------------------------------------------- Typography */
 .display {
   font-family: var(--font-display);
@@ -233,5 +220,4 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  :root { --reg: 0; }
 }

@@ -35,71 +35,6 @@
     targets.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ------------------------------------------------ Plate misregistration
-     Each scoped section gets its own --reg, running 1 -> 0 as the section
-     travels through the viewport. The plates start apart and pull into
-     register: the brand idea, performed. */
-  function initRegistration() {
-    var scopes = Array.prototype.slice.call(document.querySelectorAll('[data-reg-scope]'));
-    if (!scopes.length || reduced) return;
-
-    // Scopes already on screen at load cannot be driven by scroll position —
-    // their rect.top is at or above zero, which reads as "already in register"
-    // and the effect would never play. Those get a timed entrance instead, and
-    // are then left alone.
-    var entrance = [];
-
-    scopes.forEach(function (scope) {
-      scope.style.setProperty('--reg', '1');
-      if (scope.getBoundingClientRect().top < window.innerHeight * 0.6) {
-        entrance.push(scope);
-      }
-    });
-
-    var scrolled = scopes.filter(function (scope) {
-      return entrance.indexOf(scope) === -1;
-    });
-
-    // Hold out of register just long enough to be seen, then pull in.
-    // The 900ms travel comes from the transition on .cmyk__plate.
-    if (entrance.length) {
-      window.setTimeout(function () {
-        entrance.forEach(function (scope) { scope.style.setProperty('--reg', '0'); });
-      }, 260);
-    }
-
-    if (!scrolled.length) return;
-
-    var ticking = false;
-
-    function update() {
-      ticking = false;
-      var vh = window.innerHeight;
-
-      scrolled.forEach(function (scope) {
-        var rect = scope.getBoundingClientRect();
-
-        // Off screen: leave it wherever it was, no work done.
-        if (rect.bottom < -vh || rect.top > vh * 1.5) return;
-
-        // 0 when the section top reaches the top of the viewport,
-        // 1 when it is still a full viewport below.
-        var reg = Math.min(1, Math.max(0, rect.top / vh));
-        scope.style.setProperty('--reg', reg.toFixed(3));
-      });
-    }
-
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    update();
-  }
-
   /* ----------------------------------------------------------- Parallax
      Stickers and frames drift against the scroll at their own rate. Small
      numbers only - this is a nudge, not a ride. */
@@ -271,56 +206,6 @@
       ring.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
       window.requestAnimationFrame(follow);
     })();
-  }
-
-  /* ------------------------------------------------------- Scroll energy
-     Two things at once: how far down the page you are, and how fast you are
-     travelling. The first fills the colour bar; the second throws the type
-     out of register and lets it settle when you stop. */
-  function initScrollEnergy() {
-    if (reduced) return;
-
-    var bar = document.createElement('div');
-    bar.className = 'scroll-bar';
-    bar.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(bar);
-
-    var lastY = window.scrollY;
-    var energy = 0;
-    var ticking = false;
-
-    function update() {
-      ticking = false;
-
-      var y = window.scrollY;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = max > 0 ? y / max : 0;
-
-      bar.style.setProperty('--progress', Math.min(1, Math.max(0, progress)).toFixed(4));
-
-      // Velocity in pixels per frame, normalised and capped so a flick of the
-      // wheel does not tear the type apart.
-      var velocity = Math.abs(y - lastY);
-      lastY = y;
-      energy = Math.min(1, Math.max(energy, velocity / 90));
-    }
-
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }, { passive: true });
-
-    // Decay runs on its own loop so the plates keep drifting back into
-    // register after the scrolling stops.
-    (function decay() {
-      energy *= 0.88;
-      if (energy < 0.002) energy = 0;
-      document.documentElement.style.setProperty('--energy', energy.toFixed(3));
-      window.requestAnimationFrame(decay);
-    })();
-
-    update();
   }
 
   /* --------------------------------------------------------------- Reels

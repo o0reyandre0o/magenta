@@ -111,10 +111,6 @@
   --dur:       420ms;
   --dur-slow:  900ms;
 
-  /* Plate misregistration, 1 = fully out of register, 0 = in register.
-     Driven per-section by JS; falls back to in-register with no JS. */
-  --reg: 0;
-
   /* --- Layers ------------------------------------------------------------ */
   --z-grain:  1;
   --z-base:   2;

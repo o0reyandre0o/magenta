@@ -20,18 +20,18 @@
   .hero__grid { grid-template-columns: 1.08fr 0.92fr; }
 }
 
-.hero__title { margin: 0 0 var(--sp-3); }
-
-.hero__tagline {
+.hero__title {
   margin: 0 0 var(--sp-5);
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 0.9rem + 2.2vw, 2.6rem);
-  line-height: 1;
-  text-transform: uppercase;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
   letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
-.hero__tagline em {
+.hero__title em {
+
   font-family: var(--font-hand);
   font-style: normal;
   text-transform: none;
@@ -861,13 +861,19 @@
 }
 
 /* Everything real sits above the wash. */
-.cta > .wrap,
-.cta .reg-marks { position: relative; z-index: 2; }
+.cta > .wrap { position: relative; z-index: 2; }
 
 .cta__copy { position: relative; }
 
-.cta__title { margin: 0 0 var(--sp-5); }
-.cta__title .cmyk { font-size: clamp(2.4rem, 1.2rem + 6vw, 5.5rem); }
+.cta__title {
+  margin: 0 0 var(--sp-5);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 1.2rem + 6vw, 5.5rem);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--m);
+}
 .cta__title em {
   display: block;
   margin-top: var(--sp-2);
@@ -988,4 +994,42 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
+}
+
+/* Brand shapes in the hero. These sit where the registration crosses used to,
+   and are the same device as the process section so the page reads as one
+   identity rather than two. */
+.hero { position: relative; overflow: clip; }
+
+.hero__shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: clip;
+}
+
+.hero__shapes .blob { position: absolute; width: auto; }
+
+.blob--hero-a {
+  color: var(--teal);
+  height: 40rem;
+  left: -16rem;
+  top: -8rem;
+  opacity: 0.14;
+}
+
+.blob--hero-b {
+  color: var(--y);
+  height: 26rem;
+  right: -8rem;
+  bottom: -6rem;
+  opacity: 0.3;
+}
+
+.hero__grid { position: relative; z-index: 1; }
+
+@media (max-width: 820px) {
+  .blob--hero-a { height: 26rem; left: -12rem; }
+  .blob--hero-b { height: 16rem; right: -6rem; }
 }
