@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				printf(
 					/* translators: %s: highlighted phrase. */
-					wp_kses_post( __( 'Design, print, framing and fine art reproduction for businesses, weddings, artists and photographers %s. Design and production under one roof, so an idea can arrive without a production plan attached.', 'magenta' ) ),
+					wp_kses_post( __( 'Design, print, framing and fine art reproduction for businesses, weddings, artists and photographers %s.', 'magenta' ) ),
 					wp_kses_post( magenta_highlight( __( 'across the Cayman Islands', 'magenta' ) ) )
 				);
 				?>
