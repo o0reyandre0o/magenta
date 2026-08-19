@@ -764,6 +764,82 @@
 	</div>
 </footer>
 
+<div class="a11y" data-a11y>
+	<button class="a11y__toggle" type="button"
+		data-a11y-toggle
+		aria-expanded="false"
+		aria-controls="a11y-panel">
+		<span class="screen-reader-text">Accessibility options</span>
+				<img class="a11y__mark"
+			src="./assets/img/brand/logo-secondary.svg"
+			alt="" role="presentation" width="72" height="72" loading="lazy" decoding="async">
+	</button>
+
+	<div class="a11y__panel" id="a11y-panel" data-a11y-panel hidden>
+		<div class="a11y__head">
+			<h2 class="a11y__title">Accessibility</h2>
+			<button class="a11y__close" type="button" data-a11y-close>
+				<span class="screen-reader-text">Close</span>
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<ul class="a11y__list">
+							<li class="a11y__item">
+					<label class="a11y__option">
+						<input type="checkbox" data-a11y-option="text">
+						<span class="a11y__option-text">
+							<span class="a11y__option-label">Bigger text</span>
+							<span class="a11y__option-hint">Scales every size up by a fifth.</span>
+						</span>
+					</label>
+				</li>
+							<li class="a11y__item">
+					<label class="a11y__option">
+						<input type="checkbox" data-a11y-option="contrast">
+						<span class="a11y__option-text">
+							<span class="a11y__option-label">High contrast</span>
+							<span class="a11y__option-hint">Darkens type and strengthens edges.</span>
+						</span>
+					</label>
+				</li>
+							<li class="a11y__item">
+					<label class="a11y__option">
+						<input type="checkbox" data-a11y-option="motion">
+						<span class="a11y__option-text">
+							<span class="a11y__option-label">Pause motion</span>
+							<span class="a11y__option-hint">Stops the reels, the ticker and the reveals.</span>
+						</span>
+					</label>
+				</li>
+							<li class="a11y__item">
+					<label class="a11y__option">
+						<input type="checkbox" data-a11y-option="readable">
+						<span class="a11y__option-text">
+							<span class="a11y__option-label">Readable font</span>
+							<span class="a11y__option-hint">Swaps the display face for a plainer one.</span>
+						</span>
+					</label>
+				</li>
+							<li class="a11y__item">
+					<label class="a11y__option">
+						<input type="checkbox" data-a11y-option="links">
+						<span class="a11y__option-text">
+							<span class="a11y__option-label">Underline links</span>
+							<span class="a11y__option-hint">Marks every link, not just the ones in text.</span>
+						</span>
+					</label>
+				</li>
+					</ul>
+
+		<button class="btn btn--outline a11y__reset" type="button" data-a11y-reset>
+			Reset all		</button>
+
+		<p class="a11y__note">
+			These settings are saved on this device only. If your system already asks for reduced motion, this site follows it either way.		</p>
+	</div>
+</div>
+
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

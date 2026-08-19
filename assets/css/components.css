@@ -828,3 +828,134 @@ html {
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* ================================================== Accessibility control
+   Floating panel, bottom right. It adjusts the page for the visitor; it does
+   not pretend to make the site compliant, which no overlay can do. The real
+   accessibility work is in the markup and the colour choices. */
+.a11y {
+  position: fixed;
+  right: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  bottom: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  z-index: 90;                       /* over the header, under nothing else */
+  display: grid;
+  justify-items: end;
+  gap: var(--sp-3);
+}
+
+.a11y__toggle {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 0;
+  border: var(--border);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-back),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.a11y__toggle:hover,
+.a11y__toggle:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.a11y__toggle:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
+
+.a11y__mark { width: 2.6rem; height: 2.6rem; display: block; }
+
+.a11y__panel {
+  width: min(20rem, calc(100vw - 2rem));
+  padding: var(--sp-5);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.a11y__panel[hidden] { display: none; }
+
+.a11y__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); }
+
+.a11y__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+}
+
+.a11y__close {
+  border: 0;
+  background: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+}
+
+.a11y__list { list-style: none; margin: var(--sp-4) 0; padding: 0; display: grid; gap: var(--sp-3); }
+
+.a11y__option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  cursor: pointer;
+}
+
+.a11y__option input { margin-top: 0.28rem; width: 1.1rem; height: 1.1rem; accent-color: var(--m-deep); flex: none; }
+
+.a11y__option-text { display: grid; gap: 0.1rem; }
+
+.a11y__option-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.a11y__option-hint { font-size: var(--fs-xs); color: var(--ink-soft); line-height: 1.4; }
+
+.a11y__reset { width: 100%; justify-content: center; }
+
+.a11y__note { margin: var(--sp-4) 0 0; font-size: var(--fs-xs); color: var(--ink-soft); line-height: 1.5; }
+
+/* ------------------------------------------------- What the options change */
+:root[data-a11y-text="on"] { font-size: 120%; }
+
+:root[data-a11y-contrast="on"] {
+  --ink: #000000;
+  --ink-soft: #2A2A2A;
+  --paper: #FFFFFF;
+  --stock: #FFFFFF;
+  --rule: rgba(0, 0, 0, 0.5);
+}
+:root[data-a11y-contrast="on"] .grain,
+:root[data-a11y-contrast="on"] .blob,
+:root[data-a11y-contrast="on"] .doodle { display: none; }
+:root[data-a11y-contrast="on"] .slot-img--graphic { opacity: 0.5; }
+
+:root[data-a11y-motion="on"] *,
+:root[data-a11y-motion="on"] *::before,
+:root[data-a11y-motion="on"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+:root[data-a11y-readable="on"] {
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-hand: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --tracking-display: 0;
+}
+:root[data-a11y-readable="on"] body { letter-spacing: 0.012em; word-spacing: 0.08em; }
+
+:root[data-a11y-links="on"] a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 480px) {
+  .a11y__toggle { width: 3.25rem; height: 3.25rem; }
+  .a11y__mark { width: 2.2rem; height: 2.2rem; }
+}
