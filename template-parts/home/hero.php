@@ -96,7 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php esc_html_e( 'CROP IT LIKE IT&rsquo;S HOT', 'magenta' ); ?>
 			</span>
 
-			<span class="sticker sticker--rotate-r sticker--cyan hero__sticker-b" data-parallax="0.2">
+			<span class="sticker sticker--rotate-r sticker--teal hero__sticker-b" data-parallax="0.2">
 				<?php esc_html_e( 'pixel perfect', 'magenta' ); ?>
 			</span>
 

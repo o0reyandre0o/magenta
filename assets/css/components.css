@@ -33,7 +33,9 @@
 
 .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 
-.btn--magenta { background: var(--m); color: var(--paper); }
+/* --m-deep, not --m: paper on the bright magenta is 3.8:1, which fails AA
+   for label-sized text. Same hue, 5.96:1. */
+.btn--magenta { background: var(--m-deep); color: var(--paper); }
 .btn--ink     { background: var(--ink); color: var(--paper); }
 .btn--paper   { background: var(--header-cta-bg); color: var(--header-cta-fg); }
 .btn--outline { background: transparent; color: inherit; }
@@ -70,8 +72,8 @@
   transition: transform var(--dur) var(--ease-back);
 }
 
-.sticker--magenta { background: var(--m); color: var(--paper); }
-.sticker--cyan    { background: var(--c); }
+.sticker--magenta { background: var(--m-deep); color: var(--paper); }
+.sticker--teal    { background: var(--teal-tint); }
 .sticker--yellow  { background: var(--y); }
 .sticker--rotate-l { transform: rotate(-4deg); }
 .sticker--rotate-r { transform: rotate(3.5deg); }

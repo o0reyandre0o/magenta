@@ -363,7 +363,7 @@
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background: var(--m);
+  background: var(--m-deep);
   color: var(--paper);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
@@ -619,7 +619,7 @@
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(253, 254, 255, 0.42);
+  -webkit-text-stroke: 1.5px rgba(253, 254, 255, 0.62);
   transition: color var(--dur-slow) var(--ease-out), -webkit-text-stroke-color var(--dur-slow) var(--ease-out);
 }
 

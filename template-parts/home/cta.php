@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li><a href="https://www.instagram.com/magentacayman/" target="_blank" rel="noopener">@magentacayman</a></li>
 			</ul>
 
-			<span class="sticker sticker--rotate-l sticker--cyan cta__sticker" data-parallax="0.1">
+			<span class="sticker sticker--rotate-l sticker--teal cta__sticker" data-parallax="0.1">
 				<?php esc_html_e( 'quotes within 24h', 'magenta' ); ?>
 			</span>
 
