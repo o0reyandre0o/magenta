@@ -636,6 +636,7 @@
 
 .doodle--ink-m     { color: var(--m); }
 .doodle--ink-c     { color: var(--c); }
+.doodle--ink-teal  { color: var(--teal); }
 .doodle--ink-y     { color: var(--y); }
 .doodle--ink-k     { color: var(--ink); }
 .doodle--ink-paper { color: var(--paper); }

@@ -151,7 +151,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-cut',
 			'min'   => '2400px long edge',
 			'spec'  => 'Pantone book fanned open on white, shot overhead. Fan it so magenta and the process colours are the ones showing.',
-			'graphic' => 'brand/icon-07.svg',
+			'graphic' => 'brand/icon-06.svg',
 		),
 
 		/* ---------------------------------------------------------- Close */
