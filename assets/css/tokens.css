@@ -12,7 +12,8 @@
      the values that were here before were close but not exact, and the
      secondary was process cyan rather than the brand's teal. */
   --m:            #EC008C;   /* logo magenta */
-  --m-deep:       #B4006A;   /* darkened magenta - clears AA where --m does not */
+  --m-deep:       #B4006A;   /* magenta for small text ON light grounds, 5.7:1 */
+  --m-light:      #FF7CC4;   /* magenta for small text ON dark grounds, 5.6:1 */
   --m-tint:       #FDE4F2;
   --teal:         #2BA48C;   /* brand secondary, from the icon set */
   --teal-tint:    #D9F0EA;   /* pale teal - highlighter sweeps, same role as --m-tint */

@@ -932,7 +932,9 @@
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: 0.1em;
-  color: var(--m);
+  /* --m-deep, not --m: the bright magenta on the stock ground measures 3.29:1
+     at this size. Same hue, 5.72:1. */
+  color: var(--m-deep);
 }
 
 .faq-item__a {

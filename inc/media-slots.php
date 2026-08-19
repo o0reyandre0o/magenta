@@ -55,6 +55,7 @@ function magenta_slots(): array {
 			'size'  => 'magenta-16x9',
 			'min'   => '3200 x 1800px',
 			'spec'  => 'The studio mid-job, shot wide and slightly from above: hands working, materials out, a piece part-finished. Movement is welcome - this sits behind the process copy under a dark wash, so it wants energy rather than sharpness.',
+			'graphic' => 'graphics/press-band.svg',
 		),
 
 		/* ------------------------------------------------------ Services */

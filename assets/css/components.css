@@ -557,7 +557,9 @@
 }
 
 .site-footer__legal p { margin: 0; opacity: 0.7; }
-.site-footer__credit a { color: var(--m); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+/* --m-light on this ground: the bright magenta measures 2.98:1 against the
+   footer's dark, well under AA for a link. */
+.site-footer__credit a { color: var(--m-light); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .site-footer__credit a:hover { color: var(--y); }
 
 /* Right-hand column of the footer's top row. That column holds only the
