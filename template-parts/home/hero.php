@@ -21,16 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="hero__copy">
 			<p class="eyebrow">
 				<span class="eyebrow__dot" aria-hidden="true"></span>
-				<?php esc_html_e( 'Print production & graphic design · Grand Cayman', 'magenta' ); ?>
+				<?php esc_html_e( 'Design &amp; production studio · Grand Cayman', 'magenta' ); ?>
 			</p>
 
 			<h1 class="hero__title">
-				<span class="screen-reader-text">Magenta &mdash; <?php esc_html_e( 'we put ink on the island', 'magenta' ); ?></span>
+				<span class="screen-reader-text">Magenta &mdash; <?php esc_html_e( 'from idea to finished piece', 'magenta' ); ?></span>
 				<?php magenta_cmyk_text( 'MAGENTA', 'span', 'cmyk--display' ); ?>
 			</h1>
 
 			<p class="hero__tagline" aria-hidden="true">
-				<?php esc_html_e( 'We put ink', 'magenta' ); ?>
+				<?php esc_html_e( 'From idea to', 'magenta' ); ?>
 				<em>
 					<?php
 					/*
@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					 * text itself and the shape comes from a fixed set in
 					 * inc/doodles.php, never from input.
 					 */
-					echo magenta_mark( __( 'on the island.', 'magenta' ), 'lasso', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'lasso', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
 			</p>
@@ -48,8 +48,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				printf(
 					/* translators: %s: highlighted phrase. */
-					wp_kses_post( __( 'Menus, packaging, signage and identity for the hotels, restaurants and agencies that %s. Designed and produced under one roof.', 'magenta' ) ),
-					wp_kses_post( magenta_highlight( __( 'set the standard in Cayman', 'magenta' ) ) )
+					wp_kses_post( __( 'Design, print, framing and fine art reproduction for businesses, weddings, artists and photographers %s. Design and production under one roof, so an idea can arrive without a production plan attached.', 'magenta' ) ),
+					wp_kses_post( magenta_highlight( __( 'across the Cayman Islands', 'magenta' ) ) )
 				);
 				?>
 			</p>
@@ -74,8 +74,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<dd><?php esc_html_e( 'Barcelona', 'magenta' ); ?></dd>
 				</div>
 				<div>
-					<dt><?php esc_html_e( 'Turnaround', 'magenta' ); ?></dt>
-					<dd><?php esc_html_e( 'Island-fast', 'magenta' ); ?></dd>
+					<dt><?php esc_html_e( 'Under one roof', 'magenta' ); ?></dt>
+					<dd><?php esc_html_e( 'Design + production', 'magenta' ); ?></dd>
 				</div>
 			</dl>
 		</div>
@@ -94,11 +94,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 
 			<span class="sticker sticker--rotate-l sticker--yellow hero__sticker-a" data-parallax="0.14">
-				<?php esc_html_e( 'PRINT IS NOT DEAD', 'magenta' ); ?>
+				<?php esc_html_e( 'CROP IT LIKE IT&rsquo;S HOT', 'magenta' ); ?>
 			</span>
 
 			<span class="sticker sticker--rotate-r sticker--cyan hero__sticker-b" data-parallax="0.2">
-				<?php esc_html_e( 'ink on everything', 'magenta' ); ?>
+				<?php esc_html_e( 'pixel perfect', 'magenta' ); ?>
 			</span>
 
 			<span class="tape tape--hero" aria-hidden="true"></span>

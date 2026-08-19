@@ -74,7 +74,7 @@ get_header();
 		<?php else : ?>
 
 			<h1 class="display display--md"><?php esc_html_e( 'Nothing here yet', 'magenta' ); ?></h1>
-			<p class="lede"><?php esc_html_e( 'This page is still on press.', 'magenta' ); ?></p>
+			<p class="lede"><?php esc_html_e( 'This page is still being made.', 'magenta' ); ?></p>
 
 		<?php endif; ?>
 

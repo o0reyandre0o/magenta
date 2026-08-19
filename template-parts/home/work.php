@@ -66,14 +66,14 @@ $bundled = array(
 		'slug'   => 'lalique-brochures',
 		'title'  => __( '60 Lalique', 'magenta' ),
 		'client' => __( 'Property', 'magenta' ),
-		'meta'   => __( 'Property brochure &middot; Offset', 'magenta' ),
+		'meta'   => __( 'Property brochure &middot; Perfect bound', 'magenta' ),
 		'alt'    => __( 'A fanned stack of property brochures for a Crystal Harbour home, opened to interior photography.', 'magenta' ),
 	),
 	array(
 		'slug'   => 'align-brochures',
 		'title'  => __( 'Align', 'magenta' ),
 		'client' => __( 'Healthcare', 'magenta' ),
-		'meta'   => __( 'Brochure suite &middot; Offset', 'magenta' ),
+		'meta'   => __( 'Brochure suite &middot; Saddle stitched', 'magenta' ),
 		'alt'    => __( 'A spread of purple and white healthcare brochures for adult and paediatric therapy services.', 'magenta' ),
 	),
 );
@@ -90,7 +90,7 @@ $bundled = array(
 			</div>
 			<div class="section-head__aside">
 				<p class="lede lede--light">
-					<?php esc_html_e( 'A sample of what has come off the press lately. If you have eaten out, checked in or walked past a window on this island, you have probably already seen some of it.', 'magenta' ); ?>
+					<?php esc_html_e( 'A sample of what has left the studio lately. If you have eaten out, been to a wedding or picked up a card on this island, you have probably already held some of it.', 'magenta' ); ?>
 				</p>
 				<span class="work__cta-wrap">
 					<a class="btn btn--outline btn--light" href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ?: '#' ); ?>">

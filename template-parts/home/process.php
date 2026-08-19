@@ -2,13 +2,13 @@
 /**
  * Home / process.
  *
- * Structured as a sheet travelling through the machine rather than as a list
- * of bullet points: the press shot runs full bleed with the title over it, and
- * the stations below are threaded onto a rail that fills as you scroll, the
- * way paper advances through the press.
+ * How a custom piece actually gets made here, in order: the conversation, the
+ * design, the materials, the proof, the making. The sequence this replaced was
+ * a press run - plates, colour drift, sheets leaving the building - which
+ * described a print shop rather than a design and production studio.
  *
- * The numbering is load-bearing here - these are sequential stations a job
- * actually passes through, in order, and the reader needs that order.
+ * The numbering is load-bearing: these are sequential, and the reader needs
+ * that order.
  *
  * @package Magenta
  */
@@ -20,33 +20,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 $steps = array(
 	array(
 		'n'     => '01',
-		'title' => __( 'Brief', 'magenta' ),
-		'note'  => __( 'Before anything opens', 'magenta' ),
-		'copy'  => __( 'We start with the finished object, not the file. Quantity, stock, budget, deadline, and where it will actually live once it leaves here.', 'magenta' ),
+		'title' => __( 'Conversation', 'magenta' ),
+		'note'  => __( 'Before anything is drawn', 'magenta' ),
+		'copy'  => __( 'Tell us what the piece has to do and who it is for. You do not need to arrive with a spec - working out the format, the material and the method is our half of the job.', 'magenta' ),
 	),
 	array(
 		'n'     => '02',
 		'title' => __( 'Design', 'magenta' ),
-		'note'  => __( 'Artwork &amp; prepress', 'magenta' ),
-		'copy'  => __( 'Artwork built by people who know what the press will do with it. No surprises at plate stage, no last-minute redraws.', 'magenta' ),
+		'note'  => __( 'Drawn to be made', 'magenta' ),
+		'copy'  => __( 'Artwork built by someone who already knows how it will be produced. The stock, the finish and the construction are decided with the design, not after it.', 'magenta' ),
 	),
 	array(
 		'n'     => '03',
-		'title' => __( 'Proof', 'magenta' ),
-		'note'  => __( 'On the real stock', 'magenta' ),
-		'copy'  => __( 'You see it on the real stock before we commit. Sign off on something you can hold, not a PDF on a screen.', 'magenta' ),
+		'title' => __( 'Materials', 'magenta' ),
+		'note'  => __( 'Chosen, sourced, tested', 'magenta' ),
+		'copy'  => __( 'Paper, board, canvas, vinyl, foil, framing materials. We keep a curated selection and source specifically when a project needs something we do not stock.', 'magenta' ),
 	),
 	array(
 		'n'     => '04',
-		'title' => __( 'Press', 'magenta' ),
-		'note'  => __( 'Colour held through the run', 'magenta' ),
-		'copy'  => __( 'Colour matched and checked through the run. If a sheet drifts, it does not leave the building.', 'magenta' ),
+		'title' => __( 'Proof', 'magenta' ),
+		'note'  => __( 'On the real material', 'magenta' ),
+		'copy'  => __( 'You approve something you can hold. Our monitors, printers and materials are profiled with a spectrophotometer, so what you sign off is what comes back.', 'magenta' ),
 	),
 	array(
 		'n'     => '05',
-		'title' => __( 'Finish', 'magenta' ),
-		'note'  => __( 'Out the door', 'magenta' ),
-		'copy'  => __( 'Cut, folded, foiled, bound, packed. Delivered to the property, the restaurant or the stand, on the day it was promised.', 'magenta' ),
+		'title' => __( 'Made', 'magenta' ),
+		'note'  => __( 'Often by hand', 'magenta' ),
+		'copy'  => __( 'Printed, cut, foiled, bound, mounted or framed. Many pieces are finished and assembled by hand, which is what makes short runs and one-offs possible at all.', 'magenta' ),
 	),
 );
 ?>
@@ -67,7 +67,7 @@ $steps = array(
 				<em><?php esc_html_e( 'to finish.', 'magenta' ); ?></em>
 			</h2>
 			<p class="process__standfirst">
-				<?php esc_html_e( 'Five stations. A job does not skip any of them, and nothing leaves the building that has not cleared all five.', 'magenta' ); ?>
+				<?php esc_html_e( 'Five steps from a conversation to something you can hold. Nothing skips ahead, and nothing goes out that we would not put our own name on.', 'magenta' ); ?>
 			</p>
 		</div>
 

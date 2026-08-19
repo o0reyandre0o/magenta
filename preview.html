@@ -1,602 +1,763 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#EA028C">
-<title>Magenta — homepage preview</title>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#EA028C">
+	
 <!--
   Static preview of front-page.php.
 
-  This file exists so the design can be reviewed without a PHP environment.
-  It links the real theme CSS and JS by relative path, so it cannot drift from
-  the live theme's styling — only the markup is duplicated here.
-
-  Open it directly from disk in a browser. It is excluded from nothing and is
-  harmless to ship, but it is not part of the WordPress render path.
+  GENERATED FILE - do not edit by hand. Rendered from the real templates by
+  tools/build-preview.php; run that again after changing any template. It was
+  previously maintained as a hand-copied duplicate, which drifted from the
+  theme on almost every change.
 -->
-
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;700&family=Caveat&family=Space+Mono&display=swap" rel="stylesheet">
 
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/home.css">
+<title>Magenta &mdash; homepage preview</title>
 </head>
 
-<body>
+<body class="home preview">
+
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<!-- Paper grain sits above the background and below the content, site wide. -->
 <div class="grain" aria-hidden="true"></div>
 
 <header class="site-header" data-header>
-  <div class="site-header__inner">
-    <a class="brand" href="#top" aria-label="Magenta — home">
-      <svg class="brand__logo" viewBox="57 47 822 266" fill="currentColor" aria-hidden="true" focusable="false"><path d="M162.57,134.23h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,26.07,0,32.43,20.31,32.43,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.07c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.18-29.7s-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.49-29.7-4.55,0-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52V123.02c0-15.4,12.48-27.88,27.88-27.88h13.72c.92,0,1.63.81,1.5,1.72l-4.98,35.67c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,14.65,0,23.69,6.19,28.01,19.15.12.36.15.74.1,1.11l-2.72,20.16c-.12.9.58,1.7,1.49,1.7Z"/><path d="M307.26,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM294.8,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/><path d="M425.42,132.67c0,.73.53,1.35,1.25,1.49,22.99,4.33,31.18,13.38,31.18,45.54s-8.82,44.21-41.22,44.55c-.83,0-1.51.68-1.51,1.51v.02c0,.83.68,1.5,1.51,1.51,30.66.4,41.23,13.16,41.23,40.3,0,31.22-18.19,42.73-53.65,42.73s-53.65-15.76-53.65-46.98c0-.15,0-.29,0-.43.03-11.17,9.14-20.17,20.31-20.17h20.57c1.01,0,1.74.97,1.45,1.94-.62,2.12-1.41,6.12-1.41,12.61,0,8.74,5.15,12.99,13.79,12.72,6.63-.21,11.97-5.83,11.64-12.46-.42-8.4-5.32-11.24-22.1-19.05-23.94-11.52-44.25-18.49-44.25-53.95v-31.52c0-37.89,16.97-57.89,53.65-57.89h21.22c18.08,0,32.73,14.66,32.73,32.73v4.4c0,.89-.77,1.59-1.66,1.51l-29.42-2.72c-.89-.08-1.66.62-1.66,1.51v.11ZM404.2,135.45c-8.18,0-12.73,6.67-12.73,36.37s4.55,36.67,12.73,36.67,12.73-6.97,12.73-36.67-4.55-36.37-12.73-36.37Z"/><path d="M526.34,202.43c0-7.21-1.04-12.94-1.66-15.73-.21-.95.5-1.85,1.47-1.85h24.28c9.23,0,16.79,7.43,16.83,16.66,0,.11,0,.21,0,.32v4.55c0,32.74-16.97,49.41-50.31,49.41-36.67,0-53.65-20-53.65-57.89v-47.89c0-37.89,15.46-57.89,52.13-57.89s52.13,20,52.13,57.89v25.76c0,.84-.68,1.52-1.52,1.52h-60.32c-.84,0-1.52.68-1.52,1.52v10c0,21.52,3.64,26.67,11.82,26.67,6.97,0,10.31-4.55,10.31-13.03ZM505.77,155.77l19.33.26c.85.01,1.55-.68,1.54-1.53-.23-17.79-4.42-22.09-10.9-22.09s-10.67,4.01-11.46,21.78c-.04.85.64,1.57,1.5,1.58Z"/><path d="M642.09,252.74c-.83,0-1.5-.67-1.5-1.5v-86.09c0-24.55-2.73-29.7-9.09-29.7s-10.31,4.85-10.31,31.22v84.58c0,.83-.67,1.5-1.5,1.5h-42.46c-.83,0-1.5-.67-1.5-1.5V123.02c0-15.4,12.48-27.88,27.88-27.88h13.73c.91,0,1.61.81,1.49,1.71l-4.98,35.68c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.72-33.15,18.24-40.83,35.89-40.83,27.58,0,33.34,20.31,33.34,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.08Z"/><path d="M742.42,95.13h18.79c.84,0,1.52.68,1.52,1.52v36.07c0,.84-.68,1.52-1.52,1.52h-18.79c-.84,0-1.52.68-1.52,1.52v56.07c0,16.67,3.94,20.61,18.79,20.61h4.55c.84,0,1.52.68,1.52,1.52v37.28c0,.84-.68,1.52-1.52,1.52h-13.64c-40.01,0-52.13-13.94-52.13-51.83v-65.16c0-.84-.68-1.52-1.52-1.52h-6.06c-.84,0-1.52-.68-1.52-1.52v-36.07c0-.84.68-1.52,1.52-1.52h6.06c.84,0,1.52-.68,1.52-1.52v-16.06c0-15.4,12.48-27.88,27.88-27.88h13.03c.84,0,1.52.68,1.52,1.52v42.43c0,.84.68,1.52,1.52,1.52Z"/><path d="M839.73,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM827.28,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/><g class="brand__logo-tagline"><path d="M518.12,308.35c-2.89,0-5.44-.66-7.68-1.97-2.23-1.32-3.99-3.13-5.26-5.43-1.27-2.31-1.91-4.96-1.91-7.96s.64-5.65,1.91-7.96c1.27-2.31,3.02-4.12,5.24-5.43,2.22-1.32,4.77-1.97,7.66-1.97,2.04,0,3.93.36,5.69,1.08,1.75.72,3.29,1.73,4.6,3.01,1.32,1.29,2.33,2.77,3.03,4.43l-5.39,1.99c-.48-1.05-1.12-1.96-1.91-2.74-.79-.78-1.7-1.39-2.72-1.83-1.02-.44-2.12-.66-3.31-.66-1.73,0-3.26.43-4.6,1.29-1.34.86-2.39,2.04-3.14,3.54-.75,1.5-1.12,3.24-1.12,5.22s.38,3.73,1.15,5.24c.76,1.51,1.82,2.7,3.18,3.56s2.91,1.29,4.67,1.29c1.22,0,2.33-.23,3.33-.7,1-.47,1.89-1.11,2.67-1.93s1.41-1.77,1.89-2.84l5.39,1.95c-.71,1.73-1.72,3.25-3.03,4.58-1.32,1.33-2.85,2.36-4.6,3.1-1.75.74-3.66,1.1-5.73,1.1Z"/><path d="M536.19,307.84v-29.7h11.03c2.09,0,3.95.41,5.56,1.23,1.61.82,2.87,1.95,3.78,3.37.9,1.43,1.36,3.09,1.36,4.99s-.52,3.67-1.57,5.15c-1.05,1.49-2.42,2.61-4.12,3.37l6.87,11.58h-6.58l-6.07-10.52h-4.46v10.52h-5.81ZM542.01,292.02h5.26c.88,0,1.66-.18,2.35-.55.69-.37,1.24-.88,1.66-1.53.41-.65.62-1.39.62-2.21,0-1.27-.46-2.31-1.38-3.1-.92-.79-2.1-1.19-3.54-1.19h-4.96v8.57Z"/><path d="M563.99,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/><path d="M586.52,307.84l11.71-29.7h6.19l11.71,29.7h-6.15l-2.55-6.53h-12.22l-2.55,6.53h-6.15ZM597.12,296.18h8.4l-4.2-10.78-4.2,10.78Z"/><path d="M624.36,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/><path d="M643.29,307.84v-29.7h5.81v29.7h-5.81Z"/><path d="M664.93,307.84l-11.84-29.7h6.24l8.78,22.83,8.7-22.83h6.24l-11.8,29.7h-6.32Z"/><path d="M687.04,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/><path d="M732.95,308.35c-1.5,0-2.9-.18-4.2-.55s-2.46-.88-3.48-1.55c-1.02-.66-1.86-1.41-2.52-2.23-.67-.82-1.1-1.68-1.29-2.59l5.69-1.7c.37.96,1.02,1.79,1.95,2.48.93.69,2.11,1.05,3.52,1.08,1.5.03,2.72-.3,3.67-.98.95-.68,1.42-1.56,1.42-2.63,0-.93-.38-1.72-1.12-2.35-.75-.64-1.78-1.12-3.08-1.46l-3.86-1.02c-1.44-.37-2.72-.93-3.82-1.68-1.1-.75-1.97-1.68-2.59-2.78-.62-1.1-.93-2.39-.93-3.86,0-2.8.93-4.99,2.78-6.56,1.85-1.57,4.48-2.35,7.87-2.35,1.9,0,3.56.28,4.99.83,1.43.55,2.62,1.34,3.59,2.35.96,1.02,1.7,2.22,2.21,3.61l-5.64,1.74c-.34-.96-.96-1.78-1.87-2.46-.91-.68-2.05-1.02-3.44-1.02s-2.53.33-3.33.98c-.81.65-1.21,1.57-1.21,2.76,0,.93.32,1.67.95,2.21.64.54,1.51.95,2.61,1.23l3.9.98c2.55.62,4.52,1.74,5.94,3.35,1.41,1.61,2.12,3.41,2.12,5.39,0,1.75-.42,3.29-1.27,4.6-.85,1.32-2.08,2.34-3.69,3.08-1.61.74-3.56,1.1-5.86,1.1Z"/><path d="M755.44,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/><path d="M785.99,308.44c-2.46,0-4.6-.48-6.41-1.44s-3.2-2.31-4.18-4.05c-.98-1.74-1.46-3.8-1.46-6.17v-18.63h5.81v18.63c0,1.27.26,2.38.78,3.33.52.95,1.26,1.68,2.21,2.19.95.51,2.06.76,3.33.76s2.38-.25,3.33-.76c.95-.51,1.68-1.24,2.21-2.19.52-.95.78-2.06.78-3.33v-18.63h5.81v18.63c0,2.38-.5,4.43-1.51,6.17-1.01,1.74-2.42,3.09-4.24,4.05-1.83.96-3.98,1.44-6.47,1.44Z"/><path d="M804.66,307.84v-29.7h9.5c3.03,0,5.71.64,8.04,1.91,2.33,1.27,4.16,3.02,5.47,5.24,1.32,2.22,1.97,4.79,1.97,7.7s-.66,5.45-1.97,7.68c-1.32,2.24-3.14,3.99-5.47,5.26-2.33,1.27-5.02,1.91-8.04,1.91h-9.5ZM810.47,302.41h3.69c1.36,0,2.62-.24,3.78-.72,1.16-.48,2.17-1.14,3.03-1.99s1.53-1.85,2.02-2.99c.48-1.15.72-2.38.72-3.71s-.24-2.57-.72-3.71c-.48-1.15-1.15-2.14-2.02-2.99-.86-.85-1.87-1.51-3.03-1.99-1.16-.48-2.42-.72-3.78-.72h-3.69v18.84Z"/><path d="M834.78,307.84v-29.7h5.81v29.7h-5.81Z"/><path d="M861.05,308.35c-3,0-5.65-.66-7.96-1.97-2.31-1.32-4.11-3.13-5.41-5.43-1.3-2.31-1.95-4.94-1.95-7.91s.65-5.69,1.95-8c1.3-2.31,3.09-4.11,5.37-5.41,2.28-1.3,4.9-1.95,7.87-1.95s5.64.66,7.91,1.97,4.07,3.13,5.37,5.43c1.3,2.31,1.95,4.96,1.95,7.96s-.64,5.61-1.93,7.91c-1.29,2.31-3.07,4.12-5.35,5.43-2.28,1.32-4.89,1.97-7.83,1.97ZM861.05,303.05c1.81,0,3.4-.43,4.77-1.29,1.37-.86,2.45-2.04,3.22-3.54.78-1.5,1.17-3.23,1.17-5.18s-.4-3.72-1.19-5.22c-.79-1.5-1.88-2.68-3.27-3.54-1.39-.86-3-1.29-4.84-1.29s-3.37.43-4.77,1.29c-1.4.86-2.5,2.04-3.29,3.54-.79,1.5-1.19,3.24-1.19,5.22s.4,3.68,1.19,5.18c.79,1.5,1.89,2.68,3.31,3.54,1.41.86,3.04,1.29,4.88,1.29Z"/></g></svg>
-    </a>
+	<div class="site-header__inner">
 
-    <nav class="site-nav" aria-label="Primary">
-      <ul class="site-nav__list">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#studio">Studio</a></li>
-      </ul>
-    </nav>
+		<a class="brand" href="#top" aria-label="Magenta &mdash; home">
+			<svg class="brand__logo" viewBox="57 47 822 266" fill="currentColor" aria-hidden="true" focusable="false">
+	<path d="M162.57,134.23h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,26.07,0,32.43,20.31,32.43,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.07c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.18-29.7s-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.49-29.7-4.55,0-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52V123.02c0-15.4,12.48-27.88,27.88-27.88h13.72c.92,0,1.63.81,1.5,1.72l-4.98,35.67c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,14.65,0,23.69,6.19,28.01,19.15.12.36.15.74.1,1.11l-2.72,20.16c-.12.9.58,1.7,1.49,1.7Z"/>
+	<path d="M307.26,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM294.8,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/>
+	<path d="M425.42,132.67c0,.73.53,1.35,1.25,1.49,22.99,4.33,31.18,13.38,31.18,45.54s-8.82,44.21-41.22,44.55c-.83,0-1.51.68-1.51,1.51v.02c0,.83.68,1.5,1.51,1.51,30.66.4,41.23,13.16,41.23,40.3,0,31.22-18.19,42.73-53.65,42.73s-53.65-15.76-53.65-46.98c0-.15,0-.29,0-.43.03-11.17,9.14-20.17,20.31-20.17h20.57c1.01,0,1.74.97,1.45,1.94-.62,2.12-1.41,6.12-1.41,12.61,0,8.74,5.15,12.99,13.79,12.72,6.63-.21,11.97-5.83,11.64-12.46-.42-8.4-5.32-11.24-22.1-19.05-23.94-11.52-44.25-18.49-44.25-53.95v-31.52c0-37.89,16.97-57.89,53.65-57.89h21.22c18.08,0,32.73,14.66,32.73,32.73v4.4c0,.89-.77,1.59-1.66,1.51l-29.42-2.72c-.89-.08-1.66.62-1.66,1.51v.11ZM404.2,135.45c-8.18,0-12.73,6.67-12.73,36.37s4.55,36.67,12.73,36.67,12.73-6.97,12.73-36.67-4.55-36.37-12.73-36.37Z"/>
+	<path d="M526.34,202.43c0-7.21-1.04-12.94-1.66-15.73-.21-.95.5-1.85,1.47-1.85h24.28c9.23,0,16.79,7.43,16.83,16.66,0,.11,0,.21,0,.32v4.55c0,32.74-16.97,49.41-50.31,49.41-36.67,0-53.65-20-53.65-57.89v-47.89c0-37.89,15.46-57.89,52.13-57.89s52.13,20,52.13,57.89v25.76c0,.84-.68,1.52-1.52,1.52h-60.32c-.84,0-1.52.68-1.52,1.52v10c0,21.52,3.64,26.67,11.82,26.67,6.97,0,10.31-4.55,10.31-13.03ZM505.77,155.77l19.33.26c.85.01,1.55-.68,1.54-1.53-.23-17.79-4.42-22.09-10.9-22.09s-10.67,4.01-11.46,21.78c-.04.85.64,1.57,1.5,1.58Z"/>
+	<path d="M642.09,252.74c-.83,0-1.5-.67-1.5-1.5v-86.09c0-24.55-2.73-29.7-9.09-29.7s-10.31,4.85-10.31,31.22v84.58c0,.83-.67,1.5-1.5,1.5h-42.46c-.83,0-1.5-.67-1.5-1.5V123.02c0-15.4,12.48-27.88,27.88-27.88h13.73c.91,0,1.61.81,1.49,1.71l-4.98,35.68c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.72-33.15,18.24-40.83,35.89-40.83,27.58,0,33.34,20.31,33.34,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.08Z"/>
+	<path d="M742.42,95.13h18.79c.84,0,1.52.68,1.52,1.52v36.07c0,.84-.68,1.52-1.52,1.52h-18.79c-.84,0-1.52.68-1.52,1.52v56.07c0,16.67,3.94,20.61,18.79,20.61h4.55c.84,0,1.52.68,1.52,1.52v37.28c0,.84-.68,1.52-1.52,1.52h-13.64c-40.01,0-52.13-13.94-52.13-51.83v-65.16c0-.84-.68-1.52-1.52-1.52h-6.06c-.84,0-1.52-.68-1.52-1.52v-36.07c0-.84.68-1.52,1.52-1.52h6.06c.84,0,1.52-.68,1.52-1.52v-16.06c0-15.4,12.48-27.88,27.88-27.88h13.03c.84,0,1.52.68,1.52,1.52v42.43c0,.84.68,1.52,1.52,1.52Z"/>
+	<path d="M839.73,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM827.28,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/>
+	<g class="brand__logo-tagline">
+		<path d="M518.12,308.35c-2.89,0-5.44-.66-7.68-1.97-2.23-1.32-3.99-3.13-5.26-5.43-1.27-2.31-1.91-4.96-1.91-7.96s.64-5.65,1.91-7.96c1.27-2.31,3.02-4.12,5.24-5.43,2.22-1.32,4.77-1.97,7.66-1.97,2.04,0,3.93.36,5.69,1.08,1.75.72,3.29,1.73,4.6,3.01,1.32,1.29,2.33,2.77,3.03,4.43l-5.39,1.99c-.48-1.05-1.12-1.96-1.91-2.74-.79-.78-1.7-1.39-2.72-1.83-1.02-.44-2.12-.66-3.31-.66-1.73,0-3.26.43-4.6,1.29-1.34.86-2.39,2.04-3.14,3.54-.75,1.5-1.12,3.24-1.12,5.22s.38,3.73,1.15,5.24c.76,1.51,1.82,2.7,3.18,3.56s2.91,1.29,4.67,1.29c1.22,0,2.33-.23,3.33-.7,1-.47,1.89-1.11,2.67-1.93s1.41-1.77,1.89-2.84l5.39,1.95c-.71,1.73-1.72,3.25-3.03,4.58-1.32,1.33-2.85,2.36-4.6,3.1-1.75.74-3.66,1.1-5.73,1.1Z"/>
+		<path d="M536.19,307.84v-29.7h11.03c2.09,0,3.95.41,5.56,1.23,1.61.82,2.87,1.95,3.78,3.37.9,1.43,1.36,3.09,1.36,4.99s-.52,3.67-1.57,5.15c-1.05,1.49-2.42,2.61-4.12,3.37l6.87,11.58h-6.58l-6.07-10.52h-4.46v10.52h-5.81ZM542.01,292.02h5.26c.88,0,1.66-.18,2.35-.55.69-.37,1.24-.88,1.66-1.53.41-.65.62-1.39.62-2.21,0-1.27-.46-2.31-1.38-3.1-.92-.79-2.1-1.19-3.54-1.19h-4.96v8.57Z"/>
+		<path d="M563.99,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/>
+		<path d="M586.52,307.84l11.71-29.7h6.19l11.71,29.7h-6.15l-2.55-6.53h-12.22l-2.55,6.53h-6.15ZM597.12,296.18h8.4l-4.2-10.78-4.2,10.78Z"/>
+		<path d="M624.36,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/>
+		<path d="M643.29,307.84v-29.7h5.81v29.7h-5.81Z"/>
+		<path d="M664.93,307.84l-11.84-29.7h6.24l8.78,22.83,8.7-22.83h6.24l-11.8,29.7h-6.32Z"/>
+		<path d="M687.04,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/>
+		<path d="M732.95,308.35c-1.5,0-2.9-.18-4.2-.55s-2.46-.88-3.48-1.55c-1.02-.66-1.86-1.41-2.52-2.23-.67-.82-1.1-1.68-1.29-2.59l5.69-1.7c.37.96,1.02,1.79,1.95,2.48.93.69,2.11,1.05,3.52,1.08,1.5.03,2.72-.3,3.67-.98.95-.68,1.42-1.56,1.42-2.63,0-.93-.38-1.72-1.12-2.35-.75-.64-1.78-1.12-3.08-1.46l-3.86-1.02c-1.44-.37-2.72-.93-3.82-1.68-1.1-.75-1.97-1.68-2.59-2.78-.62-1.1-.93-2.39-.93-3.86,0-2.8.93-4.99,2.78-6.56,1.85-1.57,4.48-2.35,7.87-2.35,1.9,0,3.56.28,4.99.83,1.43.55,2.62,1.34,3.59,2.35.96,1.02,1.7,2.22,2.21,3.61l-5.64,1.74c-.34-.96-.96-1.78-1.87-2.46-.91-.68-2.05-1.02-3.44-1.02s-2.53.33-3.33.98c-.81.65-1.21,1.57-1.21,2.76,0,.93.32,1.67.95,2.21.64.54,1.51.95,2.61,1.23l3.9.98c2.55.62,4.52,1.74,5.94,3.35,1.41,1.61,2.12,3.41,2.12,5.39,0,1.75-.42,3.29-1.27,4.6-.85,1.32-2.08,2.34-3.69,3.08-1.61.74-3.56,1.1-5.86,1.1Z"/>
+		<path d="M755.44,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/>
+		<path d="M785.99,308.44c-2.46,0-4.6-.48-6.41-1.44s-3.2-2.31-4.18-4.05c-.98-1.74-1.46-3.8-1.46-6.17v-18.63h5.81v18.63c0,1.27.26,2.38.78,3.33.52.95,1.26,1.68,2.21,2.19.95.51,2.06.76,3.33.76s2.38-.25,3.33-.76c.95-.51,1.68-1.24,2.21-2.19.52-.95.78-2.06.78-3.33v-18.63h5.81v18.63c0,2.38-.5,4.43-1.51,6.17-1.01,1.74-2.42,3.09-4.24,4.05-1.83.96-3.98,1.44-6.47,1.44Z"/>
+		<path d="M804.66,307.84v-29.7h9.5c3.03,0,5.71.64,8.04,1.91,2.33,1.27,4.16,3.02,5.47,5.24,1.32,2.22,1.97,4.79,1.97,7.7s-.66,5.45-1.97,7.68c-1.32,2.24-3.14,3.99-5.47,5.26-2.33,1.27-5.02,1.91-8.04,1.91h-9.5ZM810.47,302.41h3.69c1.36,0,2.62-.24,3.78-.72,1.16-.48,2.17-1.14,3.03-1.99s1.53-1.85,2.02-2.99c.48-1.15.72-2.38.72-3.71s-.24-2.57-.72-3.71c-.48-1.15-1.15-2.14-2.02-2.99-.86-.85-1.87-1.51-3.03-1.99-1.16-.48-2.42-.72-3.78-.72h-3.69v18.84Z"/>
+		<path d="M834.78,307.84v-29.7h5.81v29.7h-5.81Z"/>
+		<path d="M861.05,308.35c-3,0-5.65-.66-7.96-1.97-2.31-1.32-4.11-3.13-5.41-5.43-1.3-2.31-1.95-4.94-1.95-7.91s.65-5.69,1.95-8c1.3-2.31,3.09-4.11,5.37-5.41,2.28-1.3,4.9-1.95,7.87-1.95s5.64.66,7.91,1.97,4.07,3.13,5.37,5.43c1.3,2.31,1.95,4.96,1.95,7.96s-.64,5.61-1.93,7.91c-1.29,2.31-3.07,4.12-5.35,5.43-2.28,1.32-4.89,1.97-7.83,1.97ZM861.05,303.05c1.81,0,3.4-.43,4.77-1.29,1.37-.86,2.45-2.04,3.22-3.54.78-1.5,1.17-3.23,1.17-5.18s-.4-3.72-1.19-5.22c-.79-1.5-1.88-2.68-3.27-3.54-1.39-.86-3-1.29-4.84-1.29s-3.37.43-4.77,1.29c-1.4.86-2.5,2.04-3.29,3.54-.79,1.5-1.19,3.24-1.19,5.22s.4,3.68,1.19,5.18c.79,1.5,1.89,2.68,3.31,3.54,1.41.86,3.04,1.29,4.88,1.29Z"/>
+	</g>
+</svg>
+		</a>
 
-    <a class="btn btn--paper site-header__cta" href="#contact">Start a job <span aria-hidden="true">→</span></a>
+		<nav class="site-nav" aria-label="Primary">
+			<ul class="site-nav__list"><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#studio">Studio</a></li></ul>		</nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
-      <span class="screen-reader-text">Menu</span>
-      <span class="nav-toggle__bar" aria-hidden="true"></span>
-      <span class="nav-toggle__bar" aria-hidden="true"></span>
-    </button>
-  </div>
-  <div class="site-header__rule" aria-hidden="true">
-    <div class="colour-bar">
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-    </div>
-  </div>
+		<a class="btn btn--paper site-header__cta" href="#contact">
+			Start a job			<span aria-hidden="true">&rarr;</span>
+		</a>
+
+		<button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+			<span class="screen-reader-text">Menu</span>
+			<span class="nav-toggle__bar" aria-hidden="true"></span>
+			<span class="nav-toggle__bar" aria-hidden="true"></span>
+		</button>
+	</div>
+
+	<div class="site-header__rule" aria-hidden="true"><div class="colour-bar" aria-hidden="true"><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span></div></div>
 </header>
 
 <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
-  <ul class="mobile-nav__list">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#studio">Studio</a></li>
-  </ul>
-  <a class="btn btn--paper" href="#contact">Start a job</a>
+	<ul class="mobile-nav__list"><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#studio">Studio</a></li></ul>	<a class="btn btn--paper" href="#contact">Start a job</a>
 </div>
 
 <main id="main" class="site-main">
-
-<!-- ============================================================= HERO -->
 <section class="hero section" id="top" data-reg-scope>
-  <div class="reg-marks" aria-hidden="true">
-    <svg class="reg-mark reg-mark--tl" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--tr" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--bl" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--br" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-  </div>
+	<div class="reg-marks" aria-hidden="true"><svg class="reg-mark reg-mark--tl" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--tr" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--bl" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--br" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg></div>
+	<div class="hero__grid wrap">
 
-  <div class="hero__grid wrap">
-    <div class="hero__copy">
-      <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Print production &amp; graphic design · Grand Cayman</p>
+		<div class="hero__copy">
+			<p class="eyebrow">
+				<span class="eyebrow__dot" aria-hidden="true"></span>
+				Design &amp; production studio · Grand Cayman			</p>
 
-      <h1 class="hero__title">
-        <span class="screen-reader-text">Magenta — we put ink on the island</span>
-        <span class="cmyk cmyk--display" data-cmyk>
-          <span class="cmyk__plate cmyk__plate--c" aria-hidden="true">MAGENTA</span>
-          <span class="cmyk__plate cmyk__plate--y" aria-hidden="true">MAGENTA</span>
-          <span class="cmyk__plate cmyk__plate--k" aria-hidden="true">MAGENTA</span>
-          <span class="cmyk__plate cmyk__plate--m">MAGENTA</span>
-        </span>
-      </h1>
+			<h1 class="hero__title">
+				<span class="screen-reader-text">Magenta &mdash; from idea to finished piece</span>
+				<span class="cmyk cmyk--display" data-cmyk><span class="cmyk__plate cmyk__plate--c" aria-hidden="true">MAGENTA</span><span class="cmyk__plate cmyk__plate--y" aria-hidden="true">MAGENTA</span><span class="cmyk__plate cmyk__plate--k" aria-hidden="true">MAGENTA</span><span class="cmyk__plate cmyk__plate--m">MAGENTA</span></span>			</h1>
 
-      <p class="hero__tagline" aria-hidden="true">We put ink <em><span class="marked">on the island.<svg class="doodle doodle--lasso doodle--ink-y doodle--mark doodle--mark-lasso doodle--draw" viewBox="0 0 240 92" fill="none" aria-hidden="true" focusable="false"><path d="M64 16C36 20 12 34 10 50c-2 18 30 30 78 32 48 2 108-8 138-26 26-16 6-32-34-38-42-6-88 0-114 12-22 10-16 26 6 32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></em></p>
+			<p class="hero__tagline" aria-hidden="true">
+				From idea to				<em>
+					<span class="marked">finished piece.<svg class="doodle doodle--lasso doodle--ink-y doodle--mark doodle--mark-lasso doodle--draw" viewBox="0 0 240 92" fill="none" aria-hidden="true" focusable="false"><path d="M64 16C36 20 12 34 10 50c-2 18 30 30 78 32 48 2 108-8 138-26 26-16 6-32-34-38-42-6-88 0-114 12-22 10-16 26 6 32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>				</em>
+			</p>
 
-      <p class="lede hero__lede">Menus, packaging, signage and identity for the hotels, restaurants and agencies that <mark class="hl">set the standard in Cayman</mark>. Designed and produced under one roof.</p>
+			<p class="lede hero__lede">
+				Design, print, framing and fine art reproduction for businesses, weddings, artists and photographers <mark class="hl hl--y">across the Cayman Islands</mark>. Design and production under one roof, so an idea can arrive without a production plan attached.			</p>
 
-      <p class="hero__actions">
-        <a class="btn btn--magenta" href="#work">See the work <span aria-hidden="true">→</span></a>
-        <a class="btn btn--outline" href="#contact">Start a job</a>
-      </p>
+			<p class="hero__actions">
+				<a class="btn btn--magenta" href="#work">
+					See the work					<span aria-hidden="true">&rarr;</span>
+				</a>
+				<a class="btn btn--outline" href="#contact">
+					Start a job				</a>
+			</p>
 
-      <dl class="hero__facts">
-        <div><dt>Based in</dt><dd>Grand Cayman</dd></div>
-        <div><dt>Trained in</dt><dd>Barcelona</dd></div>
-        <div><dt>Turnaround</dt><dd>Island-fast</dd></div>
-      </dl>
-    </div>
+			<dl class="hero__facts">
+				<div>
+					<dt>Based in</dt>
+					<dd>Grand Cayman</dd>
+				</div>
+				<div>
+					<dt>Trained in</dt>
+					<dd>Barcelona</dd>
+				</div>
+				<div>
+					<dt>Under one roof</dt>
+					<dd>Design + production</dd>
+				</div>
+			</dl>
+		</div>
 
-    <div class="hero__media">
-      <div class="hero__frame" data-parallax="0.06">
-        <img src="assets/img/graphics/hero-main.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="1000" height="1250" loading="eager" decoding="sync" fetchpriority="high">
-      </div>
-      <span class="sticker sticker--rotate-l sticker--yellow hero__sticker-a" data-parallax="0.14">PRINT IS NOT DEAD</span>
-      <span class="sticker sticker--rotate-r sticker--cyan hero__sticker-b" data-parallax="0.2">ink on everything</span>
-      <span class="tape tape--hero" aria-hidden="true"></span>
-      <svg class="doodle doodle--asterisk doodle--ink-c doodle--hero-star doodle--draw" viewBox="0 0 46 46" fill="none" aria-hidden="true" focusable="false"><path d="M23 4v38" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M7 13l32 20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M39 13L7 33" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
-      <svg class="doodle doodle--arrow doodle--ink-m doodle--hero-arrow doodle--draw" viewBox="0 0 130 112" fill="none" aria-hidden="true" focusable="false"><path d="M12 10c8 34 30 62 60 78 12 6 26 11 40 13" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 101l-9-27" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 101l-28 6" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></svg>
-    </div>
-  </div>
+		<div class="hero__media">
+			<div class="hero__frame" data-parallax="0.06">
+				<img src="./assets/img/graphics/hero-main.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="1000" height="1250" loading="eager" decoding="sync" fetchpriority="high">			</div>
 
-  <a class="hero__scroll" href="#services"><span>Scroll</span><span class="hero__scroll-arrow" aria-hidden="true">↓</span></a>
+			<span class="sticker sticker--rotate-l sticker--yellow hero__sticker-a" data-parallax="0.14">
+				CROP IT LIKE IT&rsquo;S HOT			</span>
+
+			<span class="sticker sticker--rotate-r sticker--cyan hero__sticker-b" data-parallax="0.2">
+				pixel perfect			</span>
+
+			<span class="tape tape--hero" aria-hidden="true"></span>
+
+			<svg class="doodle doodle--asterisk doodle--ink-c doodle--hero-star doodle--draw" viewBox="0 0 46 46" fill="none" aria-hidden="true" focusable="false"><path d="M23 4v38" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13l32 20" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M39 13L7 33" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>			<svg class="doodle doodle--arrow doodle--ink-m doodle--hero-arrow doodle--draw" viewBox="0 0 130 112" fill="none" aria-hidden="true" focusable="false"><path d="M12 10c8 34 30 62 60 78 12 6 26 11 40 13" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 101l-9-27" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 101l-28 6" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>		</div>
+
+	</div>
+
+	<a class="hero__scroll" href="#services">
+		<span>Scroll</span>
+		<span class="hero__scroll-arrow" aria-hidden="true">&darr;</span>
+	</a>
 </section>
+<div class="marquee marquee--band" data-marquee><div class="marquee__track"><span class="marquee__item">Graphic design<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Wedding stationery<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Fine art printing<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Custom framing<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Stickers &amp; labels<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Foil &amp; specialty<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Artwork digitization<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Brand identity<span class="marquee__sep" aria-hidden="true">&#10033;</span></span></div><div class="marquee__track" aria-hidden="true"><span class="marquee__item">Graphic design<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Wedding stationery<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Fine art printing<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Custom framing<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Stickers &amp; labels<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Foil &amp; specialty<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Artwork digitization<span class="marquee__sep" aria-hidden="true">&#10033;</span></span><span class="marquee__item">Brand identity<span class="marquee__sep" aria-hidden="true">&#10033;</span></span></div></div><section class="section section--paper services" id="services">
+	<div class="wrap">
 
-<!-- =========================================================== TICKER -->
-<div class="marquee marquee--band" data-marquee>
-  <div class="marquee__track">
-    <span class="marquee__item">Offset<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Large format<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Screen printing<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Foil &amp; emboss<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Packaging<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Signage<span class="marquee__sep" aria-hidden="true">✱</span></span>
-    <span class="marquee__item">Brand identity<span class="marquee__sep" aria-hidden="true">✱</span></span>
-  </div>
-  <div class="marquee__track" aria-hidden="true">
-    <span class="marquee__item">Offset<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Large format<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Screen printing<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Foil &amp; emboss<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Packaging<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Signage<span class="marquee__sep">✱</span></span>
-    <span class="marquee__item">Brand identity<span class="marquee__sep">✱</span></span>
-  </div>
-</div>
+		<header class="section-head">
+			<p class="eyebrow">What we make</p>
+			<h2 class="display display--lg" data-reveal>
+				From idea to				<em>
+					<span class="marked">finished piece.<svg class="doodle doodle--underline doodle--ink-teal doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>				</em>
+			</h2>
+			<p class="lede section-head__lede">
+				Design and production live in the same studio, so we already know how a piece will be made while we are still drawing it. Come to us with an idea, not a production plan.			</p>
+		</header>
 
-<!-- ========================================================= SERVICES -->
-<section class="section section--paper services" id="services">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="eyebrow">What we make</p>
-      <h2 class="display display--lg" data-reveal>Ink on <em><span class="marked">everything.<svg class="doodle doodle--underline doodle--ink-c doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg></span></em><svg class="doodle doodle--squiggle doodle--ink-m doodle--services doodle--draw" viewBox="0 0 124 74" fill="none" aria-hidden="true" focusable="false"><path d="M8 48c4-21 21-35 35-29 15 6 11 31-6 33-17 2-23-21-6-33 17-13 46-6 61 13" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></h2>
-      <p class="lede section-head__lede">Design and production are the same conversation here. Nothing gets handed over a wall, which is why nothing comes back wrong.</p>
-    </header>
+		<ul class="service-grid">
+							<li class="service-card" data-reveal style="--i:0">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-08.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">01</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Business &amp; marketing</h3>
+						<p>Business cards, brochures, booklets and catalogues, stationery, menus, posters, folders. The everyday pieces, made like they matter.</p>
+					</div>
+				</li>
+							<li class="service-card" data-reveal style="--i:1">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-07.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">02</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Weddings &amp; events</h3>
+						<p>Invitation suites, save the dates, menus and programs, place cards, table numbers, seating charts, welcome signs, coasters and tags.</p>
+					</div>
+				</li>
+							<li class="service-card" data-reveal style="--i:2">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-03.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">03</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Fine art &amp; photography</h3>
+						<p>Archival giclée and canvas prints, artist reproductions, and scanning and colour correction of original work. Colour managed end to end.</p>
+					</div>
+				</li>
+							<li class="service-card" data-reveal style="--i:3">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-02.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">04</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Stickers &amp; labels</h3>
+						<p>Vinyl stickers, die-cut and custom shapes, laminated labels. Short runs welcome — you do not need to order a thousand.</p>
+					</div>
+				</li>
+							<li class="service-card" data-reveal style="--i:4">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-01.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">05</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Specialty &amp; custom</h3>
+						<p>Foil, white specialty ink, soft-touch lamination, embossing, die-cut shapes and binding. Bespoke pieces and short-run custom production.</p>
+					</div>
+				</li>
+							<li class="service-card" data-reveal style="--i:5">
+					<div class="service-card__media">
+						<img src="./assets/img/brand/icon-05.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="900" height="900" loading="lazy" decoding="async">						<span class="service-card__tag" aria-hidden="true">06</span>
+					</div>
+					<div class="service-card__body">
+						<h3 class="service-card__title">Custom framing</h3>
+						<p>Picture framing for fine art and photography, canvas and floater framing, custom matting and mounting, frame and material selection.</p>
+					</div>
+				</li>
+					</ul>
 
-    <ul class="service-grid">
-      <li class="service-card" data-reveal style="--i:0">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-08.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">01</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Offset printing</h3><p>Long runs with the colour held exactly where you signed it off. Menus, brochures, stationery, publications.</p></div>
-      </li>
-      <li class="service-card" data-reveal style="--i:1">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-05.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">02</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Large format</h3><p>Banners, window graphics, vehicle wraps and event build. Printed, finished and installed across the island.</p></div>
-      </li>
-      <li class="service-card" data-reveal style="--i:2">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-03.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">03</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Screen printing</h3><p>Uniforms, merchandise, tote bags and staff kit. Ink that survives the salt, the sun and the wash.</p></div>
-      </li>
-      <li class="service-card" data-reveal style="--i:3">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-01.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">04</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Foil &amp; finishing</h3><p>Hot foil, emboss, deboss, spot UV, die-cutting. The part guests notice before they read a word.</p></div>
-      </li>
-      <li class="service-card" data-reveal style="--i:4">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-02.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">05</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Packaging</h3><p>Structural design through to production. Boxes, sleeves, labels and bags that make the product feel worth it.</p></div>
-      </li>
-      <li class="service-card" data-reveal style="--i:5">
-        <div class="service-card__media">
-          <img src="assets/img/brand/icon-06.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="900" height="900" loading="lazy" decoding="async">
-          <span class="service-card__tag" aria-hidden="true">06</span>
-        </div>
-        <div class="service-card__body"><h3 class="service-card__title">Signage</h3><p>Wayfinding, dimensional letters, acrylic and metal. Specified, fabricated and mounted.</p></div>
-      </li>
-    </ul>
+		<p class="services__note">
+			<span class="sticker sticker--rotate-l sticker--magenta">
+				Not sure which one you need? That is what the first conversation is for.			</span>
+		</p>
 
-    <p class="services__note"><span class="sticker sticker--rotate-l sticker--magenta">Not sure which one you need? That is what the first call is for.</span></p>
-  </div>
+	</div>
 </section>
-
-<!-- ============================================================= WORK -->
 <section class="section section--ink work" id="work">
-  <div class="wrap">
-    <header class="section-head section-head--split">
-      <div>
-        <p class="eyebrow eyebrow--light">Selected work</p>
-        <h2 class="display display--lg display--light" data-reveal>Things you can <em>hold.</em></h2>
-      </div>
-      <div class="section-head__aside">
-        <p class="lede lede--light">A sample of what has come off the press lately. If you have eaten out, checked in or walked past a window on this island, you have probably already seen some of it.</p>
-        <span class="work__cta-wrap"><a class="btn btn--outline btn--light" href="#">All projects <span aria-hidden="true">→</span></a><svg class="doodle doodle--arrow-loop doodle--ink-y doodle--work-arrow doodle--draw" viewBox="0 0 144 122" fill="none" aria-hidden="true" focusable="false"><path d="M10 16c18-9 35 1 33 18-2 16-25 19-29 5-4-16 19-31 44-25 27 6 48 35 54 68" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 102l-6-29" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 102l-28-5" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></svg></span>
-      </div>
-    </header>
+	<div class="wrap">
 
-    <div class="work-grid">
-      <article class="work-card work-card--bundled" data-reveal style="--i:0">
-        <div class="work-card__media">
-          <img src="assets/img/work/coffee-cart-cards-900.webp" srcset="assets/img/work/coffee-cart-cards-480.webp 480w, assets/img/work/coffee-cart-cards-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="Two stacks of square business cards, one black and one cream, showing a retro running coffee-cup mascot.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">The Coffee Cart</h3><p class="work-card__client">Mobile coffee &amp; matcha</p><p class="work-card__meta">Business cards · Uncoated stock</p></div>
-      </article>
-      <article class="work-card work-card--bundled" data-reveal style="--i:1">
-        <div class="work-card__media">
-          <img src="assets/img/work/amuse-bouche-menu-900.webp" srcset="assets/img/work/amuse-bouche-menu-480.webp 480w, assets/img/work/amuse-bouche-menu-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="A tasting menu standing open beside a red die-cut envelope closed with a small paper heart.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">Amuse Bouche</h3><p class="work-card__client">Restaurant</p><p class="work-card__meta">Tasting menu · Die-cut · Coloured stock</p></div>
-      </article>
-      <article class="work-card work-card--bundled" data-reveal style="--i:2">
-        <div class="work-card__media">
-          <img src="assets/img/work/goddess-beer-900.webp" srcset="assets/img/work/goddess-beer-480.webp 480w, assets/img/work/goddess-beer-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="Round pink beer coasters and a matching folded brochure for a collaborative brew.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">Goddess Hazy IPA</h3><p class="work-card__client">19·81 Brewing Co.</p><p class="work-card__meta">Coasters · Die-cut · Brochure</p></div>
-      </article>
-      <article class="work-card work-card--bundled" data-reveal style="--i:3">
-        <div class="work-card__media">
-          <img src="assets/img/work/anytime-wellness-cards-900.webp" srcset="assets/img/work/anytime-wellness-cards-480.webp 480w, assets/img/work/anytime-wellness-cards-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="Stacks of white gift cards stamped in gold foil, styled with dried flowers and a wooden salt scoop.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">Anytime Wellness</h3><p class="work-card__client">Wellness</p><p class="work-card__meta">Gift cards · Gold foil</p></div>
-      </article>
-      <article class="work-card work-card--bundled" data-reveal style="--i:4">
-        <div class="work-card__media">
-          <img src="assets/img/work/lalique-brochures-900.webp" srcset="assets/img/work/lalique-brochures-480.webp 480w, assets/img/work/lalique-brochures-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="A fanned stack of property brochures for a Crystal Harbour home, opened to interior photography.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">60 Lalique</h3><p class="work-card__client">Property</p><p class="work-card__meta">Property brochure · Offset</p></div>
-      </article>
-      <article class="work-card work-card--bundled" data-reveal style="--i:5">
-        <div class="work-card__media">
-          <img src="assets/img/work/align-brochures-900.webp" srcset="assets/img/work/align-brochures-480.webp 480w, assets/img/work/align-brochures-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" class="slot-img" loading="lazy" decoding="async" alt="A spread of purple and white healthcare brochures for adult and paediatric therapy services.">
-          <span class="tape tape--card" aria-hidden="true"></span>
-        </div>
-        <div class="work-card__body"><h3 class="work-card__title">Align</h3><p class="work-card__client">Healthcare</p><p class="work-card__meta">Brochure suite · Offset</p></div>
-      </article>
-    </div>
-  </div>
+		<header class="section-head section-head--split">
+			<div>
+				<p class="eyebrow eyebrow--light">Selected work</p>
+				<h2 class="display display--lg display--light" data-reveal>
+					Things you can <em>hold.</em>
+				</h2>
+			</div>
+			<div class="section-head__aside">
+				<p class="lede lede--light">
+					A sample of what has left the studio lately. If you have eaten out, been to a wedding or picked up a card on this island, you have probably already held some of it.				</p>
+				<span class="work__cta-wrap">
+					<a class="btn btn--outline btn--light" href="#work">
+						All projects						<span aria-hidden="true">&rarr;</span>
+					</a>
+					<svg class="doodle doodle--arrow-loop doodle--ink-y doodle--work-arrow doodle--draw" viewBox="0 0 144 122" fill="none" aria-hidden="true" focusable="false"><path d="M10 16c18-9 35 1 33 18-2 16-25 19-29 5-4-16 19-31 44-25 27 6 48 35 54 68" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 102l-6-29" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 102l-28-5" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>				</span>
+			</div>
+		</header>
+
+		<div class="work-grid">
+			
+									<article class="work-card work-card--bundled" data-reveal style="--i:0">
+						<div class="work-card__media">
+							<img src="./assets/img/work/coffee-cart-cards-900.webp" srcset="./assets/img/work/coffee-cart-cards-480.webp 480w, ./assets/img/work/coffee-cart-cards-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="Two stacks of square business cards, one black and one cream, showing a retro running coffee-cup mascot." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">The Coffee Cart</h3>
+							<p class="work-card__client">Mobile coffee &amp; matcha</p>
+							<p class="work-card__meta">Business cards &middot; Uncoated stock</p>
+						</div>
+					</article>
+									<article class="work-card work-card--bundled" data-reveal style="--i:1">
+						<div class="work-card__media">
+							<img src="./assets/img/work/amuse-bouche-menu-900.webp" srcset="./assets/img/work/amuse-bouche-menu-480.webp 480w, ./assets/img/work/amuse-bouche-menu-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="A tasting menu standing open beside a red die-cut envelope closed with a small paper heart." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">Amuse Bouche</h3>
+							<p class="work-card__client">Restaurant</p>
+							<p class="work-card__meta">Tasting menu &middot; Die-cut &middot; Coloured stock</p>
+						</div>
+					</article>
+									<article class="work-card work-card--bundled" data-reveal style="--i:2">
+						<div class="work-card__media">
+							<img src="./assets/img/work/goddess-beer-900.webp" srcset="./assets/img/work/goddess-beer-480.webp 480w, ./assets/img/work/goddess-beer-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="Round pink beer coasters and a matching folded brochure for a collaborative brew." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">Goddess Hazy IPA</h3>
+							<p class="work-card__client">19&middot;81 Brewing Co.</p>
+							<p class="work-card__meta">Coasters &middot; Die-cut &middot; Brochure</p>
+						</div>
+					</article>
+									<article class="work-card work-card--bundled" data-reveal style="--i:3">
+						<div class="work-card__media">
+							<img src="./assets/img/work/anytime-wellness-cards-900.webp" srcset="./assets/img/work/anytime-wellness-cards-480.webp 480w, ./assets/img/work/anytime-wellness-cards-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="Stacks of white gift cards stamped in gold foil, styled with dried flowers and a wooden salt scoop." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">Anytime Wellness</h3>
+							<p class="work-card__client">Wellness</p>
+							<p class="work-card__meta">Gift cards &middot; Gold foil</p>
+						</div>
+					</article>
+									<article class="work-card work-card--bundled" data-reveal style="--i:4">
+						<div class="work-card__media">
+							<img src="./assets/img/work/lalique-brochures-900.webp" srcset="./assets/img/work/lalique-brochures-480.webp 480w, ./assets/img/work/lalique-brochures-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="A fanned stack of property brochures for a Crystal Harbour home, opened to interior photography." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">60 Lalique</h3>
+							<p class="work-card__client">Property</p>
+							<p class="work-card__meta">Property brochure &middot; Perfect bound</p>
+						</div>
+					</article>
+									<article class="work-card work-card--bundled" data-reveal style="--i:5">
+						<div class="work-card__media">
+							<img src="./assets/img/work/align-brochures-900.webp" srcset="./assets/img/work/align-brochures-480.webp 480w, ./assets/img/work/align-brochures-900.webp 900w" sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" width="900" height="1125" alt="A spread of purple and white healthcare brochures for adult and paediatric therapy services." class="slot-img " loading="lazy" decoding="async">							<span class="tape tape--card" aria-hidden="true"></span>
+						</div>
+						<div class="work-card__body">
+							<h3 class="work-card__title">Align</h3>
+							<p class="work-card__client">Healthcare</p>
+							<p class="work-card__meta">Brochure suite &middot; Saddle stitched</p>
+						</div>
+					</article>
+				
+					</div>
+
+	</div>
 </section>
-
-<!-- ============================================================ REELS -->
 <section class="section section--stock reels" id="reels">
-  <div class="wrap">
-    <header class="section-head section-head--split">
-      <div>
-        <p class="eyebrow">On the floor</p>
-        <h2 class="display display--lg" data-reveal>Watch it <em>get made.</em></h2>
-      </div>
-      <div class="section-head__aside">
-        <p class="lede">Short clips from the workshop. No sound, no edit, nothing staged — just the machines doing the part that is hard to describe in words.</p>
-      </div>
-    </header>
+	<div class="wrap">
 
-    <ul class="reel-strip">
-      <li class="reel" data-reveal style="--i:0">
-        <div class="reel__frame">
-          <video class="reel__video" poster="assets/video/vinyl-stickers-poster.webp" muted playsinline loop preload="none" aria-label="Vinyl stickers being weeded and peeled after contour cutting." data-reel>
-            <source src="assets/video/vinyl-stickers.webm" type="video/webm">
-            <source src="assets/video/vinyl-stickers.mp4" type="video/mp4">
-          </video>
-          <span class="reel__badge" aria-hidden="true">01</span>
-        </div>
-        <div class="reel__body"><h3 class="reel__title">Vinyl stickers</h3><p class="reel__meta">Cut to shape</p></div>
-      </li>
-      <li class="reel" data-reveal style="--i:1">
-        <div class="reel__frame">
-          <video class="reel__video" poster="assets/video/festive-diecut-poster.webp" muted playsinline loop preload="none" aria-label="Custom die-cut seasonal pieces stacked and fanned out on a shelf." data-reel>
-            <source src="assets/video/festive-diecut.mp4" type="video/mp4">
-          </video>
-          <span class="reel__badge" aria-hidden="true">02</span>
-        </div>
-        <div class="reel__body"><h3 class="reel__title">Festive die-cut</h3><p class="reel__meta">Printed &amp; cut in house</p></div>
-      </li>
-      <li class="reel" data-reveal style="--i:2">
-        <div class="reel__frame">
-          <video class="reel__video" poster="assets/video/wellness-gift-poster.webp" muted playsinline loop preload="none" aria-label="Foiled wellness gift cards being handled and arranged." data-reel>
-            <source src="assets/video/wellness-gift.mp4" type="video/mp4">
-          </video>
-          <span class="reel__badge" aria-hidden="true">03</span>
-        </div>
-        <div class="reel__body"><h3 class="reel__title">Gift cards</h3><p class="reel__meta">Foiled &amp; boxed</p></div>
-      </li>
-    </ul>
-  </div>
+		<header class="section-head section-head--split">
+			<div>
+				<p class="eyebrow">On the floor</p>
+				<h2 class="display display--lg" data-reveal>
+					Watch it <em>get made.</em>
+				</h2>
+			</div>
+			<div class="section-head__aside">
+				<p class="lede">
+					Short clips from the workshop. No sound, no edit, nothing staged - just the machines doing the part that is hard to describe in words.				</p>
+			</div>
+		</header>
+
+		<ul class="reel-strip">
+							<li class="reel" data-reveal style="--i:0">
+					<div class="reel__frame">
+						<video class="reel__video" poster="./assets/video/vinyl-stickers-poster.webp" muted playsinline loop preload="none" aria-label="Vinyl stickers being weeded and peeled after contour cutting." data-reel><source src="./assets/video/vinyl-stickers.webm" type="video/webm"><source src="./assets/video/vinyl-stickers.mp4" type="video/mp4"></video>						<span class="reel__badge" aria-hidden="true">01</span>
+					</div>
+					<div class="reel__body">
+						<h3 class="reel__title">Vinyl stickers</h3>
+						<p class="reel__meta">Cut to shape</p>
+					</div>
+				</li>
+							<li class="reel" data-reveal style="--i:1">
+					<div class="reel__frame">
+						<video class="reel__video" poster="./assets/video/festive-diecut-poster.webp" muted playsinline loop preload="none" aria-label="Custom die-cut seasonal pieces stacked and fanned out on a shelf." data-reel><source src="./assets/video/festive-diecut.mp4" type="video/mp4"></video>						<span class="reel__badge" aria-hidden="true">02</span>
+					</div>
+					<div class="reel__body">
+						<h3 class="reel__title">Festive die-cut</h3>
+						<p class="reel__meta">Printed &amp; cut in house</p>
+					</div>
+				</li>
+							<li class="reel" data-reveal style="--i:2">
+					<div class="reel__frame">
+						<video class="reel__video" poster="./assets/video/wellness-gift-poster.webp" muted playsinline loop preload="none" aria-label="Foiled wellness gift cards being handled and arranged." data-reel><source src="./assets/video/wellness-gift.mp4" type="video/mp4"></video>						<span class="reel__badge" aria-hidden="true">03</span>
+					</div>
+					<div class="reel__body">
+						<h3 class="reel__title">Gift cards</h3>
+						<p class="reel__meta">Foiled &amp; boxed</p>
+					</div>
+				</li>
+					</ul>
+
+	</div>
 </section>
-
-<!-- ========================================================== PROCESS -->
 <section class="process" id="process">
-  <div class="process__band">
-    <div class="process__band-media" data-parallax="0.04">
-      <img src="assets/img/graphics/press-band.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="1600" height="900" loading="lazy" decoding="async">
-    </div>
 
-    <div class="process__band-inner wrap">
-      <p class="eyebrow eyebrow--light">How it works</p>
-      <h2 class="process__title" data-reveal>
-        From file
-        <span class="process__title-rule" aria-hidden="true"></span>
-        <em>to finish.</em>
-      </h2>
-      <p class="process__standfirst">Five stations. A job does not skip any of them, and nothing leaves the building that has not cleared all five.</p>
-    </div>
+	<!-- Full-bleed press band: the blurred sheet coming off the machine, with
+	     the section title sitting on it. -->
+	<div class="process__band">
+		<div class="process__band-media" data-parallax="0.04">
+			<img src="./assets/img/graphics/press-band.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="1600" height="900" loading="lazy" decoding="async">		</div>
 
-    <div class="process__band-bar" aria-hidden="true">
-      <div class="colour-bar">
-        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-        <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      </div>
-    </div>
-  </div>
+		<div class="process__band-inner wrap">
+			<p class="eyebrow eyebrow--light">How it works</p>
+			<h2 class="process__title" data-reveal>
+				From file				<span class="process__title-rule" aria-hidden="true"></span>
+				<em>to finish.</em>
+			</h2>
+			<p class="process__standfirst">
+				Five steps from a conversation to something you can hold. Nothing skips ahead, and nothing goes out that we would not put our own name on.			</p>
+		</div>
 
-  <div class="process__stations wrap" data-rail>
-    <div class="process__rail" aria-hidden="true"><span class="process__rail-fill"></span></div>
+		<div class="process__band-bar" aria-hidden="true"><div class="colour-bar" aria-hidden="true"><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span></div></div>
+	</div>
 
-    <ol class="process-list">
-      <li class="station" data-reveal style="--i:0">
-        <span class="station__dot" aria-hidden="true"></span>
-        <span class="station__n" aria-hidden="true">01</span>
-        <div class="station__body">
-          <p class="station__note">Before anything opens</p>
-          <h3 class="station__title">Brief</h3>
-          <p class="station__copy">We start with the finished object, not the file. Quantity, stock, budget, deadline, and where it will actually live once it leaves here.</p>
-        </div>
-      </li>
-      <li class="station" data-reveal style="--i:1">
-        <span class="station__dot" aria-hidden="true"></span>
-        <span class="station__n" aria-hidden="true">02</span>
-        <div class="station__body">
-          <p class="station__note">Artwork &amp; prepress</p>
-          <h3 class="station__title">Design</h3>
-          <p class="station__copy">Artwork built by people who know what the press will do with it. No surprises at plate stage, no last-minute redraws.</p>
-        </div>
-      </li>
-      <li class="station" data-reveal style="--i:2">
-        <span class="station__dot" aria-hidden="true"></span>
-        <span class="station__n" aria-hidden="true">03</span>
-        <div class="station__body">
-          <p class="station__note">On the real stock</p>
-          <h3 class="station__title">Proof</h3>
-          <p class="station__copy">You see it on the real stock before we commit. Sign off on something you can hold, not a PDF on a screen.</p>
-        </div>
-      </li>
-      <li class="station" data-reveal style="--i:3">
-        <span class="station__dot" aria-hidden="true"></span>
-        <span class="station__n" aria-hidden="true">04</span>
-        <div class="station__body">
-          <p class="station__note">Colour held through the run</p>
-          <h3 class="station__title">Press</h3>
-          <p class="station__copy">Colour matched and checked through the run. If a sheet drifts, it does not leave the building.</p>
-        </div>
-      </li>
-      <li class="station" data-reveal style="--i:4">
-        <span class="station__dot" aria-hidden="true"></span>
-        <span class="station__n" aria-hidden="true">05</span>
-        <div class="station__body">
-          <p class="station__note">Out the door</p>
-          <h3 class="station__title">Finish</h3>
-          <p class="station__copy">Cut, folded, foiled, bound, packed. Delivered to the property, the restaurant or the stand, on the day it was promised.</p>
-        </div>
-      </li>
-    </ol>
+	<!-- Stations, threaded onto a rail that fills with the scroll. -->
+	<div class="process__stations wrap" data-rail>
+		<div class="process__rail" aria-hidden="true">
+			<span class="process__rail-fill"></span>
+		</div>
 
-    <p class="process__close"><span class="sticker sticker--rotate-r sticker--yellow">proofed before it prints</span></p>
-  </div>
+		<ol class="process-list">
+							<li class="station" data-reveal style="--i:0">
+					<span class="station__dot" aria-hidden="true"></span>
+
+					<span class="station__n" aria-hidden="true">01</span>
+
+					<div class="station__body">
+						<p class="station__note">Before anything is drawn</p>
+						<h3 class="station__title">Conversation</h3>
+						<p class="station__copy">Tell us what the piece has to do and who it is for. You do not need to arrive with a spec - working out the format, the material and the method is our half of the job.</p>
+					</div>
+				</li>
+							<li class="station" data-reveal style="--i:1">
+					<span class="station__dot" aria-hidden="true"></span>
+
+					<span class="station__n" aria-hidden="true">02</span>
+
+					<div class="station__body">
+						<p class="station__note">Drawn to be made</p>
+						<h3 class="station__title">Design</h3>
+						<p class="station__copy">Artwork built by someone who already knows how it will be produced. The stock, the finish and the construction are decided with the design, not after it.</p>
+					</div>
+				</li>
+							<li class="station" data-reveal style="--i:2">
+					<span class="station__dot" aria-hidden="true"></span>
+
+					<span class="station__n" aria-hidden="true">03</span>
+
+					<div class="station__body">
+						<p class="station__note">Chosen, sourced, tested</p>
+						<h3 class="station__title">Materials</h3>
+						<p class="station__copy">Paper, board, canvas, vinyl, foil, framing materials. We keep a curated selection and source specifically when a project needs something we do not stock.</p>
+					</div>
+				</li>
+							<li class="station" data-reveal style="--i:3">
+					<span class="station__dot" aria-hidden="true"></span>
+
+					<span class="station__n" aria-hidden="true">04</span>
+
+					<div class="station__body">
+						<p class="station__note">On the real material</p>
+						<h3 class="station__title">Proof</h3>
+						<p class="station__copy">You approve something you can hold. Our monitors, printers and materials are profiled with a spectrophotometer, so what you sign off is what comes back.</p>
+					</div>
+				</li>
+							<li class="station" data-reveal style="--i:4">
+					<span class="station__dot" aria-hidden="true"></span>
+
+					<span class="station__n" aria-hidden="true">05</span>
+
+					<div class="station__body">
+						<p class="station__note">Often by hand</p>
+						<h3 class="station__title">Made</h3>
+						<p class="station__copy">Printed, cut, foiled, bound, mounted or framed. Many pieces are finished and assembled by hand, which is what makes short runs and one-offs possible at all.</p>
+					</div>
+				</li>
+					</ol>
+
+		<p class="process__close">
+			<span class="sticker sticker--rotate-r sticker--yellow">
+				proofed before it prints			</span>
+		</p>
+	</div>
 </section>
-
-<!-- =========================================================== STUDIO -->
 <section class="section section--paper about" id="studio">
-  <div class="wrap about__grid">
-    <div class="about__media">
-      <div class="about__frame" data-parallax="0.05">
-        <img src="assets/img/brand/icon-04.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="1000" height="1250" loading="lazy" decoding="async">
-      </div>
-      <div class="about__frame about__frame--small" data-parallax="0.12">
-        <img src="assets/img/brand/icon-07.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="1200" height="900" loading="lazy" decoding="async">
-      </div>
-      <span class="tape tape--about" aria-hidden="true"></span>
-    </div>
+	<div class="wrap about__grid">
 
-    <div class="about__copy">
-      <p class="eyebrow">The studio</p>
-      <h2 class="display display--md" data-reveal>From Barcelona<br><em><span class="marked">to Grand Cayman.<svg class="doodle doodle--underline doodle--ink-y doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg></span></em></h2>
-      <div class="prose">
-        <p>Magenta is led by Bárbara, a graphic designer who learned print the long way round: on the floor of production houses in Barcelona, where a job is judged by the object that comes out at the end rather than the file that went in.</p>
-        <p>That is still how the studio runs. Design and production sit in the same room, which means the person drawing the artwork already knows what the stock, the ink and the finish are going to do with it.</p>
-        <p>Today Magenta prints for a long list of the island's hotels, restaurants and retailers, and works as the production partner behind <mark class="hl hl--c">several of Cayman's creative agencies</mark>.</p>
-      </div>
-      <p class="about__signature" aria-hidden="true">Bárbara</p>
-      <p><a class="btn btn--ink" href="#contact">Work with us <span aria-hidden="true">→</span></a></p>
-    </div>
-  </div>
+		<div class="about__media">
+			<div class="about__frame" data-parallax="0.05">
+				<img src="./assets/img/brand/icon-04.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="1000" height="1250" loading="lazy" decoding="async">			</div>
+			<div class="about__frame about__frame--small" data-parallax="0.12">
+				<img src="./assets/img/brand/icon-06.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="1200" height="900" loading="lazy" decoding="async">			</div>
+			<span class="tape tape--about" aria-hidden="true"></span>
+		</div>
+
+		<div class="about__copy">
+			<p class="eyebrow">The studio</p>
+
+			<h2 class="display display--md" data-reveal>
+				From Barcelona<br>
+				<em>
+					<span class="marked">to Grand Cayman.<svg class="doodle doodle--underline doodle--ink-y doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>				</em>
+			</h2>
+
+			<div class="prose">
+				<p>
+					Magenta is led by Barbara, a graphic designer who learned print the long way round: on the floor of production houses in Barcelona, where a job is judged by the object that comes out at the end rather than the file that went in.				</p>
+				<p>
+					That is still how the studio runs. Design and production sit in the same room, which means the person drawing the artwork already knows what the stock, the ink and the finish are going to do with it.				</p>
+				<p>
+					Today Magenta prints for a long list of the island's hotels, restaurants and retailers, and works as the production partner behind <mark class="hl hl--c">several of Cayman&#039;s creative agencies</mark>.				</p>
+			</div>
+
+			<p class="about__signature" aria-hidden="true">Bárbara</p>
+
+			<p>
+				<a class="btn btn--ink" href="#contact">
+					Work with us					<span aria-hidden="true">&rarr;</span>
+				</a>
+			</p>
+		</div>
+
+	</div>
+
 </section>
-
-<!-- ===================================================== CLIENT WORDS -->
 <section class="section section--magenta testimonials" id="words">
-  <div class="wrap">
-    <header class="section-head section-head--center">
-      <p class="eyebrow eyebrow--light">Kind words</p>
-      <h2 class="display display--lg display--light" data-reveal>What clients <em>say.</em></h2>
-    </header>
-    <ul class="quote-grid">
-      <li class="quote-note quote-note--pending" data-reveal style="--i:0"><p class="quote-note__pending">Quote pending</p><p class="quote-note__hint">Hotel · F&amp;B — collect and approve before launch</p></li>
-      <li class="quote-note quote-note--pending" data-reveal style="--i:1"><p class="quote-note__pending">Quote pending</p><p class="quote-note__hint">Restaurant group — collect and approve before launch</p></li>
-      <li class="quote-note quote-note--pending" data-reveal style="--i:2"><p class="quote-note__pending">Quote pending</p><p class="quote-note__hint">Creative agency — collect and approve before launch</p></li>
-    </ul>
-    <p class="testimonials__note">This section stays visibly unfinished until real, approved client quotes are in place.</p>
-  </div>
-</section>
+	<div class="wrap">
 
-<!-- ============================================================== CTA -->
+		<header class="section-head section-head--center">
+			<p class="eyebrow eyebrow--light">Kind words</p>
+			<h2 class="display display--lg display--light" data-reveal>
+				What clients <em>say.</em>
+			</h2>
+		</header>
+
+		<ul class="quote-grid">
+							<li class="quote-note quote-note--pending" data-reveal style="--i:0">
+											<p class="quote-note__pending">
+							Quote pending						</p>
+						<p class="quote-note__hint">
+							Hotel &middot; F&amp;B							&mdash;
+							collect and approve before launch						</p>
+									</li>
+							<li class="quote-note quote-note--pending" data-reveal style="--i:1">
+											<p class="quote-note__pending">
+							Quote pending						</p>
+						<p class="quote-note__hint">
+							Restaurant group							&mdash;
+							collect and approve before launch						</p>
+									</li>
+							<li class="quote-note quote-note--pending" data-reveal style="--i:2">
+											<p class="quote-note__pending">
+							Quote pending						</p>
+						<p class="quote-note__hint">
+							Creative agency							&mdash;
+							collect and approve before launch						</p>
+									</li>
+					</ul>
+
+					<p class="testimonials__note">
+				This section stays visibly unfinished until real, approved client quotes are in place.			</p>
+		
+	</div>
+</section>
 <section class="section section--stock faq" id="faq">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="eyebrow">Before you ask</p>
-      <h2 class="display display--lg" data-reveal>The questions <em><span class="marked">everyone asks.<svg class="doodle doodle--underline doodle--ink-m doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg></span></em></h2>
-      <p class="lede section-head__lede">Straight answers, no quote form in the way. If what you need is not here, ask us directly.</p>
-    </header>
+	<div class="wrap">
 
-    <div class="faq-list">
-        <article class="faq-item" data-reveal style="--i:0">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">01</span>
-            What can Magenta print?
-          </h3>
-          <p class="faq-item__a">Offset printing for menus, brochures, stationery and publications; large format for banners, window graphics and vehicle wraps; screen printing for uniforms and merchandise; foil, embossing, spot UV and die-cutting; packaging from structural design through production; and signage including wayfinding and dimensional letters.</p>
-        </article>
-        <article class="faq-item" data-reveal style="--i:1">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">02</span>
-            Do you design as well as print?
-          </h3>
-          <p class="faq-item__a">Yes. Design and production sit in the same studio, so the person drawing the artwork already knows what the stock, the ink and the finish will do with it. You can come to us with a finished file or with nothing but an idea.</p>
-        </article>
-        <article class="faq-item" data-reveal style="--i:2">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">03</span>
-            Where is Magenta based?
-          </h3>
-          <p class="faq-item__a">Grand Cayman, in the Cayman Islands. We produce for businesses across the island.</p>
-        </article>
-        <article class="faq-item" data-reveal style="--i:3">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">04</span>
-            Can I see a proof before the full run prints?
-          </h3>
-          <p class="faq-item__a">Yes, and we insist on it. You sign off on a proof printed on the real stock, not a PDF on a screen, so the thing you approve is the thing you receive.</p>
-        </article>
-        <article class="faq-item" data-reveal style="--i:4">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">05</span>
-            Who does Magenta work with?
-          </h3>
-          <p class="faq-item__a">Hotels, restaurants, retailers and creative agencies across the Cayman Islands. Several local agencies use Magenta as their production partner, printing work that goes out under their own name.</p>
-        </article>
-        <article class="faq-item" data-reveal style="--i:5">
-          <h3 class="faq-item__q">
-            <span class="faq-item__num" aria-hidden="true">06</span>
-            Do you work with agencies as a white-label production partner?
-          </h3>
-          <p class="faq-item__a">Yes. A number of Cayman agencies bring us their clients\' print work. We produce it; you present it.</p>
-        </article>
-    </div>
-  </div>
+		<header class="section-head">
+			<p class="eyebrow">Before you ask</p>
+			<h2 class="display display--lg" data-reveal>
+				The questions				<em>
+					<span class="marked">everyone asks.<svg class="doodle doodle--underline doodle--ink-m doodle--mark doodle--mark-underline doodle--draw" viewBox="0 0 230 26" fill="none" aria-hidden="true" focusable="false"><path d="M8 15c48-8 110-11 176-5" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 21c44-6 102-8 158-3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>				</em>
+			</h2>
+			<p class="lede section-head__lede">
+				Straight answers, no quote form in the way. If what you need is not here, ask us directly.			</p>
+		</header>
+
+		<div class="faq-list">
+							<article class="faq-item" data-reveal style="--i:0">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">01</span>
+						What can Magenta print?					</h3>
+					<p class="faq-item__a">Offset printing for menus, brochures, stationery and publications; large format for banners, window graphics and vehicle wraps; screen printing for uniforms and merchandise; foil, embossing, spot UV and die-cutting; packaging from structural design through production; and signage including wayfinding and dimensional letters.</p>
+				</article>
+							<article class="faq-item" data-reveal style="--i:1">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">02</span>
+						Do you design as well as print?					</h3>
+					<p class="faq-item__a">Yes. Design and production sit in the same studio, so the person drawing the artwork already knows what the stock, the ink and the finish will do with it. You can come to us with a finished file or with nothing but an idea.</p>
+				</article>
+							<article class="faq-item" data-reveal style="--i:2">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">03</span>
+						Where is Magenta based?					</h3>
+					<p class="faq-item__a">Grand Cayman, in the Cayman Islands. We produce for businesses across the island.</p>
+				</article>
+							<article class="faq-item" data-reveal style="--i:3">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">04</span>
+						Can I see a proof before the full run prints?					</h3>
+					<p class="faq-item__a">Yes, and we insist on it. You sign off on a proof printed on the real stock, not a PDF on a screen, so the thing you approve is the thing you receive.</p>
+				</article>
+							<article class="faq-item" data-reveal style="--i:4">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">05</span>
+						Who does Magenta work with?					</h3>
+					<p class="faq-item__a">Hotels, restaurants, retailers and creative agencies across the Cayman Islands. Several local agencies use Magenta as their production partner, printing work that goes out under their own name.</p>
+				</article>
+							<article class="faq-item" data-reveal style="--i:5">
+					<h3 class="faq-item__q">
+						<span class="faq-item__num" aria-hidden="true">06</span>
+						Do you work with agencies as a white-label production partner?					</h3>
+					<p class="faq-item__a">Yes. A number of Cayman agencies bring us their clients&#039; print work. We produce it; you present it.</p>
+				</article>
+					</div>
+
+		
+	</div>
 </section>
-
 <section class="section section--paper cta" id="contact" data-reg-scope>
-  <div class="cta__bg" aria-hidden="true"><img src="assets/img/graphics/cta-bg.svg" alt="" role="presentation" class="slot-img slot-img--graphic" width="1600" height="900" loading="lazy" decoding="async"></div>
-  <div class="reg-marks" aria-hidden="true">
-    <svg class="reg-mark reg-mark--tl" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--tr" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--bl" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-    <svg class="reg-mark reg-mark--br" viewBox="0 0 40 40" width="40" height="40" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/></svg>
-  </div>
+	<div class="reg-marks" aria-hidden="true"><svg class="reg-mark reg-mark--tl" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--tr" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--bl" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg><svg class="reg-mark reg-mark--br" viewBox="0 0 40 40" width="40" height="40" fill="none">
+				<circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="1.2"/>
+				<path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="1.2"/>
+			</svg></div>
+		<div class="cta__bg" aria-hidden="true">
+		<img src="./assets/img/graphics/cta-bg.svg" alt="" role="presentation" class="slot-img slot-img--graphic " width="1600" height="900" loading="lazy" decoding="async">	</div>
 
-  <div class="wrap cta__grid">
-    <div class="cta__copy">
-      <p class="eyebrow">Start a job</p>
-      <h2 class="cta__title">
-        <span class="screen-reader-text">Let's make something you can hold.</span>
-        <span class="cmyk cmyk--display" data-cmyk>
-          <span class="cmyk__plate cmyk__plate--c" aria-hidden="true">LET’S PRINT</span>
-          <span class="cmyk__plate cmyk__plate--y" aria-hidden="true">LET’S PRINT</span>
-          <span class="cmyk__plate cmyk__plate--k" aria-hidden="true">LET’S PRINT</span>
-          <span class="cmyk__plate cmyk__plate--m">LET’S PRINT</span>
-        </span>
-        <em aria-hidden="true">something real.</em>
-      </h2>
-      <p class="lede">Tell us what you need made, how many, and when it has to be in someone's hands. We will come back with a route and a price.</p>
-      <ul class="cta__list">
-        <li>Grand Cayman, Cayman Islands</li>
-        <li><a href="https://www.instagram.com/magentacayman/" target="_blank" rel="noopener">@magentacayman</a></li>
-      </ul>
-      <span class="sticker sticker--rotate-l sticker--cyan cta__sticker" data-parallax="0.1">quotes within 24h</span>
-      <svg class="doodle doodle--arrow doodle--ink-m doodle--cta-arrow doodle--draw" viewBox="0 0 130 112" fill="none" aria-hidden="true" focusable="false"><path d="M12 10c8 34 30 62 60 78 12 6 26 11 40 13" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 101l-9-27" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M112 101l-28 6" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></svg>
-      <svg class="doodle doodle--sparkle doodle--ink-y doodle--cta-sparkle doodle--draw" viewBox="0 0 44 44" fill="none" aria-hidden="true" focusable="false"><path d="M22 3c2 13 6 19 19 19-13 2-17 6-19 19-2-13-6-17-19-19 13 0 17-6 19-19" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
+	<div class="wrap cta__grid">
 
-    <div class="cta__form-wrap">
-      <form class="print-form" onsubmit="event.preventDefault();this.querySelector('[data-form-status]').className='print-form__status is-ok';this.querySelector('[data-form-status]').textContent='Preview only — the live form posts to WordPress.';">
-        <div class="print-form__row"><label for="mf-name">Name</label><input type="text" id="mf-name" name="name"></div>
-        <div class="print-form__row"><label for="mf-email">Email</label><input type="email" id="mf-email" name="email"></div>
-        <div class="print-form__row"><label for="mf-company">Company</label><input type="text" id="mf-company" name="company"></div>
-        <div class="print-form__row"><label for="mf-service">What do you need?</label>
-          <select id="mf-service" name="service">
-            <option value="">Select…</option>
-            <option>Offset printing</option><option>Large format</option><option>Screen printing</option>
-            <option>Foil &amp; finishing</option><option>Packaging</option><option>Signage</option>
-            <option>Brand identity</option><option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="print-form__row"><label for="mf-message">The job</label><textarea id="mf-message" name="message" rows="4" placeholder="Quantity, deadline, anything you already know."></textarea></div>
-        <button class="btn btn--magenta btn--block" type="submit">Send it <span aria-hidden="true">→</span></button>
-        <p class="print-form__status" data-form-status role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
+		<div class="cta__copy">
+			<p class="eyebrow">Start a job</p>
+
+			<h2 class="cta__title">
+				<span class="screen-reader-text">Let us make something you can hold.</span>
+				<span class="cmyk cmyk--display" data-cmyk><span class="cmyk__plate cmyk__plate--c" aria-hidden="true">LET’S PRINT</span><span class="cmyk__plate cmyk__plate--y" aria-hidden="true">LET’S PRINT</span><span class="cmyk__plate cmyk__plate--k" aria-hidden="true">LET’S PRINT</span><span class="cmyk__plate cmyk__plate--m">LET’S PRINT</span></span>				<em aria-hidden="true">something real.</em>
+			</h2>
+
+			<p class="lede">
+				Tell us what you want made, roughly how many, and when it has to exist. If you are not sure how it should be produced, that is fine - say so and we will work it out.			</p>
+
+			<ul class="cta__list">
+				<li>Grand Cayman, Cayman Islands</li>
+				<li><a href="https://www.instagram.com/magentacayman/" target="_blank" rel="noopener">@magentacayman</a></li>
+			</ul>
+
+			<span class="sticker sticker--rotate-l sticker--cyan cta__sticker" data-parallax="0.1">
+				quotes within 24h			</span>
+
+			<svg class="doodle doodle--arrow doodle--ink-m doodle--cta-arrow doodle--draw" viewBox="0 0 130 112" fill="none" aria-hidden="true" focusable="false"><path d="M12 10c8 34 30 62 60 78 12 6 26 11 40 13" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 101l-9-27" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 101l-28 6" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>			<svg class="doodle doodle--sparkle doodle--ink-y doodle--cta-sparkle doodle--draw" viewBox="0 0 44 44" fill="none" aria-hidden="true" focusable="false"><path d="M22 3c2 13 6 19 19 19-13 2-17 6-19 19-2-13-6-17-19-19 13 0 17-6 19-19" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>		</div>
+
+		<div class="cta__form-wrap">
+			<form class="print-form" data-contact-form novalidate>
+				<div class="print-form__row">
+					<label for="mf-name">Name</label>
+					<input type="text" id="mf-name" name="name" required autocomplete="name">
+				</div>
+
+				<div class="print-form__row">
+					<label for="mf-email">Email</label>
+					<input type="email" id="mf-email" name="email" required autocomplete="email">
+				</div>
+
+				<div class="print-form__row">
+					<label for="mf-company">Company</label>
+					<input type="text" id="mf-company" name="company" autocomplete="organization">
+				</div>
+
+				<div class="print-form__row">
+					<label for="mf-service">What do you need?</label>
+					<select id="mf-service" name="service">
+						<option value="">Select…</option>
+						<option value="Business &amp; marketing print">Business &amp; marketing print</option><option value="Wedding or event stationery">Wedding or event stationery</option><option value="Fine art or photography printing">Fine art or photography printing</option><option value="Custom framing">Custom framing</option><option value="Stickers &amp; labels">Stickers &amp; labels</option><option value="Specialty or custom production">Specialty or custom production</option><option value="Artwork digitization">Artwork digitization</option><option value="Graphic design / branding">Graphic design / branding</option><option value="Not sure yet">Not sure yet</option>					</select>
+				</div>
+
+				<div class="print-form__row">
+					<label for="mf-message">The job</label>
+					<textarea id="mf-message" name="message" rows="4"
+						placeholder="Quantity, deadline, anything you already know."></textarea>
+				</div>
+
+								<div class="print-form__trap" aria-hidden="true">
+					<label for="mf-website">Leave this empty</label>
+					<input type="text" id="mf-website" name="website" tabindex="-1" autocomplete="off">
+				</div>
+
+				<button class="btn btn--magenta btn--block" type="submit">
+					Send it					<span aria-hidden="true">&rarr;</span>
+				</button>
+
+				<p class="print-form__status" data-form-status role="status" aria-live="polite"></p>
+			</form>
+		</div>
+
+	</div>
 </section>
-
-</main>
+</main><!-- /#main -->
 
 <footer class="site-footer">
-  <div class="site-footer__bar" aria-hidden="true">
-    <div class="colour-bar">
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-      <span style="background:var(--c);opacity:.51"></span><span style="background:var(--m);opacity:.67"></span><span style="background:var(--y);opacity:.83"></span><span style="background:var(--k);opacity:.99"></span>
-    </div>
-  </div>
+	<div class="site-footer__bar" aria-hidden="true"><div class="colour-bar" aria-hidden="true"><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span><span style="background:var(--c);opacity:0.51"></span><span style="background:var(--m);opacity:0.67"></span><span style="background:var(--y);opacity:0.83"></span><span style="background:var(--k);opacity:0.99"></span></div></div>
 
-  <div class="site-footer__inner">
-    <div class="site-footer__brand">
-      <p class="site-footer__logo">
-        <svg class="brand__logo" viewBox="57 47 822 266" fill="currentColor" aria-hidden="true" focusable="false"><path d="M162.57,134.23h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,26.07,0,32.43,20.31,32.43,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.07c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.18-29.7s-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.49-29.7-4.55,0-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52V123.02c0-15.4,12.48-27.88,27.88-27.88h13.72c.92,0,1.63.81,1.5,1.72l-4.98,35.67c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,14.65,0,23.69,6.19,28.01,19.15.12.36.15.74.1,1.11l-2.72,20.16c-.12.9.58,1.7,1.49,1.7Z"/><path d="M307.26,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM294.8,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/><path d="M425.42,132.67c0,.73.53,1.35,1.25,1.49,22.99,4.33,31.18,13.38,31.18,45.54s-8.82,44.21-41.22,44.55c-.83,0-1.51.68-1.51,1.51v.02c0,.83.68,1.5,1.51,1.51,30.66.4,41.23,13.16,41.23,40.3,0,31.22-18.19,42.73-53.65,42.73s-53.65-15.76-53.65-46.98c0-.15,0-.29,0-.43.03-11.17,9.14-20.17,20.31-20.17h20.57c1.01,0,1.74.97,1.45,1.94-.62,2.12-1.41,6.12-1.41,12.61,0,8.74,5.15,12.99,13.79,12.72,6.63-.21,11.97-5.83,11.64-12.46-.42-8.4-5.32-11.24-22.1-19.05-23.94-11.52-44.25-18.49-44.25-53.95v-31.52c0-37.89,16.97-57.89,53.65-57.89h21.22c18.08,0,32.73,14.66,32.73,32.73v4.4c0,.89-.77,1.59-1.66,1.51l-29.42-2.72c-.89-.08-1.66.62-1.66,1.51v.11ZM404.2,135.45c-8.18,0-12.73,6.67-12.73,36.37s4.55,36.67,12.73,36.67,12.73-6.97,12.73-36.67-4.55-36.37-12.73-36.37Z"/><path d="M526.34,202.43c0-7.21-1.04-12.94-1.66-15.73-.21-.95.5-1.85,1.47-1.85h24.28c9.23,0,16.79,7.43,16.83,16.66,0,.11,0,.21,0,.32v4.55c0,32.74-16.97,49.41-50.31,49.41-36.67,0-53.65-20-53.65-57.89v-47.89c0-37.89,15.46-57.89,52.13-57.89s52.13,20,52.13,57.89v25.76c0,.84-.68,1.52-1.52,1.52h-60.32c-.84,0-1.52.68-1.52,1.52v10c0,21.52,3.64,26.67,11.82,26.67,6.97,0,10.31-4.55,10.31-13.03ZM505.77,155.77l19.33.26c.85.01,1.55-.68,1.54-1.53-.23-17.79-4.42-22.09-10.9-22.09s-10.67,4.01-11.46,21.78c-.04.85.64,1.57,1.5,1.58Z"/><path d="M642.09,252.74c-.83,0-1.5-.67-1.5-1.5v-86.09c0-24.55-2.73-29.7-9.09-29.7s-10.31,4.85-10.31,31.22v84.58c0,.83-.67,1.5-1.5,1.5h-42.46c-.83,0-1.5-.67-1.5-1.5V123.02c0-15.4,12.48-27.88,27.88-27.88h13.73c.91,0,1.61.81,1.49,1.71l-4.98,35.68c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.72-33.15,18.24-40.83,35.89-40.83,27.58,0,33.34,20.31,33.34,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.08Z"/><path d="M742.42,95.13h18.79c.84,0,1.52.68,1.52,1.52v36.07c0,.84-.68,1.52-1.52,1.52h-18.79c-.84,0-1.52.68-1.52,1.52v56.07c0,16.67,3.94,20.61,18.79,20.61h4.55c.84,0,1.52.68,1.52,1.52v37.28c0,.84-.68,1.52-1.52,1.52h-13.64c-40.01,0-52.13-13.94-52.13-51.83v-65.16c0-.84-.68-1.52-1.52-1.52h-6.06c-.84,0-1.52-.68-1.52-1.52v-36.07c0-.84.68-1.52,1.52-1.52h6.06c.84,0,1.52-.68,1.52-1.52v-16.06c0-15.4,12.48-27.88,27.88-27.88h13.03c.84,0,1.52.68,1.52,1.52v42.43c0,.84.68,1.52,1.52,1.52Z"/><path d="M839.73,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM827.28,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/><g class="brand__logo-tagline"><path d="M518.12,308.35c-2.89,0-5.44-.66-7.68-1.97-2.23-1.32-3.99-3.13-5.26-5.43-1.27-2.31-1.91-4.96-1.91-7.96s.64-5.65,1.91-7.96c1.27-2.31,3.02-4.12,5.24-5.43,2.22-1.32,4.77-1.97,7.66-1.97,2.04,0,3.93.36,5.69,1.08,1.75.72,3.29,1.73,4.6,3.01,1.32,1.29,2.33,2.77,3.03,4.43l-5.39,1.99c-.48-1.05-1.12-1.96-1.91-2.74-.79-.78-1.7-1.39-2.72-1.83-1.02-.44-2.12-.66-3.31-.66-1.73,0-3.26.43-4.6,1.29-1.34.86-2.39,2.04-3.14,3.54-.75,1.5-1.12,3.24-1.12,5.22s.38,3.73,1.15,5.24c.76,1.51,1.82,2.7,3.18,3.56s2.91,1.29,4.67,1.29c1.22,0,2.33-.23,3.33-.7,1-.47,1.89-1.11,2.67-1.93s1.41-1.77,1.89-2.84l5.39,1.95c-.71,1.73-1.72,3.25-3.03,4.58-1.32,1.33-2.85,2.36-4.6,3.1-1.75.74-3.66,1.1-5.73,1.1Z"/><path d="M536.19,307.84v-29.7h11.03c2.09,0,3.95.41,5.56,1.23,1.61.82,2.87,1.95,3.78,3.37.9,1.43,1.36,3.09,1.36,4.99s-.52,3.67-1.57,5.15c-1.05,1.49-2.42,2.61-4.12,3.37l6.87,11.58h-6.58l-6.07-10.52h-4.46v10.52h-5.81ZM542.01,292.02h5.26c.88,0,1.66-.18,2.35-.55.69-.37,1.24-.88,1.66-1.53.41-.65.62-1.39.62-2.21,0-1.27-.46-2.31-1.38-3.1-.92-.79-2.1-1.19-3.54-1.19h-4.96v8.57Z"/><path d="M563.99,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/><path d="M586.52,307.84l11.71-29.7h6.19l11.71,29.7h-6.15l-2.55-6.53h-12.22l-2.55,6.53h-6.15ZM597.12,296.18h8.4l-4.2-10.78-4.2,10.78Z"/><path d="M624.36,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/><path d="M643.29,307.84v-29.7h5.81v29.7h-5.81Z"/><path d="M664.93,307.84l-11.84-29.7h6.24l8.78,22.83,8.7-22.83h6.24l-11.8,29.7h-6.32Z"/><path d="M687.04,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/><path d="M732.95,308.35c-1.5,0-2.9-.18-4.2-.55s-2.46-.88-3.48-1.55c-1.02-.66-1.86-1.41-2.52-2.23-.67-.82-1.1-1.68-1.29-2.59l5.69-1.7c.37.96,1.02,1.79,1.95,2.48.93.69,2.11,1.05,3.52,1.08,1.5.03,2.72-.3,3.67-.98.95-.68,1.42-1.56,1.42-2.63,0-.93-.38-1.72-1.12-2.35-.75-.64-1.78-1.12-3.08-1.46l-3.86-1.02c-1.44-.37-2.72-.93-3.82-1.68-1.1-.75-1.97-1.68-2.59-2.78-.62-1.1-.93-2.39-.93-3.86,0-2.8.93-4.99,2.78-6.56,1.85-1.57,4.48-2.35,7.87-2.35,1.9,0,3.56.28,4.99.83,1.43.55,2.62,1.34,3.59,2.35.96,1.02,1.7,2.22,2.21,3.61l-5.64,1.74c-.34-.96-.96-1.78-1.87-2.46-.91-.68-2.05-1.02-3.44-1.02s-2.53.33-3.33.98c-.81.65-1.21,1.57-1.21,2.76,0,.93.32,1.67.95,2.21.64.54,1.51.95,2.61,1.23l3.9.98c2.55.62,4.52,1.74,5.94,3.35,1.41,1.61,2.12,3.41,2.12,5.39,0,1.75-.42,3.29-1.27,4.6-.85,1.32-2.08,2.34-3.69,3.08-1.61.74-3.56,1.1-5.86,1.1Z"/><path d="M755.44,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/><path d="M785.99,308.44c-2.46,0-4.6-.48-6.41-1.44s-3.2-2.31-4.18-4.05c-.98-1.74-1.46-3.8-1.46-6.17v-18.63h5.81v18.63c0,1.27.26,2.38.78,3.33.52.95,1.26,1.68,2.21,2.19.95.51,2.06.76,3.33.76s2.38-.25,3.33-.76c.95-.51,1.68-1.24,2.21-2.19.52-.95.78-2.06.78-3.33v-18.63h5.81v18.63c0,2.38-.5,4.43-1.51,6.17-1.01,1.74-2.42,3.09-4.24,4.05-1.83.96-3.98,1.44-6.47,1.44Z"/><path d="M804.66,307.84v-29.7h9.5c3.03,0,5.71.64,8.04,1.91,2.33,1.27,4.16,3.02,5.47,5.24,1.32,2.22,1.97,4.79,1.97,7.7s-.66,5.45-1.97,7.68c-1.32,2.24-3.14,3.99-5.47,5.26-2.33,1.27-5.02,1.91-8.04,1.91h-9.5ZM810.47,302.41h3.69c1.36,0,2.62-.24,3.78-.72,1.16-.48,2.17-1.14,3.03-1.99s1.53-1.85,2.02-2.99c.48-1.15.72-2.38.72-3.71s-.24-2.57-.72-3.71c-.48-1.15-1.15-2.14-2.02-2.99-.86-.85-1.87-1.51-3.03-1.99-1.16-.48-2.42-.72-3.78-.72h-3.69v18.84Z"/><path d="M834.78,307.84v-29.7h5.81v29.7h-5.81Z"/><path d="M861.05,308.35c-3,0-5.65-.66-7.96-1.97-2.31-1.32-4.11-3.13-5.41-5.43-1.3-2.31-1.95-4.94-1.95-7.91s.65-5.69,1.95-8c1.3-2.31,3.09-4.11,5.37-5.41,2.28-1.3,4.9-1.95,7.87-1.95s5.64.66,7.91,1.97,4.07,3.13,5.37,5.43c1.3,2.31,1.95,4.96,1.95,7.96s-.64,5.61-1.93,7.91c-1.29,2.31-3.07,4.12-5.35,5.43-2.28,1.32-4.89,1.97-7.83,1.97ZM861.05,303.05c1.81,0,3.4-.43,4.77-1.29,1.37-.86,2.45-2.04,3.22-3.54.78-1.5,1.17-3.23,1.17-5.18s-.4-3.72-1.19-5.22c-.79-1.5-1.88-2.68-3.27-3.54-1.39-.86-3-1.29-4.84-1.29s-3.37.43-4.77,1.29c-1.4.86-2.5,2.04-3.29,3.54-.79,1.5-1.19,3.24-1.19,5.22s.4,3.68,1.19,5.18c.79,1.5,1.89,2.68,3.31,3.54,1.41.86,3.04,1.29,4.88,1.29Z"/></g></svg>
-        <span class="screen-reader-text">MAGENTA</span>
-      </p>
-      <p class="site-footer__line">Print production and graphic design. Grand Cayman, Cayman Islands.</p>
-      <p class="site-footer__socials"><a href="https://www.instagram.com/magentacayman/" rel="me noopener" target="_blank">Instagram</a>
-        <a href="mailto:hello@magenta.ky">hello@magenta.ky</a></p>
-    </div>
-    <div class="site-footer__aside">
-  <nav class="site-footer__nav" aria-label="Footer">
-        <ul class="site-footer__list">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#studio">Studio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+	<div class="site-footer__inner">
 
-      <a class="seo-badge" href="https://toctoc.ky/seo-checker/" target="_blank" rel="nofollow noopener"><img src="https://toctoc.ky/wp-admin/admin-ajax.php?action=toctoc_seo_badge&amp;v=2&amp;seo=100&amp;geo=86&amp;t=7bf937fc1c" alt="SEO score verified by TocToc Marketing" width="460" height="72" loading="lazy" decoding="async"></a>
-    </div>
-  </div>
+		<div class="site-footer__brand">
+			<p class="site-footer__logo">
+				<svg class="brand__logo" viewBox="57 47 822 266" fill="currentColor" aria-hidden="true" focusable="false">
+	<path d="M162.57,134.23h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,26.07,0,32.43,20.31,32.43,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.07c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.18-29.7s-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52v-86.08c0-24.55-3.64-29.7-8.49-29.7-4.55,0-9.4,4.85-9.4,31.22v84.56c0,.84-.68,1.52-1.52,1.52h-42.43c-.84,0-1.52-.68-1.52-1.52V123.02c0-15.4,12.48-27.88,27.88-27.88h13.72c.92,0,1.63.81,1.5,1.72l-4.98,35.67c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.73-33.15,18.82-40.83,34.98-40.83,14.65,0,23.69,6.19,28.01,19.15.12.36.15.74.1,1.11l-2.72,20.16c-.12.9.58,1.7,1.49,1.7Z"/>
+	<path d="M307.26,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM294.8,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/>
+	<path d="M425.42,132.67c0,.73.53,1.35,1.25,1.49,22.99,4.33,31.18,13.38,31.18,45.54s-8.82,44.21-41.22,44.55c-.83,0-1.51.68-1.51,1.51v.02c0,.83.68,1.5,1.51,1.51,30.66.4,41.23,13.16,41.23,40.3,0,31.22-18.19,42.73-53.65,42.73s-53.65-15.76-53.65-46.98c0-.15,0-.29,0-.43.03-11.17,9.14-20.17,20.31-20.17h20.57c1.01,0,1.74.97,1.45,1.94-.62,2.12-1.41,6.12-1.41,12.61,0,8.74,5.15,12.99,13.79,12.72,6.63-.21,11.97-5.83,11.64-12.46-.42-8.4-5.32-11.24-22.1-19.05-23.94-11.52-44.25-18.49-44.25-53.95v-31.52c0-37.89,16.97-57.89,53.65-57.89h21.22c18.08,0,32.73,14.66,32.73,32.73v4.4c0,.89-.77,1.59-1.66,1.51l-29.42-2.72c-.89-.08-1.66.62-1.66,1.51v.11ZM404.2,135.45c-8.18,0-12.73,6.67-12.73,36.37s4.55,36.67,12.73,36.67,12.73-6.97,12.73-36.67-4.55-36.37-12.73-36.37Z"/>
+	<path d="M526.34,202.43c0-7.21-1.04-12.94-1.66-15.73-.21-.95.5-1.85,1.47-1.85h24.28c9.23,0,16.79,7.43,16.83,16.66,0,.11,0,.21,0,.32v4.55c0,32.74-16.97,49.41-50.31,49.41-36.67,0-53.65-20-53.65-57.89v-47.89c0-37.89,15.46-57.89,52.13-57.89s52.13,20,52.13,57.89v25.76c0,.84-.68,1.52-1.52,1.52h-60.32c-.84,0-1.52.68-1.52,1.52v10c0,21.52,3.64,26.67,11.82,26.67,6.97,0,10.31-4.55,10.31-13.03ZM505.77,155.77l19.33.26c.85.01,1.55-.68,1.54-1.53-.23-17.79-4.42-22.09-10.9-22.09s-10.67,4.01-11.46,21.78c-.04.85.64,1.57,1.5,1.58Z"/>
+	<path d="M642.09,252.74c-.83,0-1.5-.67-1.5-1.5v-86.09c0-24.55-2.73-29.7-9.09-29.7s-10.31,4.85-10.31,31.22v84.58c0,.83-.67,1.5-1.5,1.5h-42.46c-.83,0-1.5-.67-1.5-1.5V123.02c0-15.4,12.48-27.88,27.88-27.88h13.73c.91,0,1.61.81,1.49,1.71l-4.98,35.68c-.13.9.58,1.71,1.49,1.71h0c.75,0,1.38-.56,1.48-1.3,4.72-33.15,18.24-40.83,35.89-40.83,27.58,0,33.34,20.31,33.34,60.92v71.83c0,15.4-12.48,27.88-27.88,27.88h-16.08Z"/>
+	<path d="M742.42,95.13h18.79c.84,0,1.52.68,1.52,1.52v36.07c0,.84-.68,1.52-1.52,1.52h-18.79c-.84,0-1.52.68-1.52,1.52v56.07c0,16.67,3.94,20.61,18.79,20.61h4.55c.84,0,1.52.68,1.52,1.52v37.28c0,.84-.68,1.52-1.52,1.52h-13.64c-40.01,0-52.13-13.94-52.13-51.83v-65.16c0-.84-.68-1.52-1.52-1.52h-6.06c-.84,0-1.52-.68-1.52-1.52v-36.07c0-.84.68-1.52,1.52-1.52h6.06c.84,0,1.52-.68,1.52-1.52v-16.06c0-15.4,12.48-27.88,27.88-27.88h13.03c.84,0,1.52.68,1.52,1.52v42.43c0,.84.68,1.52,1.52,1.52Z"/>
+	<path d="M839.73,216.67h-.23c-.75,0-1.39.56-1.5,1.31-4.41,30.13-16.74,37.79-34.37,37.79-20.61,0-31.82-14.55-31.82-45.46s16.67-48.19,55.46-48.19h3.94c.84,0,1.52-.68,1.52-1.52v-1.51c0-21.52-2.12-26.67-9.09-26.67s-9.09,5.15-9.09,20.61v4.55c0,.84-.68,1.52-1.52,1.52h-39.4c-.84,0-1.52-.68-1.52-1.52v-13.64c0-31.82,16.97-51.83,52.13-51.83s52.13,16.97,52.13,57.89v74.86c0,15.4-12.48,27.88-27.88,27.88h-11.24c-.94,0-1.65-.84-1.49-1.77l5.47-32.54c.16-.92-.56-1.77-1.49-1.77ZM827.28,183.64c-8.79,0-12.73,4.55-12.73,14.55s2.73,14.24,9.09,14.24c5.45,0,9.09-2.73,9.09-19.09v-8.19c0-.84-.68-1.52-1.52-1.52h-3.94Z"/>
+	<g class="brand__logo-tagline">
+		<path d="M518.12,308.35c-2.89,0-5.44-.66-7.68-1.97-2.23-1.32-3.99-3.13-5.26-5.43-1.27-2.31-1.91-4.96-1.91-7.96s.64-5.65,1.91-7.96c1.27-2.31,3.02-4.12,5.24-5.43,2.22-1.32,4.77-1.97,7.66-1.97,2.04,0,3.93.36,5.69,1.08,1.75.72,3.29,1.73,4.6,3.01,1.32,1.29,2.33,2.77,3.03,4.43l-5.39,1.99c-.48-1.05-1.12-1.96-1.91-2.74-.79-.78-1.7-1.39-2.72-1.83-1.02-.44-2.12-.66-3.31-.66-1.73,0-3.26.43-4.6,1.29-1.34.86-2.39,2.04-3.14,3.54-.75,1.5-1.12,3.24-1.12,5.22s.38,3.73,1.15,5.24c.76,1.51,1.82,2.7,3.18,3.56s2.91,1.29,4.67,1.29c1.22,0,2.33-.23,3.33-.7,1-.47,1.89-1.11,2.67-1.93s1.41-1.77,1.89-2.84l5.39,1.95c-.71,1.73-1.72,3.25-3.03,4.58-1.32,1.33-2.85,2.36-4.6,3.1-1.75.74-3.66,1.1-5.73,1.1Z"/>
+		<path d="M536.19,307.84v-29.7h11.03c2.09,0,3.95.41,5.56,1.23,1.61.82,2.87,1.95,3.78,3.37.9,1.43,1.36,3.09,1.36,4.99s-.52,3.67-1.57,5.15c-1.05,1.49-2.42,2.61-4.12,3.37l6.87,11.58h-6.58l-6.07-10.52h-4.46v10.52h-5.81ZM542.01,292.02h5.26c.88,0,1.66-.18,2.35-.55.69-.37,1.24-.88,1.66-1.53.41-.65.62-1.39.62-2.21,0-1.27-.46-2.31-1.38-3.1-.92-.79-2.1-1.19-3.54-1.19h-4.96v8.57Z"/>
+		<path d="M563.99,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/>
+		<path d="M586.52,307.84l11.71-29.7h6.19l11.71,29.7h-6.15l-2.55-6.53h-12.22l-2.55,6.53h-6.15ZM597.12,296.18h8.4l-4.2-10.78-4.2,10.78Z"/>
+		<path d="M624.36,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/>
+		<path d="M643.29,307.84v-29.7h5.81v29.7h-5.81Z"/>
+		<path d="M664.93,307.84l-11.84-29.7h6.24l8.78,22.83,8.7-22.83h6.24l-11.8,29.7h-6.32Z"/>
+		<path d="M687.04,307.84v-29.7h18.8v5.3h-12.98v6.75h11.2v5.18h-11.2v7.17h13.15v5.3h-18.97Z"/>
+		<path d="M732.95,308.35c-1.5,0-2.9-.18-4.2-.55s-2.46-.88-3.48-1.55c-1.02-.66-1.86-1.41-2.52-2.23-.67-.82-1.1-1.68-1.29-2.59l5.69-1.7c.37.96,1.02,1.79,1.95,2.48.93.69,2.11,1.05,3.52,1.08,1.5.03,2.72-.3,3.67-.98.95-.68,1.42-1.56,1.42-2.63,0-.93-.38-1.72-1.12-2.35-.75-.64-1.78-1.12-3.08-1.46l-3.86-1.02c-1.44-.37-2.72-.93-3.82-1.68-1.1-.75-1.97-1.68-2.59-2.78-.62-1.1-.93-2.39-.93-3.86,0-2.8.93-4.99,2.78-6.56,1.85-1.57,4.48-2.35,7.87-2.35,1.9,0,3.56.28,4.99.83,1.43.55,2.62,1.34,3.59,2.35.96,1.02,1.7,2.22,2.21,3.61l-5.64,1.74c-.34-.96-.96-1.78-1.87-2.46-.91-.68-2.05-1.02-3.44-1.02s-2.53.33-3.33.98c-.81.65-1.21,1.57-1.21,2.76,0,.93.32,1.67.95,2.21.64.54,1.51.95,2.61,1.23l3.9.98c2.55.62,4.52,1.74,5.94,3.35,1.41,1.61,2.12,3.41,2.12,5.39,0,1.75-.42,3.29-1.27,4.6-.85,1.32-2.08,2.34-3.69,3.08-1.61.74-3.56,1.1-5.86,1.1Z"/>
+		<path d="M755.44,307.84v-24.4h-8.91v-5.3h23.59v5.3h-8.87v24.4h-5.81Z"/>
+		<path d="M785.99,308.44c-2.46,0-4.6-.48-6.41-1.44s-3.2-2.31-4.18-4.05c-.98-1.74-1.46-3.8-1.46-6.17v-18.63h5.81v18.63c0,1.27.26,2.38.78,3.33.52.95,1.26,1.68,2.21,2.19.95.51,2.06.76,3.33.76s2.38-.25,3.33-.76c.95-.51,1.68-1.24,2.21-2.19.52-.95.78-2.06.78-3.33v-18.63h5.81v18.63c0,2.38-.5,4.43-1.51,6.17-1.01,1.74-2.42,3.09-4.24,4.05-1.83.96-3.98,1.44-6.47,1.44Z"/>
+		<path d="M804.66,307.84v-29.7h9.5c3.03,0,5.71.64,8.04,1.91,2.33,1.27,4.16,3.02,5.47,5.24,1.32,2.22,1.97,4.79,1.97,7.7s-.66,5.45-1.97,7.68c-1.32,2.24-3.14,3.99-5.47,5.26-2.33,1.27-5.02,1.91-8.04,1.91h-9.5ZM810.47,302.41h3.69c1.36,0,2.62-.24,3.78-.72,1.16-.48,2.17-1.14,3.03-1.99s1.53-1.85,2.02-2.99c.48-1.15.72-2.38.72-3.71s-.24-2.57-.72-3.71c-.48-1.15-1.15-2.14-2.02-2.99-.86-.85-1.87-1.51-3.03-1.99-1.16-.48-2.42-.72-3.78-.72h-3.69v18.84Z"/>
+		<path d="M834.78,307.84v-29.7h5.81v29.7h-5.81Z"/>
+		<path d="M861.05,308.35c-3,0-5.65-.66-7.96-1.97-2.31-1.32-4.11-3.13-5.41-5.43-1.3-2.31-1.95-4.94-1.95-7.91s.65-5.69,1.95-8c1.3-2.31,3.09-4.11,5.37-5.41,2.28-1.3,4.9-1.95,7.87-1.95s5.64.66,7.91,1.97,4.07,3.13,5.37,5.43c1.3,2.31,1.95,4.96,1.95,7.96s-.64,5.61-1.93,7.91c-1.29,2.31-3.07,4.12-5.35,5.43-2.28,1.32-4.89,1.97-7.83,1.97ZM861.05,303.05c1.81,0,3.4-.43,4.77-1.29,1.37-.86,2.45-2.04,3.22-3.54.78-1.5,1.17-3.23,1.17-5.18s-.4-3.72-1.19-5.22c-.79-1.5-1.88-2.68-3.27-3.54-1.39-.86-3-1.29-4.84-1.29s-3.37.43-4.77,1.29c-1.4.86-2.5,2.04-3.29,3.54-.79,1.5-1.19,3.24-1.19,5.22s.4,3.68,1.19,5.18c.79,1.5,1.89,2.68,3.31,3.54,1.41.86,3.04,1.29,4.88,1.29Z"/>
+	</g>
+</svg>
+				<span class="screen-reader-text">MAGENTA</span>
+			</p>
+			<p class="site-footer__line">
+				Design, print, framing and fine art reproduction. Grand Cayman, Cayman Islands.			</p>
+			<p class="site-footer__socials">
+				<a href="https://www.instagram.com/magentacayman/" rel="me noopener" target="_blank">Instagram</a>
+									<a href="mailto:hello@magenta.ky">hello@magenta.ky</a>
+							</p>
+		</div>
 
-  <div class="site-footer__legal">
-    <p>© 2026 Magenta. All rights reserved.</p>
-    <p class="site-footer__credit">Created by <a href="https://toctoc.ky/" target="_blank" rel="noopener">Toc Toc Marketing</a></p>
-  </div>
+		<div class="site-footer__aside">
+			<nav class="site-footer__nav" aria-label="Footer">
+							</nav>
+
+					<a class="seo-badge" href="https://toctoc.ky/seo-checker/" target="_blank" rel="nofollow noopener">
+								<img src="https://toctoc.ky/wp-admin/admin-ajax.php?action=toctoc_seo_badge&v=2&seo=100&geo=86&t=7bf937fc1c"
+					alt="SEO score verified by TocToc Marketing"
+					width="460" height="72" loading="lazy" decoding="async">
+			</a>
+		</div>
+
+	</div>
+
+	<div class="site-footer__legal">
+		<p>
+			&copy; 2026 Magenta.
+			All rights reserved.		</p>
+		<p class="site-footer__credit">
+			Created by <a href="https://toctoc.ky/" target="_blank" rel="noopener">Toc Toc Marketing</a>		</p>
+
+	</div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

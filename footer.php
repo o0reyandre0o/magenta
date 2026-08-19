@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="screen-reader-text">MAGENTA</span>
 			</p>
 			<p class="site-footer__line">
-				<?php esc_html_e( 'Print production and graphic design. Grand Cayman, Cayman Islands.', 'magenta' ); ?>
+				<?php esc_html_e( 'Design, print, framing and fine art reproduction. Grand Cayman, Cayman Islands.', 'magenta' ); ?>
 			</p>
 			<p class="site-footer__socials">
 				<a href="https://www.instagram.com/magentacayman/" rel="me noopener" target="_blank">Instagram</a>

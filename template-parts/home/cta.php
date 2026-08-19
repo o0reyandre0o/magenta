@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</h2>
 
 			<p class="lede">
-				<?php esc_html_e( 'Tell us what you need made, how many, and when it has to be in someone\'s hands. We will come back with a route and a price.', 'magenta' ); ?>
+				<?php esc_html_e( 'Tell us what you want made, roughly how many, and when it has to exist. If you are not sure how it should be produced, that is fine - say so and we will work it out.', 'magenta' ); ?>
 			</p>
 
 			<ul class="cta__list">
@@ -78,14 +78,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<select id="mf-service" name="service">
 						<option value=""><?php esc_html_e( 'Select…', 'magenta' ); ?></option>
 						<?php
+						// Must stay in step with template-parts/home/services.php.
 						$options = array(
-							'Offset printing',
-							'Large format',
-							'Screen printing',
-							'Foil & finishing',
-							'Packaging',
-							'Signage',
-							'Brand identity',
+							'Business & marketing print',
+							'Wedding or event stationery',
+							'Fine art or photography printing',
+							'Custom framing',
+							'Stickers & labels',
+							'Specialty or custom production',
+							'Artwork digitization',
+							'Graphic design / branding',
 							'Not sure yet',
 						);
 						foreach ( $options as $option ) {
