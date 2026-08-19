@@ -48,14 +48,14 @@ function magenta_slots(): array {
 			'spec'  => 'Macro of the roller loaded with magenta ink - wet, viscous, catching a hard side light. Shoot tight enough that the ink reads as texture, not as machinery. Leave empty space on the left third: the headline sits there.',
 			'graphic' => 'graphics/hero-main.svg',
 		),
-		'hero_press'         => array(
-			'group' => 'Hero',
+		'process_band'         => array(
+			'group' => 'Process',
 			'label' => 'Process band - work in progress',
 			'ratio' => '16x9',
 			'size'  => 'magenta-16x9',
 			'min'   => '3200 x 1800px',
 			'spec'  => 'The studio mid-job, shot wide and slightly from above: hands working, materials out, a piece part-finished. Movement is welcome - this sits behind the process copy under a dark wash, so it wants energy rather than sharpness.',
-			'graphic' => 'graphics/press-band.svg',
+			'graphic' => 'graphics/process-band.svg',
 		),
 
 		/* ------------------------------------------------------ Services */

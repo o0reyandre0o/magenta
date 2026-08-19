@@ -56,7 +56,7 @@ $steps = array(
 	     the section title sitting on it. -->
 	<div class="process__band">
 		<div class="process__band-media" data-parallax="0.04">
-			<?php magenta_slot_image( 'hero_press', array( 'sizes' => '100vw' ) ); ?>
+			<?php magenta_slot_image( 'process_band', array( 'sizes' => '100vw' ) ); ?>
 		</div>
 
 		<div class="process__band-inner wrap">
