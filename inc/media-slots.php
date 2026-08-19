@@ -50,12 +50,11 @@ function magenta_slots(): array {
 		),
 		'hero_press'         => array(
 			'group' => 'Hero',
-			'label' => 'Hero - press sheet in motion',
+			'label' => 'Process band - work in progress',
 			'ratio' => '16x9',
 			'size'  => 'magenta-16x9',
 			'min'   => '3200 x 1800px',
-			'spec'  => 'A printed sheet coming off the press, shot with a slow enough shutter that the movement smears. Blur is the point - do not freeze it. Overhead or three-quarter angle.',
-			'graphic' => 'graphics/press-band.svg',
+			'spec'  => 'The studio mid-job, shot wide and slightly from above: hands working, materials out, a piece part-finished. Movement is welcome - this sits behind the process copy under a dark wash, so it wants energy rather than sharpness.',
 		),
 
 		/* ------------------------------------------------------ Services */

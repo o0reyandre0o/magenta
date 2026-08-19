@@ -81,8 +81,8 @@ function magenta_seed_terms(): void {
 	}
 
 	$seed = array(
-		'service' => array( 'Offset Printing', 'Large Format', 'Screen Printing', 'Foil & Finishing', 'Packaging', 'Signage', 'Brand Identity' ),
-		'sector'  => array( 'Hotels', 'Restaurants', 'Agencies', 'Retail', 'Events', 'Corporate' ),
+		'service' => array( 'Graphic Design', 'Brand Identity', 'Business & Marketing Print', 'Wedding & Event Stationery', 'Fine Art & Photography', 'Custom Framing', 'Artwork Digitization', 'Stickers & Labels', 'Specialty & Custom' ),
+		'sector'  => array( 'Hospitality', 'Restaurants', 'Weddings & Events', 'Artists & Photographers', 'Retail', 'Agencies', 'Corporate' ),
 	);
 
 	foreach ( $seed as $tax => $terms ) {
