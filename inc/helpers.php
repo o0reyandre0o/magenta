@@ -106,6 +106,9 @@ function magenta_slot_image( string $slot, array $args = array() ): void {
 	 * so none of them depicts a printed job. They make the page look finished
 	 * while the real shoot is outstanding, and step aside the moment a photo is
 	 * uploaded to the slot.
+	 *
+	 * The value is a path under assets/img/, so a slot can point either at a
+	 * generated stand-in in graphics/ or at real brand artwork in brand/.
 	 */
 	if ( ! empty( $def['graphic'] ) ) {
 		// Intrinsic size comes from the slot's own ratio, so the box is
@@ -120,7 +123,7 @@ function magenta_slot_image( string $slot, array $args = array() ): void {
 
 		printf(
 			'<img src="%1$s" alt="" role="presentation" class="slot-img slot-img--graphic %2$s" width="%3$d" height="%4$d" loading="%5$s" decoding="%6$s"%7$s>',
-			esc_url( MAGENTA_URI . '/assets/img/graphics/' . $def['graphic'] ),
+			esc_url( MAGENTA_URI . '/assets/img/' . $def['graphic'] ),
 			esc_attr( $a['class'] ),
 			$dim[0],
 			$dim[1],
