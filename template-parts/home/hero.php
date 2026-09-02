@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					 * text itself and the shape comes from a fixed set in
 					 * inc/doodles.php, never from input.
 					 */
-					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'lasso', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'finished piece.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
 			</h1>
