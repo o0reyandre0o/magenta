@@ -23,14 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="about__copy">
-			<p class="eyebrow"><?php esc_html_e( 'The studio', 'magenta' ); ?></p>
+			<p class="eyebrow"><?php esc_html_e( 'Creative director &amp; founder', 'magenta' ); ?></p>
 
 			<h2 class="display display--md" data-reveal>
-				<?php esc_html_e( 'From Barcelona', 'magenta' ); ?><br>
+				<?php esc_html_e( 'Meet', 'magenta' ); ?>
 				<em>
 					<?php
 					// See the note in hero.php on why this is not run through kses.
-					echo magenta_mark( __( 'to Grand Cayman.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'B&aacute;rbara.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
 			</h2>
