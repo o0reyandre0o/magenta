@@ -1041,10 +1041,14 @@ a.contact-list__value:focus-visible { color: var(--m-deep); }
 
 .contact-map iframe { width: 100%; height: clamp(15rem, 12rem + 12vw, 22rem); border: 0; display: block; }
 
-/* Small, and centred between the copyright and the credit. */
-.seo-badge--legal { order: 0; }
-.seo-badge--legal img { width: 250px; }
+/* Small, and centred between the copyright and the credit. At 100px the
+   badge is a mark rather than a readable panel - none of its text survives at
+   this scale, which is the tradeoff for the size that was asked for.
+   The link keeps a 44px tap target through padding, so shrinking the artwork
+   does not shrink what a thumb has to hit. */
+.seo-badge--legal { order: 0; padding-block: 0.75rem; }
+.seo-badge--legal img { width: 100px; }
 
 @media (max-width: 700px) {
-  .seo-badge--legal img { width: 200px; }
+  .seo-badge--legal img { width: 92px; }
 }
