@@ -1115,8 +1115,12 @@
 .hero-slider__arrow {
   display: grid;
   place-items: center;
-  width: 2.6rem;
-  height: 2.6rem;
+  /* 44px is the comfortable touch target on every platform guideline; 2.6rem
+     computed to 42 and missed it. */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   border: var(--border);
   border-radius: 50%;
   background: var(--paper);
