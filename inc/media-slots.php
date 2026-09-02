@@ -106,6 +106,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'Die-cut vinyl stickers scattered on a plain ground, a few peeled back so the cut shape reads. Hard light, strong shadow.',
 			'graphic' => 'brand/icon-02.svg',
+			'photo'   => array(
+				'file' => 'stickers.webp',
+				'alt'  => 'Die-cut vinyl stickers of palm trees, a vintage car carrying a surfboard and beach chairs, with a round striped logo sticker.',
+			),
 		),
 		'service_specialty'    => array(
 			'group' => 'Services',
