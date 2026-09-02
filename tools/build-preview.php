@@ -32,8 +32,6 @@ define( 'MAGENTA_VERSION', 'preview' );
 define( 'MAGENTA_AGENCY_NAME', 'Toc Toc Marketing' );
 define( 'MAGENTA_AGENCY_URL', 'https://toctoc.ky/' );
 define( 'MAGENTA_MAP_EMBED', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.583673844109!2d-81.36838431386226!3d19.30046287962633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2587c4554eac5b%3A0x7aeeb46fc80e6163!2sMagenta%20Creative%20Studio!5e0!3m2!1sen!2sus!4v1788363126993!5m2!1sen!2sus' );
-define( 'MAGENTA_AGENCY_BADGE_LINK', 'https://toctoc.ky/seo-checker/' );
-define( 'MAGENTA_AGENCY_BADGE_SRC', 'https://toctoc.ky/wp-admin/admin-ajax.php?action=toctoc_seo_badge&v=2&seo=100&geo=86&t=7bf937fc1c' );
 
 /* ------------------------------------------------------- escaping & i18n */
 function __( $t, $d = null ) { return $t; }

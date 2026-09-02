@@ -824,7 +824,10 @@
 .cta__grid {
   display: grid;
   gap: clamp(2.5rem, 1.5rem + 4vw, 5rem);
-  align-items: start;
+  /* stretch, not start: the contact column is taller than the map's own
+     height, and starting both at the top left the map floating over a block
+     of empty ground. */
+  align-items: stretch;
 }
 
 @media (min-width: 940px) {
@@ -1178,9 +1181,20 @@
 /* Contact details live in the copy column now, under the lede. */
 .cta__copy .contact-list { margin-top: var(--sp-7); }
 
-/* The map is the whole right-hand column. */
-.cta__contact .contact-map { margin-top: 0; }
+/* The map is the whole right-hand column, and fills it. */
+.cta__contact { display: grid; }
 
-@media (max-width: 820px) {
-  .cta__contact .contact-map { margin-top: var(--sp-6); }
+.cta__contact .contact-map {
+  margin-top: 0;
+  height: 100%;
+  min-height: clamp(18rem, 14rem + 14vw, 30rem);
+}
+
+.cta__contact .contact-map iframe { height: 100%; }
+
+@media (max-width: 939px) {
+  /* Single column: the map goes back to its own height rather than trying to
+     match a row it no longer shares. */
+  .cta__contact .contact-map { height: auto; min-height: 0; }
+  .cta__contact .contact-map iframe { height: clamp(15rem, 12rem + 12vw, 22rem); }
 }

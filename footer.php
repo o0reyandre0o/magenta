@@ -62,21 +62,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>.
 			<?php esc_html_e( 'All rights reserved.', 'magenta' ); ?>
 		</p>
-		<a class="seo-badge seo-badge--legal" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="nofollow noopener">
-				<?php
-				/*
-				 * Lazy and last: the badge is rendered by admin-ajax on another
-				 * host, which is an uncached round trip. Below the fold it costs
-				 * nothing, but eager it would sit in the critical path of a page
-				 * whose speed is already the weakest score on the audit. The
-				 * intrinsic size is declared so it cannot shift the layout when
-				 * it lands.
-				 */
-				?>
-				<img src="<?php echo esc_url( MAGENTA_AGENCY_BADGE_SRC ); ?>"
-					alt="<?php esc_attr_e( 'SEO score verified by TocToc Marketing', 'magenta' ); ?>"
-					width="460" height="72" loading="lazy" decoding="async">
-			</a>
 
 		<p class="site-footer__credit">
 			<?php
