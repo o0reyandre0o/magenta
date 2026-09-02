@@ -150,7 +150,9 @@
 .marquee__sep { color: var(--y); font-size: 0.6em; }
 
 .marquee--band {
-  background: var(--m);
+  /* --m-deep: the yellow separators on the bright magenta measured 3.61:1.
+     Same hue, and the separators clear AA at 5.66:1. */
+  background: var(--m-deep);
   color: var(--paper);
   border-block: var(--border);
   padding-block: var(--sp-4);

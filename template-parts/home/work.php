@@ -33,7 +33,7 @@ $bundled = magenta_work_items();
 			<div>
 				<p class="eyebrow eyebrow--light"><?php esc_html_e( 'Selected work', 'magenta' ); ?></p>
 				<h2 class="display display--lg display--light" data-reveal>
-					<?php esc_html_e( 'Things you can', 'magenta' ); ?> <em><?php esc_html_e( 'hold.', 'magenta' ); ?></em>
+					<?php esc_html_e( 'Featured', 'magenta' ); ?> <em><?php esc_html_e( 'projects.', 'magenta' ); ?></em>
 				</h2>
 			</div>
 			<div class="section-head__aside">
