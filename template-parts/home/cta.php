@@ -41,30 +41,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php esc_html_e( 'Tell us what you want made, roughly how many, and when it has to exist. If you are not sure how it should be produced, that is fine - say so and we will work it out.', 'magenta' ); ?>
 			</p>
 
-			<ul class="cta__list">
-				<li><?php esc_html_e( 'Grand Cayman, Cayman Islands', 'magenta' ); ?></li>
-				<li><a href="https://www.instagram.com/magentacayman/" target="_blank" rel="noopener">@magentacayman</a></li>
-			</ul>
-
-			<span class="sticker sticker--rotate-l sticker--teal cta__sticker" data-parallax="0.1">
-				<?php esc_html_e( 'quotes within 24h', 'magenta' ); ?>
-			</span>
-
-			<?php magenta_doodle( 'arrow', array( 'colour' => 'm', 'class' => 'doodle--cta-arrow' ) ); ?>
-			<?php magenta_doodle( 'sparkle', array( 'colour' => 'y', 'class' => 'doodle--cta-sparkle' ) ); ?>
-		</div>
-
-		<div class="cta__contact">
 			<?php
 			/*
-			 * Contact details rather than a form. A form asks for effort before
-			 * the studio has given anything back; these let someone start the
-			 * conversation in whichever channel they already use.
+			 * Contact details, in the column the copy is in. A form asked for
+			 * effort before the studio had given anything back; these let
+			 * someone start the conversation in whichever channel they already
+			 * use.
 			 *
-			 * Every line below is emitted only when it holds a real value - the
-			 * same rule the schema graph follows, so nothing here can advertise a
-			 * phone number or an address that has not been entered in
-			 * Appearance > Magenta Business.
+			 * The sticker that sat here promised "quotes within 24h". The
+			 * studio is new and cannot guarantee that every time, and a
+			 * turnaround promise on a landing page is one a prospect will hold
+			 * them to - the same reason "Island-fast" came out of the hero.
+			 *
+			 * Every line is emitted only when it holds a real value, the same
+			 * rule the schema graph follows, so nothing here can advertise a
+			 * number that has not been entered in Appearance > Magenta
+			 * Business.
 			 */
 			$magenta_email = magenta_business_field( 'email' );
 			$magenta_phone = magenta_business_field( 'telephone' );
@@ -96,6 +88,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</li>
 			</ul>
 
+
+			<?php magenta_doodle( 'arrow', array( 'colour' => 'm', 'class' => 'doodle--cta-arrow' ) ); ?>
+			<?php magenta_doodle( 'sparkle', array( 'colour' => 'y', 'class' => 'doodle--cta-sparkle' ) ); ?>
+		</div>
+
+		<div class="cta__contact">
 			<?php
 			/*
 			 * The studio's own Google Maps embed, supplied by the client. Using
@@ -115,6 +113,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					referrerpolicy="strict-origin-when-cross-origin"
 					allowfullscreen></iframe>
 			</div>
+		</div>
 		</div>
 
 	</div>

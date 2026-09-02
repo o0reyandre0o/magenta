@@ -1174,3 +1174,13 @@
   border-radius: var(--radius);
   background: var(--ink);
 }
+
+/* Contact details live in the copy column now, under the lede. */
+.cta__copy .contact-list { margin-top: var(--sp-7); }
+
+/* The map is the whole right-hand column. */
+.cta__contact .contact-map { margin-top: 0; }
+
+@media (max-width: 820px) {
+  .cta__contact .contact-map { margin-top: var(--sp-6); }
+}
