@@ -182,13 +182,16 @@ require_once MAGENTA_DIR . '/inc/business.php';
 require_once MAGENTA_DIR . '/inc/faq.php';
 
 /* --------------------------------------------------------------- render */
+/*
+ * front-page.php is included rather than reimplemented. It listed its own
+ * section order here once, which is exactly the duplication this generator
+ * exists to remove - a section dropped from the theme stayed in the preview.
+ */
+function get_header() { include MAGENTA_DIR . '/header.php'; }
+function get_footer() { include MAGENTA_DIR . '/footer.php'; }
+
 ob_start();
-include MAGENTA_DIR . '/header.php';
-$sections = array( 'hero', 'ticker', 'services', 'work', 'reels', 'process', 'about', 'testimonials', 'faq', 'cta' );
-foreach ( $sections as $section ) {
-	get_template_part( 'template-parts/home/' . $section );
-}
-include MAGENTA_DIR . '/footer.php';
+include MAGENTA_DIR . '/front-page.php';
 $html = ob_get_clean();
 
 /*
