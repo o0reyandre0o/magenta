@@ -10,6 +10,69 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * The client's own photographed jobs, shipped with the theme.
+ *
+ * Real work already produced, so the site shows genuine output from launch
+ * rather than placeholders. Shared by the work grid and the hero slider -
+ * publishing a `project` post replaces the grid, but the hero keeps using
+ * these because they are known-good, cleared images.
+ *
+ * `alt` describes the photograph for anyone who cannot see it. It is not a
+ * repeat of the title.
+ *
+ * @return array<int, array<string, string>>
+ */
+function magenta_work_items(): array {
+	return apply_filters(
+		'magenta_work_items',
+		array(
+			array(
+				'slug'   => 'coffee-cart-cards',
+				'title'  => __( 'The Coffee Cart', 'magenta' ),
+				'client' => __( 'Mobile coffee &amp; matcha', 'magenta' ),
+				'meta'   => __( 'Business cards &middot; Uncoated stock', 'magenta' ),
+				'alt'    => __( 'Two stacks of square business cards, one black and one cream, showing a retro running coffee-cup mascot.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'amuse-bouche-menu',
+				'title'  => __( 'Amuse Bouche', 'magenta' ),
+				'client' => __( 'Restaurant', 'magenta' ),
+				'meta'   => __( 'Tasting menu &middot; Die-cut &middot; Coloured stock', 'magenta' ),
+				'alt'    => __( 'A tasting menu standing open beside a red die-cut envelope closed with a small paper heart.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'goddess-beer',
+				'title'  => __( 'Goddess Hazy IPA', 'magenta' ),
+				'client' => __( '19&middot;81 Brewing Co.', 'magenta' ),
+				'meta'   => __( 'Coasters &middot; Die-cut &middot; Brochure', 'magenta' ),
+				'alt'    => __( 'Round pink beer coasters and a matching folded brochure for a collaborative brew.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'anytime-wellness-cards',
+				'title'  => __( 'Anytime Wellness', 'magenta' ),
+				'client' => __( 'Wellness', 'magenta' ),
+				'meta'   => __( 'Gift cards &middot; Gold foil', 'magenta' ),
+				'alt'    => __( 'Stacks of white gift cards stamped in gold foil, styled with dried flowers and a wooden salt scoop.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'lalique-brochures',
+				'title'  => __( '60 Lalique', 'magenta' ),
+				'client' => __( 'Property', 'magenta' ),
+				'meta'   => __( 'Property brochure &middot; Perfect bound', 'magenta' ),
+				'alt'    => __( 'A fanned stack of property brochures for a Crystal Harbour home, opened to interior photography.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'align-brochures',
+				'title'  => __( 'Align', 'magenta' ),
+				'client' => __( 'Healthcare', 'magenta' ),
+				'meta'   => __( 'Brochure suite &middot; Saddle stitched', 'magenta' ),
+				'alt'    => __( 'A spread of purple and white healthcare brochures for adult and paediatric therapy services.', 'magenta' ),
+			),
+		)
+	);
+}
+
+/**
  * The primary navigation, or the placeholder standing in for it.
  *
  * Shared by the header bar and the mobile drawer. The placeholder used to be

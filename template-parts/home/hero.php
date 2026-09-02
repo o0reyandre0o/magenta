@@ -69,8 +69,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<dd><?php esc_html_e( 'Grand Cayman', 'magenta' ); ?></dd>
 				</div>
 				<div>
-					<dt><?php esc_html_e( 'Trained in', 'magenta' ); ?></dt>
-					<dd><?php esc_html_e( 'Barcelona', 'magenta' ); ?></dd>
+					<dt><?php esc_html_e( 'From', 'magenta' ); ?></dt>
+					<dd><?php esc_html_e( 'Venezuela', 'magenta' ); ?></dd>
 				</div>
 				<div>
 					<dt><?php esc_html_e( 'Under one roof', 'magenta' ); ?></dt>
@@ -80,16 +80,69 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="hero__media">
-			<div class="hero__frame" data-parallax="0.06">
-				<?php
-				magenta_slot_image(
-					'hero_main',
-					array(
-						'eager' => true,
-						'sizes' => '(max-width: 900px) 92vw, 44vw',
-					)
-				);
-				?>
+			<?php
+			/*
+			 * Real jobs, cycling. The slot that was here rendered one generated
+			 * graphic; these are photographs of work the studio has actually
+			 * produced, which is a stronger opening argument than any artwork.
+			 *
+			 * The first slide is eager and the rest are lazy, so the hero still
+			 * paints on one image. Auto-advance is JS-only and never starts for a
+			 * visitor who has asked for reduced motion - without JS this stays a
+			 * readable stack of captioned images.
+			 */
+			$magenta_slides = magenta_work_items();
+			?>
+			<div class="hero__frame hero-slider" data-parallax="0.06" data-hero-slider
+				role="group" aria-roledescription="<?php esc_attr_e( 'carousel', 'magenta' ); ?>"
+				aria-label="<?php esc_attr_e( 'Recent work', 'magenta' ); ?>">
+
+				<ul class="hero-slider__track">
+					<?php foreach ( $magenta_slides as $magenta_i => $magenta_slide ) : ?>
+						<li class="hero-slider__slide<?php echo 0 === $magenta_i ? ' is-active' : ''; ?>"
+							data-hero-slide
+							role="group"
+							aria-roledescription="<?php esc_attr_e( 'slide', 'magenta' ); ?>"
+							aria-label="<?php echo esc_attr( sprintf( '%1$d / %2$d', $magenta_i + 1, count( $magenta_slides ) ) ); ?>">
+							<?php
+							magenta_asset_image(
+								$magenta_slide['slug'],
+								$magenta_slide['alt'],
+								array(
+									'eager' => 0 === $magenta_i,
+									'sizes' => '(max-width: 900px) 92vw, 44vw',
+								)
+							);
+							?>
+							<p class="hero-slider__caption">
+								<strong><?php echo wp_kses_post( $magenta_slide['title'] ); ?></strong>
+								<span><?php echo wp_kses_post( $magenta_slide['meta'] ); ?></span>
+							</p>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+
+				<div class="hero-slider__controls">
+					<button class="hero-slider__arrow" type="button" data-hero-prev>
+						<span class="screen-reader-text"><?php esc_html_e( 'Previous work', 'magenta' ); ?></span>
+						<span aria-hidden="true">&larr;</span>
+					</button>
+
+					<div class="hero-slider__dots" role="tablist" aria-label="<?php esc_attr_e( 'Choose work', 'magenta' ); ?>">
+						<?php foreach ( $magenta_slides as $magenta_i => $magenta_slide ) : ?>
+							<button class="hero-slider__dot<?php echo 0 === $magenta_i ? ' is-active' : ''; ?>"
+								type="button" role="tab" data-hero-dot="<?php echo esc_attr( (string) $magenta_i ); ?>"
+								aria-selected="<?php echo 0 === $magenta_i ? 'true' : 'false'; ?>">
+								<span class="screen-reader-text"><?php echo esc_html( wp_strip_all_tags( $magenta_slide['title'] ) ); ?></span>
+							</button>
+						<?php endforeach; ?>
+					</div>
+
+					<button class="hero-slider__arrow" type="button" data-hero-next>
+						<span class="screen-reader-text"><?php esc_html_e( 'Next work', 'magenta' ); ?></span>
+						<span aria-hidden="true">&rarr;</span>
+					</button>
+				</div>
 			</div>
 
 			<span class="sticker sticker--rotate-l sticker--yellow hero__sticker-a" data-parallax="0.14">
