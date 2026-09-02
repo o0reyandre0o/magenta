@@ -40,39 +40,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 		</div>
 
-		<div class="site-footer__aside">
-			<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'magenta' ); ?>">
-				<?php
-				if ( has_nav_menu( 'footer' ) ) {
-					wp_nav_menu(
-						array(
-							'theme_location' => 'footer',
-							'container'      => false,
-							'menu_class'     => 'site-footer__list',
-							'depth'          => 1,
-						)
-					);
-				}
-				?>
-			</nav>
-
+		<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'magenta' ); ?>">
 			<?php
-		/*
-		 * nofollow is deliberate, and it costs the badge nothing.
-		 *
-		 * Badge and widget links replicated across many sites are a named
-		 * example in Google's link spam guidance - the pattern has been
-		 * actioned before in "certified partner" programmes. The credit link
-		 * below is the opposite case: one branded anchor, the long-standing
-		 * designer convention, so that is the one left carrying equity.
-		 *
-		 * Nothing the badge is actually for is affected. It is still seen,
-		 * still clicked, and still sends referral traffic. TocToc's entity
-		 * authority does not run through these links at all - it runs through
-		 * the fixed @id consolidation in inc/schema.php.
-		 */
-		?>
-		<a class="seo-badge" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="nofollow noopener">
+			if ( has_nav_menu( 'footer' ) ) {
+				wp_nav_menu(
+					array(
+						'theme_location' => 'footer',
+						'container'      => false,
+						'menu_class'     => 'site-footer__list',
+						'depth'          => 1,
+					)
+				);
+			}
+			?>
+		</nav>
+
+	</div>
+
+	<div class="site-footer__legal">
+		<p>
+			&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>.
+			<?php esc_html_e( 'All rights reserved.', 'magenta' ); ?>
+		</p>
+		<a class="seo-badge seo-badge--legal" href="<?php echo esc_url( MAGENTA_AGENCY_BADGE_LINK ); ?>" target="_blank" rel="nofollow noopener">
 				<?php
 				/*
 				 * Lazy and last: the badge is rendered by admin-ajax on another
@@ -87,15 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					alt="<?php esc_attr_e( 'SEO score verified by TocToc Marketing', 'magenta' ); ?>"
 					width="460" height="72" loading="lazy" decoding="async">
 			</a>
-		</div>
 
-	</div>
-
-	<div class="site-footer__legal">
-		<p>
-			&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>.
-			<?php esc_html_e( 'All rights reserved.', 'magenta' ); ?>
-		</p>
 		<p class="site-footer__credit">
 			<?php
 			printf(

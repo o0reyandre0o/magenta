@@ -103,8 +103,17 @@ function magenta_business_fields(): array {
  */
 function magenta_business_defaults(): array {
 	return array(
-		// Confirmed by the studio, 2026-08-18.
-		'email' => 'hello@magenta.ky',
+		// All confirmed by the studio directly. Nothing here is inferred: the
+		// address in particular is what promotes the entity from a plain
+		// Organization to a LocalBusiness in the schema graph, so a guess
+		// would be a false claim Google cross-references against the Google
+		// Business Profile.
+		'email'     => 'hello@magenta.ky',
+		'telephone' => '+1 345 938 4902',
+		'street'    => 'Unit 2, Monarch Suites, Caterpillar Ln',
+		'locality'  => 'Grand Cayman',
+		'postal'    => 'KY1-1204',
+		'country'   => 'KY',
 	);
 }
 
@@ -233,6 +242,26 @@ function magenta_business_same_as(): array {
 	}
 
 	return array_values( array_unique( $urls ) );
+}
+
+/**
+ * A map query string, or '' when there is no address to point at.
+ *
+ * Deliberately returns nothing until the street and locality are both filled
+ * in. A map centred on "Grand Cayman" is not a location, and dropping a pin on
+ * a guessed building is worse than showing no map at all.
+ */
+function magenta_business_map_query(): string {
+	$street   = magenta_business_field( 'street' );
+	$locality = magenta_business_field( 'locality' );
+
+	if ( '' === $street || '' === $locality ) {
+		return '';
+	}
+
+	$parts = array( $street, $locality, magenta_business_field( 'postal' ), 'Cayman Islands' );
+
+	return implode( ', ', array_filter( array_map( 'trim', $parts ) ) );
 }
 
 /**

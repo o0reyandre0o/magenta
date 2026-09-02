@@ -54,69 +54,67 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php magenta_doodle( 'sparkle', array( 'colour' => 'y', 'class' => 'doodle--cta-sparkle' ) ); ?>
 		</div>
 
-		<div class="cta__form-wrap">
-			<form class="print-form" data-contact-form novalidate>
-				<div class="print-form__row">
-					<label for="mf-name"><?php esc_html_e( 'Name', 'magenta' ); ?></label>
-					<input type="text" id="mf-name" name="name" required autocomplete="name">
-				</div>
+		<div class="cta__contact">
+			<?php
+			/*
+			 * Contact details rather than a form. A form asks for effort before
+			 * the studio has given anything back; these let someone start the
+			 * conversation in whichever channel they already use.
+			 *
+			 * Every line below is emitted only when it holds a real value - the
+			 * same rule the schema graph follows, so nothing here can advertise a
+			 * phone number or an address that has not been entered in
+			 * Appearance > Magenta Business.
+			 */
+			$magenta_email = magenta_business_field( 'email' );
+			$magenta_phone = magenta_business_field( 'telephone' );
+			?>
 
-				<div class="print-form__row">
-					<label for="mf-email"><?php esc_html_e( 'Email', 'magenta' ); ?></label>
-					<input type="email" id="mf-email" name="email" required autocomplete="email">
-				</div>
+			<ul class="contact-list">
+				<?php if ( $magenta_email ) : ?>
+					<li class="contact-list__item">
+						<span class="contact-list__label"><?php esc_html_e( 'Email', 'magenta' ); ?></span>
+						<a class="contact-list__value" href="mailto:<?php echo esc_attr( $magenta_email ); ?>"><?php echo esc_html( $magenta_email ); ?></a>
+					</li>
+				<?php endif; ?>
 
-				<div class="print-form__row">
-					<label for="mf-company"><?php esc_html_e( 'Company', 'magenta' ); ?></label>
-					<input type="text" id="mf-company" name="company" autocomplete="organization">
-				</div>
+				<?php if ( $magenta_phone ) : ?>
+					<li class="contact-list__item">
+						<span class="contact-list__label"><?php esc_html_e( 'Phone', 'magenta' ); ?></span>
+						<a class="contact-list__value" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $magenta_phone ) ); ?>"><?php echo esc_html( $magenta_phone ); ?></a>
+					</li>
+				<?php endif; ?>
 
-				<div class="print-form__row">
-					<label for="mf-service"><?php esc_html_e( 'What do you need?', 'magenta' ); ?></label>
-					<select id="mf-service" name="service">
-						<option value=""><?php esc_html_e( 'Select…', 'magenta' ); ?></option>
-						<?php
-						// Must stay in step with template-parts/home/services.php.
-						$options = array(
-							'Business & marketing print',
-							'Wedding or event stationery',
-							'Fine art or photography printing',
-							'Custom framing',
-							'Stickers & labels',
-							'Specialty or custom production',
-							'Artwork digitization',
-							'Graphic design / branding',
-							'Not sure yet',
-						);
-						foreach ( $options as $option ) {
-							printf(
-								'<option value="%1$s">%1$s</option>',
-								esc_attr( wp_specialchars_decode( $option ) )
-							);
-						}
-						?>
-					</select>
-				</div>
+				<li class="contact-list__item">
+					<span class="contact-list__label"><?php esc_html_e( 'Instagram', 'magenta' ); ?></span>
+					<a class="contact-list__value" href="https://www.instagram.com/magentacayman/" target="_blank" rel="me noopener">@magentacayman</a>
+				</li>
 
-				<div class="print-form__row">
-					<label for="mf-message"><?php esc_html_e( 'The job', 'magenta' ); ?></label>
-					<textarea id="mf-message" name="message" rows="4"
-						placeholder="<?php esc_attr_e( 'Quantity, deadline, anything you already know.', 'magenta' ); ?>"></textarea>
-				</div>
+				<li class="contact-list__item">
+					<span class="contact-list__label"><?php esc_html_e( 'Studio', 'magenta' ); ?></span>
+					<span class="contact-list__value"><?php esc_html_e( 'Grand Cayman, Cayman Islands', 'magenta' ); ?></span>
+				</li>
+			</ul>
 
-				<?php // Honeypot: real people never fill this in. ?>
-				<div class="print-form__trap" aria-hidden="true">
-					<label for="mf-website"><?php esc_html_e( 'Leave this empty', 'magenta' ); ?></label>
-					<input type="text" id="mf-website" name="website" tabindex="-1" autocomplete="off">
-				</div>
-
-				<button class="btn btn--magenta btn--block" type="submit">
-					<?php esc_html_e( 'Send it', 'magenta' ); ?>
-					<span aria-hidden="true">&rarr;</span>
-				</button>
-
-				<p class="print-form__status" data-form-status role="status" aria-live="polite"></p>
-			</form>
+			<?php
+			/*
+			 * The studio's own Google Maps embed, supplied by the client. Using
+			 * their URL rather than one built from an address means the pin is on
+			 * the verified Google Business listing, not on a guess - and it works
+			 * before the address fields are filled in.
+			 *
+			 * Lazy: it is an iframe to another origin, well below the fold, and
+			 * eager it would pull Google's payload into the critical path.
+			 */
+			?>
+			<div class="contact-map">
+				<iframe
+					title="<?php esc_attr_e( 'Map showing Magenta Creative Studio in Grand Cayman', 'magenta' ); ?>"
+					src="<?php echo esc_url( MAGENTA_MAP_EMBED ); ?>"
+					width="600" height="450" loading="lazy"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen></iframe>
+			</div>
 		</div>
 
 	</div>

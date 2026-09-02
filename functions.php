@@ -28,6 +28,13 @@ define( 'MAGENTA_AGENCY_URL', 'https://toctoc.ky/' );
  * to be updated here for the badge to show the new numbers. Kept beside the
  * credit constants so there is exactly one place to change it.
  */
+/*
+ * The studio's Google Maps embed, taken from the verified Google Business
+ * listing. Regenerate from Google Maps > Share > Embed a map if the listing
+ * ever moves; the place id in it is what pins the map to the real business.
+ */
+define( 'MAGENTA_MAP_EMBED', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14326908.359540278!2d-93.62957054236276!3d28.755973976270354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2587c4554eac5b%3A0x7aeeb46fc80e6163!2sMagenta%20Creative%20Studio!5e0!3m2!1sen!2sus!4v1788362859673!5m2!1sen!2sus' );
+
 define( 'MAGENTA_AGENCY_BADGE_LINK', 'https://toctoc.ky/seo-checker/' );
 define( 'MAGENTA_AGENCY_BADGE_SRC', 'https://toctoc.ky/wp-admin/admin-ajax.php?action=toctoc_seo_badge&v=2&seo=100&geo=86&t=7bf937fc1c' );
 
