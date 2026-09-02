@@ -67,6 +67,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'A spread of business cards, a folded brochure and a menu fanned on a plain surface, shot overhead. Show edge quality and stock weight - this is the everyday work, so it has to look considered rather than cheap.',
 			'graphic' => 'brand/icon-08.svg',
+			'photo'   => array(
+				'file' => 'business.webp',
+				'alt'  => 'Stacked pink flyers for a crafts and food market, printed both sides.',
+			),
 		),
 		'service_weddings'      => array(
 			'group' => 'Services',
@@ -76,6 +80,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'An invitation suite laid out flat: outer, insert, place card, ribbon or wax seal if there is one. Soft daylight, slight overhead angle. Texture of the paper is the subject.',
 			'graphic' => 'brand/icon-07.svg',
+			'photo'   => array(
+				'file' => 'weddings.webp',
+				'alt'  => 'A tasting menu card standing beside a red die-cut envelope closed with a small paper heart.',
+			),
 		),
 		'service_fineart'     => array(
 			'group' => 'Services',
@@ -85,6 +93,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'A giclee or canvas print held or leaning against a wall, close enough to read the paper grain. Include a framed piece if one is finished.',
 			'graphic' => 'brand/icon-03.svg',
+			'photo'   => array(
+				'file' => 'fineart.webp',
+				'alt'  => 'A signed black and white photographic print of a hawksbill turtle swimming over a reef.',
+			),
 		),
 		'service_stickers'  => array(
 			'group' => 'Services',
@@ -103,6 +115,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'A foiled, embossed or specialty-ink piece raked with hard side light so the finish catches. This is the shot that has to prove the studio does things a web-to-print shop cannot.',
 			'graphic' => 'brand/icon-01.svg',
+			'photo'   => array(
+				'file' => 'specialty.webp',
+				'alt'  => 'A large hand-lettered market poster printed on kraft stock.',
+			),
 		),
 		'service_framing'    => array(
 			'group' => 'Services',
@@ -112,6 +128,10 @@ function magenta_slots(): array {
 			'min'   => '1800 x 1800px',
 			'spec'  => 'A framed piece on a wall or leaning, with a corner sample or moulding beside it. Show the join and the mat, not just the artwork.',
 			'graphic' => 'brand/icon-05.svg',
+			'photo'   => array(
+				'file' => 'framing.webp',
+				'alt'  => 'A stretched canvas of two fishermen in a small boat, resting on the studio floor.',
+			),
 		),
 
 		/* --------------------------------------------------------- About */
@@ -169,6 +189,10 @@ function magenta_slots(): array {
 			'min'   => '3200 x 1800px',
 			'spec'  => 'Hands holding a finished piece - a letterpress card, a menu - close enough that you can see the bite in the paper. Shallow depth of field.',
 			'graphic' => 'graphics/cta-bg.svg',
+			'photo'   => array(
+				'file' => 'cta-bg.webp',
+				'alt'  => 'Three canvas prints of beach umbrellas and palm trees leaning against a wall.',
+			),
 		),
 	);
 

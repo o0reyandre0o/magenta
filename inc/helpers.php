@@ -184,6 +184,25 @@ function magenta_slot_image( string $slot, array $args = array() ): void {
 	}
 
 	/*
+	 * A photograph shipped with the theme. Real work, so it carries real alt
+	 * text rather than the empty alt a decorative graphic gets.
+	 */
+	if ( ! empty( $def['photo']['file'] ) ) {
+		printf(
+			'<img src="%1$s" alt="%2$s" class="slot-img %3$s" width="%4$d" height="%5$d" loading="%6$s" decoding="%7$s"%8$s>',
+			esc_url( MAGENTA_URI . '/assets/img/photos/' . $def['photo']['file'] ),
+			esc_attr( $def['photo']['alt'] ),
+			esc_attr( $a['class'] ),
+			'16x9' === $def['ratio'] ? 1600 : 900,
+			'16x9' === $def['ratio'] ? 900 : 900,
+			$a['eager'] ? 'eager' : 'lazy',
+			$a['eager'] ? 'sync' : 'async',
+			$a['eager'] ? ' fetchpriority="high"' : ''
+		);
+		return;
+	}
+
+	/*
 	 * No photograph uploaded yet, but the slot ships with brand artwork.
 	 *
 	 * These are drawn in the same CMYK process language as the rest of the
