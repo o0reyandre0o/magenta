@@ -2,11 +2,16 @@
 /**
  * Home / client words.
  *
- * The quotes below are deliberately empty. Nothing here invents a client
- * statement: each card renders as a visible "pending" note until a real,
- * approved quote is pasted into the array. Publishing a made-up testimonial
- * would be a false claim about a named business, so the placeholder stays
- * obvious on purpose.
+ * Nothing here invents a client statement: each card renders as a visible
+ * "pending" note until a real, approved quote is pasted into the array.
+ * Publishing a made-up testimonial would be a false claim about a named
+ * person, so the placeholder stays obvious on purpose.
+ *
+ * The quotes that are filled in are transcribed from the studio's own Google
+ * reviews. They are shown as visible text only - deliberately not marked up
+ * as Review schema, because Google does not support self-serving review
+ * markup for a LocalBusiness describing itself, and using it invites a
+ * structured-data penalty rather than a star rating.
  *
  * To fill: replace `quote`, `name` and `role`. Any card left with an empty
  * quote keeps rendering as pending, so partial fills are safe.
@@ -22,9 +27,9 @@ $quotes = apply_filters(
 	'magenta_testimonials',
 	array(
 		array(
-			'quote' => '',
-			'name'  => '',
-			'role'  => __( 'Hotel &middot; F&amp;B', 'magenta' ),
+			'quote' => __( 'Fully recommended! B&aacute;rbara is amazing! They have done for me amazing stickers, flyers, custom shaped prints, and more! In Grand Cayman they are an amazing solution for those looking for high quality and different printing options. Also, very convenient location!', 'magenta' ),
+			'name'  => __( 'Daniel Garrido', 'magenta' ),
+			'role'  => __( 'Google review &middot; 5 stars', 'magenta' ),
 		),
 		array(
 			'quote' => '',

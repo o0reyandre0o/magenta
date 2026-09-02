@@ -114,6 +114,10 @@ function magenta_business_defaults(): array {
 		'locality'  => 'Grand Cayman',
 		'postal'    => 'KY1-1204',
 		'country'   => 'KY',
+		// From the place's own Google Maps URL, so the pin and the schema
+		// geo node agree with each other.
+		'latitude'  => '19.3001733',
+		'longitude' => '-81.3661463',
 	);
 }
 
