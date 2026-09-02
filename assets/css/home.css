@@ -1039,3 +1039,119 @@
   .blob--hero-a { height: 26rem; left: -12rem; }
   .blob--hero-b { height: 16rem; right: -6rem; }
 }
+
+/* ========================================================== Hero slider
+   Real jobs cycling in the hero. Slides are stacked and cross-faded rather
+   than translated, so the frame never changes height and the surrounding
+   layout cannot shift as it advances. */
+.hero-slider { position: relative; }
+
+.hero-slider__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+.hero-slider__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease-out), visibility 0s linear var(--dur);
+}
+
+.hero-slider__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur) var(--ease-out), visibility 0s;
+}
+
+.hero-slider__slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.hero-slider__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: var(--sp-6) var(--sp-4) var(--sp-4);
+  display: grid;
+  gap: 0.15rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  /* Scrim rather than a flat bar: the photographs vary, so the caption cannot
+     assume the corner it sits in is dark. */
+  background: linear-gradient(to top, rgba(20, 12, 20, 0.92) 0%, rgba(20, 12, 20, 0.7) 55%, transparent 100%);
+  color: var(--paper);
+}
+
+.hero-slider__caption strong {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+}
+
+.hero-slider__caption span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-slider__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.hero-slider__arrow {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: var(--border);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-back), background-color var(--dur-fast);
+}
+
+.hero-slider__arrow:hover,
+.hero-slider__arrow:focus-visible { background: var(--y); transform: translateY(-2px); }
+
+.hero-slider__dots { display: flex; align-items: center; gap: var(--sp-2); }
+
+.hero-slider__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--dur-fast), transform var(--dur-fast);
+}
+
+.hero-slider__dot.is-active { background: var(--m-deep); transform: scale(1.25); }
+.hero-slider__dot:hover { background: var(--y); }
+
+/* Touch targets stay 44px even though the dot itself is small. */
+.hero-slider__dot::before {
+  content: "";
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+.hero-slider__dots { position: relative; }
+.hero-slider__dot { position: relative; }
