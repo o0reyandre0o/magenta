@@ -91,13 +91,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * visitor who has asked for reduced motion - without JS this stays a
 			 * readable stack of captioned images.
 			 */
-			$magenta_slides = array_values(
-				array_filter(
-					magenta_work_items(),
-					static function ( array $item ): bool {
-						return empty( $item['video'] );
-					}
-				)
+			// Stills only, and capped: the full list runs to a dozen, and a dozen
+			// dots is a control nobody can aim at. The rest are all in the work
+			// grid below anyway.
+			$magenta_slides = array_slice(
+				array_values(
+					array_filter(
+						magenta_work_items(),
+						static function ( array $item ): bool {
+							return empty( $item['video'] );
+						}
+					)
+				),
+				0,
+				6
 			);
 			?>
 			<div class="hero__frame hero-slider" data-parallax="0.06" data-hero-slider
