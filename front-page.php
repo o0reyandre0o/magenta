@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$sections = array( 'hero', 'ticker', 'services', 'work', 'reels', 'process', 'about', 'testimonials', 'faq', 'cta' );
+$sections = array( 'hero', 'ticker', 'services', 'work', 'process', 'about', 'testimonials', 'faq', 'cta' );
 
 foreach ( $sections as $section ) {
 	get_template_part( 'template-parts/home/' . $section );

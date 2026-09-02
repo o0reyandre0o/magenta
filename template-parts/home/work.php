@@ -99,13 +99,19 @@ $bundled = magenta_work_items();
 
 				<?php foreach ( $bundled as $i => $card ) : ?>
 					<article class="work-card work-card--bundled" data-reveal style="--i:<?php echo esc_attr( (string) $i ); ?>">
-						<div class="work-card__media">
+						<div class="work-card__media<?php echo empty( $card['video'] ) ? '' : ' work-card__media--video'; ?>">
 							<?php
-							magenta_asset_image(
-								$card['slug'],
-								$card['alt'],
-								array( 'sizes' => '(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw' )
-							);
+							if ( empty( $card['video'] ) ) {
+								magenta_asset_image(
+									$card['slug'],
+									$card['alt'],
+									array( 'sizes' => '(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw' )
+								);
+							} else {
+								// Vertical phone footage; the card crops it rather than
+								// letterboxing, so the frame matches the still cards.
+								magenta_reel( $card['slug'], $card['alt'] );
+							}
 							?>
 							<span class="tape tape--card" aria-hidden="true"></span>
 						</div>

@@ -68,6 +68,30 @@ function magenta_work_items(): array {
 				'meta'   => __( 'Brochure suite &middot; Saddle stitched', 'magenta' ),
 				'alt'    => __( 'A spread of purple and white healthcare brochures for adult and paediatric therapy services.', 'magenta' ),
 			),
+			array(
+				'slug'   => 'vinyl-stickers',
+				'video'  => true,
+				'title'  => __( 'Vinyl stickers', 'magenta' ),
+				'client' => __( 'Stickers &amp; labels', 'magenta' ),
+				'meta'   => __( 'Contour cut to shape', 'magenta' ),
+				'alt'    => __( 'Vinyl stickers being weeded and peeled after contour cutting.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'festive-diecut',
+				'video'  => true,
+				'title'  => __( 'Festive die-cut', 'magenta' ),
+				'client' => __( 'Seasonal', 'magenta' ),
+				'meta'   => __( 'Printed &amp; cut in house', 'magenta' ),
+				'alt'    => __( 'Custom die-cut seasonal pieces stacked and fanned out on a shelf.', 'magenta' ),
+			),
+			array(
+				'slug'   => 'wellness-gift',
+				'video'  => true,
+				'title'  => __( 'Gift card boxing', 'magenta' ),
+				'client' => __( 'Wellness', 'magenta' ),
+				'meta'   => __( 'Foiled &amp; boxed by hand', 'magenta' ),
+				'alt'    => __( 'Foiled wellness gift cards being handled and arranged.', 'magenta' ),
+			),
 		)
 	);
 }

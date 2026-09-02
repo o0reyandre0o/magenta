@@ -91,7 +91,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * visitor who has asked for reduced motion - without JS this stays a
 			 * readable stack of captioned images.
 			 */
-			$magenta_slides = magenta_work_items();
+			$magenta_slides = array_values(
+				array_filter(
+					magenta_work_items(),
+					static function ( array $item ): bool {
+						return empty( $item['video'] );
+					}
+				)
+			);
 			?>
 			<div class="hero__frame hero-slider" data-parallax="0.06" data-hero-slider
 				role="group" aria-roledescription="<?php esc_attr_e( 'carousel', 'magenta' ); ?>"

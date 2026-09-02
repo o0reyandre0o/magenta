@@ -1159,3 +1159,18 @@
 }
 .hero-slider__dots { position: relative; }
 .hero-slider__dot { position: relative; }
+
+/* Video cards in the work grid. The clips are 9:16 phone footage and the grid
+   is 4:5, so the card crops rather than letterboxes — matching the stills
+   beside it matters more than showing the whole frame. */
+.work-card__media--video { position: relative; overflow: hidden; }
+
+.work-card__media--video .reel__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--ink);
+}
