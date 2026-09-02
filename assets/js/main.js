@@ -517,6 +517,71 @@
     });
   }
 
+  /* ------------------------------------------------------------ Hero slider
+     Cross-fades real jobs in the hero. Auto-advance is deliberately opt-out:
+     it never starts under prefers-reduced-motion or the accessibility panel's
+     pause, and it stops while the visitor is hovering or has focus inside,
+     so it cannot yank a slide away mid-read. */
+  function initHeroSlider() {
+    var root = document.querySelector('[data-hero-slider]');
+    if (!root) return;
+
+    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-hero-slide]'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-hero-dot]'));
+    if (slides.length < 2) return;
+
+    var index = 0;
+    var timer = null;
+    var DELAY = 5200;
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === index);
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === index);
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function start() {
+      stop();
+      /* Re-read the pause setting every time: the visitor can turn it on from
+         the accessibility panel after the page has already loaded. */
+      if (reduced || document.documentElement.hasAttribute('data-a11y-motion')) return;
+      timer = setInterval(function () { show(index + 1); }, DELAY);
+    }
+
+    root.querySelector('[data-hero-next]').addEventListener('click', function () {
+      show(index + 1); start();
+    });
+    root.querySelector('[data-hero-prev]').addEventListener('click', function () {
+      show(index - 1); start();
+    });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { show(i); start(); });
+    });
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', function (event) {
+      if (!root.contains(event.relatedTarget)) start();
+    });
+
+    /* Nothing advances while the tab is in the background. */
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  }
+
   function init() {
     initReveals();
     initParallax();
@@ -530,6 +595,7 @@
     initNav();
     initContactForm();
     initA11y();
+    initHeroSlider();
   }
 
   if (document.readyState === 'loading') {

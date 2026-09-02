@@ -65,16 +65,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<dl class="hero__facts">
 				<div>
-					<dt><?php esc_html_e( 'Based in', 'magenta' ); ?></dt>
-					<dd><?php esc_html_e( 'Grand Cayman', 'magenta' ); ?></dd>
-				</div>
-				<div>
-					<dt><?php esc_html_e( 'From', 'magenta' ); ?></dt>
-					<dd><?php esc_html_e( 'Venezuela', 'magenta' ); ?></dd>
+					<dt><?php esc_html_e( 'We work with', 'magenta' ); ?></dt>
+					<dd><?php esc_html_e( 'Businesses &amp; individuals', 'magenta' ); ?></dd>
 				</div>
 				<div>
 					<dt><?php esc_html_e( 'Under one roof', 'magenta' ); ?></dt>
 					<dd><?php esc_html_e( 'Design + production', 'magenta' ); ?></dd>
+				</div>
+				<div>
+					<dt><?php esc_html_e( 'We specialize in', 'magenta' ); ?></dt>
+					<dd><?php esc_html_e( 'Custom &amp; specialty', 'magenta' ); ?></dd>
 				</div>
 			</dl>
 		</div>
