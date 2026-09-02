@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<em>
 					<?php
 					// See the note in hero.php on why this is not run through kses.
-					echo magenta_mark( __( 'B&aacute;rbara.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo magenta_mark( __( 'Bárbara.', 'magenta' ), 'underline', 'y' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</em>
 			</h2>

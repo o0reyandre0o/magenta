@@ -664,8 +664,8 @@
    offset that sat neatly under a capital cut straight through "Barbara". */
 em .doodle--mark-underline,
 .hero__title em .doodle--mark-underline {
-  bottom: -0.2em;
-  height: 0.26em;
+  bottom: -0.34em;
+  height: 0.24em;
 }
 
 @media (prefers-reduced-motion: reduce) {
