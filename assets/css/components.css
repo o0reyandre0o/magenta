@@ -660,6 +660,14 @@
   height: 0.32em;
 }
 
+/* The script face descends far further than the display face, so the same
+   offset that sat neatly under a capital cut straight through "Barbara". */
+em .doodle--mark-underline,
+.hero__title em .doodle--mark-underline {
+  bottom: -0.2em;
+  height: 0.26em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .doodle--draw path { stroke-dashoffset: 0; transition: none; }
 }
